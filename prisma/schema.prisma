@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Blog {
+  id               Int     @id @default(autoincrement())
+  slug             String  @unique
+  url              String
+  title            String
+  metaTitle        String  @map("meta_title")
+  metaDescription  String  @map("meta_description")
+  metaKeywords     String  @map("meta_keywords")
+  content          String
+  excerpt          String
+  published        Boolean @default(false)
+  publishDate      String  @map("publish_date")
+  category         String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@map("blogs")
+}
+
+model Microblog {
+  id               Int     @id @default(autoincrement())
+  slug             String  @unique
+  url              String
+  title            String
+  metaTitle        String  @map("meta_title")
+  metaDescription  String  @map("meta_description")
+  metaKeywords     String  @map("meta_keywords")
+  content          String
+  excerpt          String
+  published        Boolean @default(false)
+  publishDate      String  @map("publish_date")
+  category         String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@map("microblogs")
+}
+
+model Service {
+  id               Int     @id @default(autoincrement())
+  slug             String  @unique
+  url              String
+  title            String
+  metaTitle        String  @map("meta_title")
+  metaDescription  String  @map("meta_description")
+  metaKeywords     String  @map("meta_keywords")
+  content          String
+  excerpt          String
+  published        Boolean @default(false)
+  publishDate      String  @map("publish_date")
+  category         String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@map("services")
+}
+
+model Page {
+  id               Int     @id @default(autoincrement())
+  slug             String  @unique
+  url              String
+  title            String
+  metaTitle        String  @map("meta_title")
+  metaDescription  String  @map("meta_description")
+  metaKeywords     String  @map("meta_keywords")
+  content          String
+  excerpt          String
+  published        Boolean @default(false)
+  publishDate      String  @map("publish_date")
+  category         String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@map("pages")
+}

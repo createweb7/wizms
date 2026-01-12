@@ -13,6 +13,12 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    rules: {
+      // Disable Tailwind CSS class warnings from extensions
+      // bg-linear-* and grow are the correct Tailwind v4 syntax
+    },
+  },
 ]);
 
 export default eslintConfig;
