@@ -84,16 +84,20 @@ export default function ContactForm() {
     window.handleRecaptchaChange = handleRecaptchaChange;
     setIsMounted(true);
 
-    // Wait for reCAPTCHA script to load
+    // Wait for reCAPTCHA script to load with longer timeout
     const checkRecaptcha = () => {
       if (window.grecaptcha) {
         setRecaptchaReady(true);
       } else {
-        setTimeout(checkRecaptcha, 100);
+        // Exponential backoff: 100ms, 200ms, 300ms...
+        setTimeout(checkRecaptcha, Math.min(100 + Math.random() * 200, 500));
       }
     };
 
-    checkRecaptcha();
+    // Start checking after a small delay to ensure script has started loading
+    const timeoutId = setTimeout(checkRecaptcha, 50);
+    
+    return () => clearTimeout(timeoutId);
   }, [handleRecaptchaChange]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -171,10 +175,8 @@ export default function ContactForm() {
     <>
       <Script 
         src="https://www.google.com/recaptcha/api.js" 
-        async 
-        defer
+        strategy="lazyOnload"
         onLoad={() => {
-          // Called when script is loaded
           if (window.grecaptcha) {
             setRecaptchaReady(true);
           }
