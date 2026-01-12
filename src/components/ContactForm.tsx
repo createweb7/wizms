@@ -6,6 +6,11 @@ import Script from "next/script";
 declare global {
   interface Window {
     handleRecaptchaChange: (token: string | null) => void;
+    grecaptcha: {
+      render: (containerId: string, options: any) => void;
+      reset: (widgetId?: number) => void;
+      getResponse: (widgetId?: number) => string;
+    };
   }
 }
 
