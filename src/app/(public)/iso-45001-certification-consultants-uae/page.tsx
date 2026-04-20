@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { MdArrowForward, MdKeyboardArrowDown, MdSecurity, MdDone, MdKey, MdCheckCircle } from 'react-icons/md';
+import { getConsultantPageBySlug } from '@/lib/supabase-data';
+import { MdKeyboardArrowDown, MdCheckCircle, MdDone } from 'react-icons/md';
 import EnquiryForm from '@/components/EnquiryForm';
 
 const faqStyle = `
@@ -19,10 +20,14 @@ const faqStyle = `
   }
 `;
 
-export const metadata: Metadata = {
-  title: 'ISO 45001 Certification in Dubai | ISO 45001 Consultants in UAE | Wizms',
-  description: 'Wizms offer ISO 45001 certification consultancy services in Dubai, UAE. ISO 45001 in Dubai is maintaining the occupational health and safety management system (OHSMS)',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getConsultantPageBySlug('iso-45001-certification-consultants-uae');
+  return {
+    title: page?.meta_title || undefined,
+    description: page?.meta_description || undefined,
+    keywords: page?.meta_keywords || undefined,
+  };
+}
 
 export default function ISO45001Page() {
   return (
@@ -50,307 +55,294 @@ export default function ISO45001Page() {
                   <h1 className="text-4xl font-bold text-gray-900 mb-4">
                     ISO 45001 Certification Consultant in Dubai, UAE
                   </h1>
-                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                    <Link href="/iso-45001-certification-consultants-uae" className="text-red-600 hover:text-red-800">
-                      ISO 45001 Certification
-                    </Link>
-                    {' '}is the international standard for occupational health and safety management systems (OHSMS). It represents a significant shift from OHSAS 18001, providing a more comprehensive framework for managing workplace health and safety risks. WIZMS, a leading ISO 45001 certification consultant in Dubai, UAE, helps organizations transition smoothly to this modern standard.
+                  <p className="text-gray-700 mb-4">
+                    ISO 45001 certification in Dubai, UAE is a standard for Occupational Health and Safety Management System (OHSMS). Get ISO 45001: 2018 certification in less than 3 weeks. ISO 45001 aims at reducing unacceptable work risks and reliably improving the performance of OHSMS. <Link href="/iso-45001-certification-consultants-uae" className="text-red-600 hover:text-red-800">ISO 45001</Link> standard can be applied to all types of organizations and set ups irrespective of nature, type and size of business. It lays a bunch of rules that builds a system by specifying the requirements for your organization's OHSMS. Adjusting your organization's OHSMS with ISO 45001 can essentially reduce the risk and enhances the safety and brings down the incidents of injury and disease in the work environment.
                   </p>
                 </div>
 
-                {/* Fundamentals */}
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">ISO 45001 Certification in Dubai, UAE</h2>
+
                 <div className="mb-10">
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">Fundamentals of ISO 45001</h2>
                   <p className="text-gray-700 mb-4">
-                    ISO 45001:2018 is designed to help organizations proactively manage their health and safety risks, reduce workplace incidents, and create safer working environments. The standard integrates with other management systems like <Link href="/iso-9001-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 9001</Link> and <Link href="/iso-14001-certification-consultants-uae" className="text-green-600 hover:text-green-800">ISO 14001</Link> for seamless implementation.
+                    ISO health and safety standard is the replacement of 18001, it makes coordination with other management systems easier than before; since it shares the new normal structure characterized by Annex SL, it is directly lined up with the 2015 revisions of <Link href="/iso-14001-certification-consultants-uae" className="text-green-600 hover:text-green-800">ISO 14001</Link> and <Link href="/iso-9001-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 9001</Link>.
                   </p>
                   <p className="text-gray-700">
-                    ISO 45001 shifts the focus from compliance to risk management, requiring organizations to identify hazards, assess risks, and implement preventive measures before incidents occur.
+                    You can discover more data about ISO 45001: 2018 standard and better understand the difference between <Link href="/what-is-the-difference-between-OHSAS-18001-and-ISO-45001" className="text-blue-600 hover:text-blue-800">ohsas 18001 iso 45001</Link>. Existing OHSAS 18001 clients of Wizms, can get migration support and can implement and generate a gap analysis report that must be completed preceding a migration audit.
                   </p>
                 </div>
 
                 {/* Migration Section */}
                 <div className="mb-10 bg-orange-50 border-l-4 border-orange-500 p-6 rounded">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Migration from OHSAS 18001 to ISO 45001</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Migration from OHSAS 18001 Certification</h2>
                   <p className="text-gray-700 mb-4">
-                    Organizations currently certified to OHSAS 18001:2007 have until September 2021 to transition to ISO 45001:2018. WIZMS provides two pathways for migration:
+                    After achieving ISO 45001 certification, the OHSAS 18001 norms will be removed. A transition period of 3-years will be allotted to the OHSAS 18001 certified organizations. The guidelines defined by the International Accreditation Forum (IAF) have to be followed before migration from present OHSAS 18001 to ISO 45001 certification. Transition of OHSAS 18001 has to follow any of the two routes:
                   </p>
                   <div className="space-y-4">
                     <div className="bg-white p-4 rounded border border-orange-200">
-                      <h3 className="font-bold text-gray-900 mb-2">Route 1: Complete System Redesign</h3>
-                      <p className="text-gray-700">Replace the existing OHSAS 18001 system entirely with a new ISO 45001 compliant system. This option is recommended for organizations seeking comprehensive system improvements.</p>
+                      <h3 className="font-bold text-gray-900 mb-2">Route 1: Authorized OHSAS 18001 Certification</h3>
+                      <p className="text-gray-700">An authorized OHSAS 18001 certification will be relocated through a consistent cycle to ISO 45001:2018 during the 3 years after distribution as indicated by IAF.</p>
                     </div>
                     <div className="bg-white p-4 rounded border border-orange-200">
-                      <h3 className="font-bold text-gray-900 mb-2">Route 2: Incremental Transition</h3>
-                      <p className="text-gray-700">Gradually integrate ISO 45001 requirements into the existing OHSAS 18001 system. This approach minimizes disruption while ensuring full compliance with the new standard.</p>
+                      <h3 className="font-bold text-gray-900 mb-2">Route 2: Non-Authorized OHSAS 18001 Certification</h3>
+                      <p className="text-gray-700">A non-authorized OHSAS 18001 certification will follow a particular system which will make the transition to ISO 45001:2018 as smooth as possible.</p>
                     </div>
                   </div>
                 </div>
 
                 {/* 8 Steps Section */}
                 <div className="mb-10">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6">8 Basic Steps to ISO 45001 Certification</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {[
-                      { num: '1', title: 'Learn', desc: 'Understand ISO 45001 requirements and clauses' },
-                      { num: '2', title: 'Gap Analysis', desc: 'Identify gaps between current practices and ISO 45001' },
-                      { num: '3', title: 'Plan', desc: 'Develop implementation roadmap and strategy' },
-                      { num: '4', title: 'Training', desc: 'Train employees on ISO 45001 requirements' },
-                      { num: '5', title: 'Documentation', desc: 'Create policies, procedures, and work instructions' },
-                      { num: '6', title: 'Use & Improve', desc: 'Implement and continuously improve the system' },
-                      { num: '7', title: 'Audit', desc: 'Conduct internal audits before certification' },
-                      { num: '8', title: 'Register', desc: 'Undergo external audit and obtain certification' },
-                    ].map((step) => (
-                      <div key={step.num} className="p-4 bg-linear-to-br from-red-50 to-orange-50 border border-red-200 rounded-lg">
-                        <div className="flex gap-3 items-start">
-                          <div className="shrink-0 w-10 h-10 bg-red-600 text-white rounded-full flex items-center justify-center font-bold">
-                            {step.num}
-                          </div>
-                          <div>
-                            <h3 className="font-bold text-gray-900">{step.title}</h3>
-                            <p className="text-sm text-gray-600">{step.desc}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Basic Steps to get ISO 45001 Certification in Dubai, UAE</h2>
+
+                  <div className="space-y-4 mb-8">
+                    <div className="bg-orange-50 border-l-4 border-orange-500 p-4 rounded">
+                      <h3 className="font-bold text-gray-900 mb-2">Stage 1: Learn</h3>
+                      <p className="text-gray-700">Organizations should understand the guidelines of <Link href="/myths-about-iso-45001-ohsms-standard" className="text-blue-600 hover:text-blue-800">ISO 45001 standard</Link> (ISO 14001 and ISO 9001 if you are consolidating them). Learn the easy ways to meet the requirements of iso 45001 occupational health and safety management systems.</p>
+                    </div>
+
+                    <div className="bg-orange-50 border-l-4 border-orange-500 p-4 rounded">
+                      <h3 className="font-bold text-gray-900 mb-2">Stage 2: Perform Gap Analysis and Initial OHSMS ISO 45001 audit</h3>
+                      <p className="text-gray-700">Choose the right <Link href="/how-to-choose-the-right-iso-certification-consultant" className="text-blue-600 hover:text-blue-800">ISO certification consultant</Link> in Dubai to perform Gap Analysis for your organization. Get <Link href="/iso-45001-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 45001 certification in UAE</Link>, Dubai at best price with the help of WIZMS who can implement ISO 45001 in a simpler and faster way. Complete the risk assessment iso 45001 with the identification of hazards, evaluations of risks and determination of controls.</p>
+                    </div>
+
+                    <div className="bg-orange-50 border-l-4 border-orange-500 p-4 rounded">
+                      <h3 className="font-bold text-gray-900 mb-2">Stage 3: Plan</h3>
+                      <p className="text-gray-700">Create a project plan for your organization to meet the ISO 45001 Occupational Health and Safety Management Systems.</p>
+                    </div>
+
+                    <div className="bg-orange-50 border-l-4 border-orange-500 p-4 rounded">
+                      <h3 className="font-bold text-gray-900 mb-2">Stage 4: Training</h3>
+                      <p className="text-gray-700">Provide adequate <Link href="/advantages-of-iso-45001-ohsms-certification-training" className="text-blue-600 hover:text-blue-800">OHSMS 45001 training</Link> to your employees to meet OHSMS 45001 Management System.</p>
+                    </div>
+
+                    <div className="bg-orange-50 border-l-4 border-orange-500 p-4 rounded">
+                      <h3 className="font-bold text-gray-900 mb-2">Stage 5: Document</h3>
+                      <p className="text-gray-700">To get ISO safety certification, every organization must plan and document their OHSMS ISO 45001 Health and Safety Manual and Procedures. The greatest part of the project is to look at the issues in the current process and update them to address the <Link href="/iso-45001-certification-requirement-for-companies" className="text-blue-600 hover:text-blue-800">requirements of ISO 45001</Link> standard. Once the process is modified or developed to meet the ISO safety certification, you should control those processes. Documenting the process is essential to get ISO 45001 certification.</p>
+                    </div>
+
+                    <div className="bg-orange-50 border-l-4 border-orange-500 p-4 rounded">
+                      <h3 className="font-bold text-gray-900 mb-2">Stage 6: Use and Improve Your OHSMS</h3>
+                      <p className="text-gray-700">When your system is created and documented, employees will follow the procedures, gather records and make necessary improvements to ISO 45001 safety management system.</p>
+                    </div>
+
+                    <div className="bg-orange-50 border-l-4 border-orange-500 p-4 rounded">
+                      <h3 className="font-bold text-gray-900 mb-2">Stage 7: Audit ISO 45001</h3>
+                      <p className="text-gray-700">Is your OHSMS ISO 45001 working? Our <Link href="/" className="text-blue-600 hover:text-blue-800">ISO consultant in Dubai</Link> will conduct an internal audit to perceive how is your ISO 45001 management system functioning and how you can improve it.</p>
+                    </div>
+
+                    <div className="bg-orange-50 border-l-4 border-orange-500 p-4 rounded">
+                      <h3 className="font-bold text-gray-900 mb-2">Stage 8: Achieve ISO 45001 Registration</h3>
+                      <p className="text-gray-700">After completing the above stages, now your organization is ready to register for ISO 45001 certification. Regular surveillance audit will be conducted for 6 to 12 months. You must know how to advertise your ISO 45001 certification.</p>
+                    </div>
                   </div>
                 </div>
 
                 {/* Cost Section */}
                 <div className="mb-10">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">ISO 45001 Certification Cost in Dubai</h2>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                      <h3 className="font-bold text-gray-900 mb-3">Initial Certification Cost</h3>
-                      <ul className="space-y-2 text-gray-700">
-                        <li className="flex gap-2 items-start">
-                          <MdDone className="text-blue-600 shrink-0 mt-1" />
-                          <span>Initial audit and documentation review</span>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">ISO 45001 Certification Cost in UAE</h2>
+
+                  <p className="text-lg text-gray-700 mb-8 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                    ISO 45001 Certification Cost in UAE is made up of an <strong>initial consultancy fee</strong> and an <strong>annual fee</strong>.
+                  </p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                    {/* Consultancy Fee */}
+                    <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 border-l-4 border-blue-600">
+                      <h3 className="text-xl font-bold text-blue-900 mb-6 flex items-center gap-2">
+                        <span className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">1</span>
+                        Consultancy Fee
+                      </h3>
+                      <ul className="space-y-4">
+                        <li className="flex gap-3 items-start">
+                          <MdCheckCircle className="text-blue-600 shrink-0 mt-1 text-lg" />
+                          <span className="text-gray-700">Our ISO 45001 consultant in UAE's first visit to your place of business</span>
                         </li>
-                        <li className="flex gap-2 items-start">
-                          <MdDone className="text-blue-600 shrink-0 mt-1" />
-                          <span>Certification audit by external body</span>
+                        <li className="flex gap-3 items-start">
+                          <MdCheckCircle className="text-blue-600 shrink-0 mt-1 text-lg" />
+                          <span className="text-gray-700">Prepare documentation regarding the requirements of ISO 45001</span>
                         </li>
-                        <li className="flex gap-2 items-start">
-                          <MdDone className="text-blue-600 shrink-0 mt-1" />
-                          <span>Issuance of ISO 45001 certificate</span>
+                        <li className="flex gap-3 items-start">
+                          <MdCheckCircle className="text-blue-600 shrink-0 mt-1 text-lg" />
+                          <span className="text-gray-700">A second visit to your organization to confirm that everything is in place for ISO 45001 certification</span>
                         </li>
-                        <li className="flex gap-2 items-start">
-                          <MdDone className="text-blue-600 shrink-0 mt-1" />
-                          <span>Documentation and guidance throughout</span>
+                        <li className="flex gap-3 items-start">
+                          <MdCheckCircle className="text-blue-600 shrink-0 mt-1 text-lg" />
+                          <span className="text-gray-700">Final step is ISO 45001 Certification and registration process</span>
                         </li>
                       </ul>
                     </div>
 
-                    <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-                      <h3 className="font-bold text-gray-900 mb-3">Annual Surveillance Cost</h3>
-                      <ul className="space-y-2 text-gray-700">
-                        <li className="flex gap-2 items-start">
-                          <MdDone className="text-green-600 shrink-0 mt-1" />
-                          <span>Annual surveillance audits</span>
+                    {/* Annual Fee */}
+                    <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 border-l-4 border-green-600">
+                      <h3 className="text-xl font-bold text-green-900 mb-6 flex items-center gap-2">
+                        <span className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold">2</span>
+                        Annual Fee
+                      </h3>
+                      <ul className="space-y-4">
+                        <li className="flex gap-3 items-start">
+                          <MdCheckCircle className="text-green-600 shrink-0 mt-1 text-lg" />
+                          <span className="text-gray-700">Perform yearly audits to ensure that your organization remains ISO 45001 certified</span>
                         </li>
-                        <li className="flex gap-2 items-start">
-                          <MdDone className="text-green-600 shrink-0 mt-1" />
-                          <span>Compliance monitoring</span>
-                        </li>
-                        <li className="flex gap-2 items-start">
-                          <MdDone className="text-green-600 shrink-0 mt-1" />
-                          <span>Recertification audit every 3 years</span>
-                        </li>
-                        <li className="flex gap-2 items-start">
-                          <MdDone className="text-green-600 shrink-0 mt-1" />
-                          <span>Continuous system support</span>
+                        <li className="flex gap-3 items-start">
+                          <MdCheckCircle className="text-green-600 shrink-0 mt-1 text-lg" />
+                          <span className="text-gray-700">Ongoing support and maintenance from ISO 45001 consultants in UAE to help you get the most out of your occupational health & safety management system</span>
                         </li>
                       </ul>
                     </div>
                   </div>
 
-                  <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
-                    <h3 className="font-bold text-gray-900 mb-4">Factors Affecting ISO 45001 Certification Cost</h3>
-                    <ul className="space-y-3 text-gray-700">
-                      <li className="flex gap-3 items-start">
-                        <span className="font-bold text-red-600 shrink-0">•</span>
+                  {/* Factors Section */}
+                  <div className="bg-orange-50 rounded-lg p-8 border-l-4 border-orange-500">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">What affects the cost of ISO 45001 certification?</h3>
+                    <p className="text-gray-700 mb-6">Cost of ISO 45001 certification affects on various factors specific to each organization. These include:</p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="bg-white rounded-lg p-4 border border-orange-200 flex gap-3 items-start">
+                        <span className="w-6 h-6 bg-orange-500 text-white rounded-full flex items-center justify-center text-sm font-bold shrink-0">•</span>
                         <div>
-                          <p className="font-semibold">Industry Type:</p>
-                          <p className="text-sm">High-risk industries (construction, manufacturing) may have higher certification costs</p>
+                          <p className="font-semibold text-gray-900">Industry sector</p>
+                          <p className="text-sm text-gray-600">Different industries have varying risk levels</p>
                         </div>
-                      </li>
-                      <li className="flex gap-3 items-start">
-                        <span className="font-bold text-red-600 shrink-0">•</span>
+                      </div>
+                      <div className="bg-white rounded-lg p-4 border border-orange-200 flex gap-3 items-start">
+                        <span className="w-6 h-6 bg-orange-500 text-white rounded-full flex items-center justify-center text-sm font-bold shrink-0">•</span>
                         <div>
-                          <p className="font-semibold">Number of Offices:</p>
-                          <p className="text-sm">Multiple locations increase scope and complexity</p>
+                          <p className="font-semibold text-gray-900">Number of Offices</p>
+                          <p className="text-sm text-gray-600">Multiple locations increase scope</p>
                         </div>
-                      </li>
-                      <li className="flex gap-3 items-start">
-                        <span className="font-bold text-red-600 shrink-0">•</span>
+                      </div>
+                      <div className="bg-white rounded-lg p-4 border border-orange-200 flex gap-3 items-start">
+                        <span className="w-6 h-6 bg-orange-500 text-white rounded-full flex items-center justify-center text-sm font-bold shrink-0">•</span>
                         <div>
-                          <p className="font-semibold">Annual Turnover:</p>
-                          <p className="text-sm">Certification bodies often scale costs based on organization size</p>
+                          <p className="font-semibold text-gray-900">Annual turnover</p>
+                          <p className="text-sm text-gray-600">Costs scale based on organization size</p>
                         </div>
-                      </li>
-                      <li className="flex gap-3 items-start">
-                        <span className="font-bold text-red-600 shrink-0">•</span>
+                      </div>
+                      <div className="bg-white rounded-lg p-4 border border-orange-200 flex gap-3 items-start">
+                        <span className="w-6 h-6 bg-orange-500 text-white rounded-full flex items-center justify-center text-sm font-bold shrink-0">•</span>
                         <div>
-                          <p className="font-semibold">Number of Employees:</p>
-                          <p className="text-sm">Larger workforce means more extensive training and documentation</p>
+                          <p className="font-semibold text-gray-900">Number of employees</p>
+                          <p className="text-sm text-gray-600">Larger workforce needs more training</p>
                         </div>
-                      </li>
-                    </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                {/* Certification Process */}
                 <div className="mb-10">
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">ISO 45001 Certification Process</h2>
-                  <div className="space-y-4">
-                    <div className="border-l-4 border-red-600 pl-4 py-2">
-                      <h3 className="font-bold text-gray-900 mb-1">Stage 1: Document Review</h3>
-                      <p className="text-gray-700">Certification body reviews your documented OHSMS to ensure it meets ISO 45001 requirements before the formal audit.</p>
+                  <div className="space-y-4 mb-8">
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                      <h3 className="font-bold text-gray-900 mb-2">Stage 1: Quote Request & Documentation</h3>
+                      <p className="text-gray-700">Complete a Quote Request Form so our ISO 45001 certification consultant in Dubai can understand your organization and requirements. You can fill the Quote Request Form online. Our ISO consultant will utilize the data and define the scope of the organization and provide you ISO 45001 occupational health and safety procedures.</p>
                     </div>
-                    <div className="border-l-4 border-red-600 pl-4 py-2">
-                      <h3 className="font-bold text-gray-900 mb-1">Stage 2: Certification Audit</h3>
-                      <p className="text-gray-700">External auditors assess your organization's compliance with ISO 45001 standard, evaluate hazard identification, and check risk management implementation.</p>
+
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                      <h3 className="font-bold text-gray-900 mb-2">Stage 2: Initial Certification Audit</h3>
+                      <p className="text-gray-700">In the next stage of ISO 45001 management system, an appointment is booked with our ISO 45001 consultant. Two mandatory visits are required that structure the Initial Certification Audit. It would be ideal that your organizations management system has been completely operational for at least three months and it has been subject to management review and perform full cycle of internal audits to get ISO 45001 certification in Dubai.</p>
                     </div>
-                    <div className="border-l-4 border-red-600 pl-4 py-2">
-                      <h3 className="font-bold text-gray-900 mb-1">Stage 3: Certificate Issuance</h3>
-                      <p className="text-gray-700">Upon successful completion of audit, the certification body issues your ISO 45001 certificate valid for 3 years with annual surveillance audits.</p>
+
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                      <h3 className="font-bold text-gray-900 mb-2">Stage 3: Certificate Issuance</h3>
+                      <p className="text-gray-700">By following a successful two stage audit, ISO 45001 certification is issued by Wizms. Wizms provides the hard and soft copy of ISO certification for health and safety. ISO 45001 Certification is valid for 3 years. <Link href="/benefits-of-iso-certification" className="text-blue-600 hover:text-blue-800">Benefits of ISO Certification</Link> is benefited through annual surveillance audits and recertification audits of ISO 45001.</p>
                     </div>
                   </div>
                 </div>
 
-                {/* Key Features */}
                 <div className="mb-10 bg-orange-50 border-l-4 border-orange-500 p-6 rounded">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Key Features of ISO 45001</h2>
-                  <ul className="space-y-3 text-gray-700">
-                    <li className="flex gap-3 items-start">
-                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1" />
-                      <span><strong>Risk-based approach:</strong> Focuses on identifying and managing health and safety risks proactively</span>
-                    </li>
-                    <li className="flex gap-3 items-start">
-                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1" />
-                      <span><strong>Worker participation:</strong> Emphasizes involvement of employees in OHSMS planning and implementation</span>
-                    </li>
-                    <li className="flex gap-3 items-start">
-                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1" />
-                      <span><strong>Leadership commitment:</strong> Requires top management engagement and commitment</span>
-                    </li>
-                    <li className="flex gap-3 items-start">
-                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1" />
-                      <span><strong>Continual improvement:</strong> Drives ongoing enhancement of health and safety performance</span>
-                    </li>
-                    <li className="flex gap-3 items-start">
-                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1" />
-                      <span><strong>Incident prevention:</strong> Reduces workplace accidents and occupational illnesses</span>
-                    </li>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Key Features of ISO 45001 Certification in UAE</h2>
+                  <p className="text-gray-700 mb-4">
+                    Although ISO 45001 is a new standard, its foundations are already defined in <Link href="/iso-18001-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">OHSAS 18001</Link>. Organizations that have already implemented an occupational health and safety management system as per OHSAS 18001, and effectively practice those guidelines in the organizations can have a smooth transition to ISO 45001.
+                  </p>
+                  <p className="text-gray-700 mb-4">The fundamental differences are:</p>
+                  <ul className="list-disc list-inside space-y-2 text-gray-700">
+                    <li>ISO 45001 implements the 'High Level Structure' (HLS), giving it a typical system with other management systems such as, ISO 9001 and ISO 14001.</li>
+                    <li>ISO 45001 spots extraordinary responsibility towards senior management. This has been executed in the revised version of <Link href="/iso-9001-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 9001</Link> and ISO 14001 guidelines.</li>
+                    <li>ISO 45001 will give new catalyst for occupational health and safety practices in organisations. This translates into additional opportunities for promoting and protecting employees' health and performance, as well as a sustainable improvement of employee motivation.</li>
                   </ul>
+                </div>
+
+                <div className="mb-10 p-6 bg-gray-50 rounded-lg border border-gray-200">
+                  <p className="text-gray-700">
+                    Wizms offer ISO 14001 certification consulting services in Dubai, Sharjah, Ajman, Al Ain, Fujairah, Abu Dhabi, and Ras al-Khaimah.
+                  </p>
                 </div>
 
                 {/* FAQ Section */}
                 <div className="mt-12">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6">FAQs - ISO 45001 Certification</h2>
-                  <div className="space-y-6">
-                    <style>{faqStyle}</style>
+                  <style>{faqStyle}</style>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">FAQ ISO 45001 Certification in Dubai</h2>
+                  <div className="space-y-4">
                     <details open className="border border-gray-200 rounded-lg p-4">
-                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center gap-2">
-                        <MdKeyboardArrowDown className="text-red-600 text-xl faq-icon" />
-                        What is the difference between ISO 45001 and OHSAS 18001?
-                      </summary>
+                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">What is the difference between ISO 45001 Vs OHSAS 18001? <MdKeyboardArrowDown className="text-red-600 text-xl faq-icon" /></summary>
+                      <p className="text-gray-700 mt-4">OHSAS 18001 certification was dealing with health and safety risks and issues related to it and it is a procedure-based certification. While the ISO 45001 certification in Dubai was focusing on the relationship between the workplace and the organization, it is a process-based certification. This helps to minimize or wipe out the opportunity of any hazards.</p>
+                    </details>
+                    <details className="border border-gray-200 rounded-lg p-4">
+                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">What are the benefits of ISO 45001 certification? <MdKeyboardArrowDown className="text-red-600 text-xl faq-icon" /></summary>
+                      <ul className="list-disc list-inside text-gray-700 mt-4 space-y-1">
+                        <li>Having a smooth relationship with employees, clients, providers and stakeholders.</li>
+                        <li>Diminished personal time and lower working expenses.</li>
+                        <li>Consumers trust and reputation.</li>
+                        <li>Tax benefits.</li>
+                      </ul>
+                    </details>
+                    <details className="border border-gray-200 rounded-lg p-4">
+                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">What is the purpose of ISO 45001? <MdKeyboardArrowDown className="text-red-600 text-xl faq-icon" /></summary>
+                      <p className="text-gray-700 mt-4">ISO 45001:2018 certification in UAE determines the requirements of health and safety risks (OH&S), and gives direction for its utilization, to empower associations to give safe and healthy work environments by preventing business related injury and chronic sickness, just as by proactively improving its OH&S execution.</p>
+                    </details>
+                    <details className="border border-gray-200 rounded-lg p-4">
+                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">Why OHSAS 18001 change to ISO 45001? <MdKeyboardArrowDown className="text-red-600 text-xl faq-icon" /></summary>
+                      <p className="text-gray-700 mt-4">ISO 45001 certification in UAE mainly an international standard to certify your businesses or organizations while OHSAS 18001 focuses on OH&S risks and other internal issues.</p>
+                    </details>
+                    <details className="border border-gray-200 rounded-lg p-4">
+                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">How much does ISO 45001 Cost? <MdKeyboardArrowDown className="text-red-600 text-xl faq-icon" /></summary>
+                      <p className="text-gray-700 mt-4">ISO 45001 certification cost relies upon some factors like review span, association size, scope of risk, current degree of consistence and so forth. To get a precise ISO 45001 certification costs, demand a statement from your third party. Wizms is the best ISO consultant in Dubai, offers competitive rates and never utilizes hidden charges.</p>
+                    </details>
+                    <details className="border border-gray-200 rounded-lg p-4">
+                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">How should we determine the risks and opportunities when implementing ISO 45001 certification? <MdKeyboardArrowDown className="text-red-600 text-xl faq-icon" /></summary>
+                      <p className="text-gray-700 mt-4">At the point when the association comprehends the necessities and desires for invested individuals and key requirements, it would then be able to utilize the knowledge to access any risks and opportunities that might be available and afterwards make a move to address them.</p>
+                    </details>
+                    <details className="border border-gray-200 rounded-lg p-4">
+                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">Does ISO 45001 certification replace the need for other certifications? <MdKeyboardArrowDown className="text-red-600 text-xl faq-icon" /></summary>
+                      <p className="text-gray-700 mt-4">No, ISO 45001 certification in Dubai does not swap the requirement for other certifications like{' '}
+                        <Link href="/iso-14001-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 14001 certification</Link>
+                        {' '}and{' '}
+                        <Link href="/iso-9001-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 9001 certification in Dubai</Link>
+                        . ISO 45001 is intended for OHS frameworks, and although they follow a similar framework structure, ISO 14001 and ISO 9001 are focussed on various controls like Environment and Quality.
+                      </p>
+                    </details>
+                    <details className="border border-gray-200 rounded-lg p-4">
+                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">Is ISO 45001 a watered-down version of OHSAS 18001? <MdKeyboardArrowDown className="text-red-600 text-xl faq-icon" /></summary>
+                      <p className="text-gray-700 mt-4">No. ISO 45001 certification is standard utilizing an established structure based on a viable administration model. ISO 45001 certification in Dubai is intended to be utilized as a feature of a business management system. ISO 45001 certification in Dubai underlines expands focus on worker health and safety programs, workforce participation, and implements other changes.</p>
+                    </details>
+                    <details className="border border-gray-200 rounded-lg p-4">
+                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">What are the objectives of ISO 45001 certification? <MdKeyboardArrowDown className="text-red-600 text-xl faq-icon" /></summary>
+                      <p className="text-gray-700 mt-4">ISO 45001 has two principle objectives:</p>
+                      <ul className="list-disc list-inside text-gray-700 mt-2 space-y-1">
+                        <li>To guarantee the word related health and safety of laborers, service providers, and guests.</li>
+                        <li>To guarantee consistency to these principles by organizations and businesses.</li>
+                      </ul>
+                    </details>
+                    <details className="border border-gray-200 rounded-lg p-4">
+                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">Should my business be guaranteed with ISO 18001 or would it be advisable to wait for ISO 45001? <MdKeyboardArrowDown className="text-red-600 text-xl faq-icon" /></summary>
+                      <p className="text-gray-700 mt-4">Getting ISO 45001 certified in UAE will be a decent intermediate step. When ISO 45001 certification is introduced, your ISO 18001 will not be a valid one. A transition time period is three years to get ISO 45001 certification.</p>
+                    </details>
+                    <details className="border border-gray-200 rounded-lg p-4">
+                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">What are the ways to earn ISO 45001 Certification? <MdKeyboardArrowDown className="text-red-600 text-xl faq-icon" /></summary>
+                      <p className="text-gray-700 mt-4">To get ISO 45001 certification in Dubai, organization should implement the standard and complete the evaluating and certification process with the help of third parties like Wizms, the best ISO consultant in Dubai. The certification process includes a two-stage review and maintaining the certification requires yearly observation audit and recertification for every 3 years.</p>
+                    </details>
+                    <details className="border border-gray-200 rounded-lg p-4">
+                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">What are the benefits of swot analysis in ISO 45001? <MdKeyboardArrowDown className="text-red-600 text-xl faq-icon" /></summary>
+                      <p className="text-gray-700 mt-4">SWOT analysis with focus on your organization&apos;s ISO 45001 certification, you will be able to determine the internal and external problems that may affect your OHSMS and also the ability to satisfy your organization&apos;s performance and goals. With SWOT analysis, you can effectively determine the risks and opportunities that are needed to be considered for the long run of ISO 45001 OHSMS certification. SWOT analysis is a very useful tool which can be used to determine and narrow down strength, weakness, opportunities and threat from all areas of your organization in relation to ISO 45001 OHSMS standard.</p>
                       <p className="text-gray-700 mt-4">
-                        ISO 45001 is the newer international standard that replaced OHSAS 18001. Key differences include risk-based approach, stronger leadership involvement, increased worker participation, and better integration with other management systems.
+                        Checkout the <Link href="/benefits-of-swot-analysis-in-iso-45001" className="text-red-600 hover:text-red-800 font-semibold">benefits of swot analysis in ISO 45001</Link>.
                       </p>
                     </details>
 
-                    <details className="border border-gray-200 rounded-lg p-4">
-                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center gap-2">
-                        <MdKeyboardArrowDown className="text-red-600 text-xl faq-icon" />
-                        How long does ISO 45001 certification take?
-                      </summary>
-                      <p className="text-gray-700 mt-4">
-                        The ISO 45001 certification process typically takes 4-6 months depending on organization size, current health and safety maturity, and scope of certification. WIZMS accelerates this timeline with expert guidance.
+                    <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                      <p className="text-gray-700">
+                        Wizms offer ISO 14001 certification consulting services in Dubai, Sharjah, Ajman, Al Ain, Fujairah, Abu Dhabi, and Ras al-Khaimah.
                       </p>
-                    </details>
-
-                    <details className="border border-gray-200 rounded-lg p-4">
-                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center gap-2">
-                        <MdKeyboardArrowDown className="text-red-600 text-xl faq-icon" />
-                        Is ISO 45001 applicable to all industries?
-                      </summary>
-                      <p className="text-gray-700 mt-4">
-                        Yes, ISO 45001 is applicable to organizations of all types and sizes across all industries. Whether you're in construction, manufacturing, services, or healthcare, we can help you achieve certification.
-                      </p>
-                    </details>
-
-                    <details className="border border-gray-200 rounded-lg p-4">
-                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center gap-2">
-                        <MdKeyboardArrowDown className="text-red-600 text-xl faq-icon" />
-                        How does ISO 45001 integrate with ISO 9001 and ISO 14001?
-                      </summary>
-                      <p className="text-gray-700 mt-4">
-                        ISO 45001, ISO 9001, and ISO 14001 share common structure and can be integrated into an Integrated Management System (IMS) using WIZMS expert consultancy.
-                      </p>
-                    </details>
-
-                    <details className="border border-gray-200 rounded-lg p-4">
-                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center gap-2">
-                        <MdKeyboardArrowDown className="text-red-600 text-xl faq-icon" />
-                        What training is required for ISO 45001?
-                      </summary>
-                      <p className="text-gray-700 mt-4">
-                        All employees need awareness training on ISO 45001 requirements. Additionally, specific roles like OHSMS representatives, internal auditors, and management need comprehensive training. WIZMS provides tailored training programs.
-                      </p>
-                    </details>
-
-                    <details className="border border-gray-200 rounded-lg p-4">
-                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center gap-2">
-                        <MdKeyboardArrowDown className="text-red-600 text-xl faq-icon" />
-                        What documentation is needed for ISO 45001 certification?
-                      </summary>
-                      <p className="text-gray-700 mt-4">
-                        Required documentation includes health and safety policy, objectives and targets, procedures for hazard identification and risk assessment, training records, incident reports, audit reports, and management review records.
-                      </p>
-                    </details>
-
-                    <details className="border border-gray-200 rounded-lg p-4">
-                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center gap-2">
-                        <MdKeyboardArrowDown className="text-red-600 text-xl faq-icon" />
-                        What is the cost of ISO 45001 certification requirement?
-                      </summary>
-                      <p className="text-gray-700 mt-4">
-                        Costs vary based on industry, organization size, number of locations, and employees. WIZMS provides customized pricing after understanding your specific requirements and ISO 45001 certification context.
-                      </p>
-                    </details>
-
-                    <details className="border border-gray-200 rounded-lg p-4">
-                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center gap-2">
-                        <MdKeyboardArrowDown className="text-red-600 text-xl faq-icon" />
-                        How often do we need surveillance audits?
-                      </summary>
-                      <p className="text-gray-700 mt-4">
-                        After initial certification, surveillance audits are conducted annually. Full recertification audit occurs every 3 years. WIZMS supports you throughout all audit cycles.
-                      </p>
-                    </details>
-
-                    <details className="border border-gray-200 rounded-lg p-4">
-                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center gap-2">
-                        <MdKeyboardArrowDown className="text-red-600 text-xl faq-icon" />
-                        Why should we choose WIZMS for ISO 45001 certification?
-                      </summary>
-                      <p className="text-gray-700 mt-4">
-                        WIZMS provides experienced ISO 45001 consultants, proven methodology, faster certification timeline, ongoing support, and deep understanding of UAE workplace regulations and requirements.
-                      </p>
-                    </details>
-
-                    <details className="border border-gray-200 rounded-lg p-4">
-                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center gap-2">
-                        <MdKeyboardArrowDown className="text-red-600 text-xl faq-icon" />
-                        Can small businesses get ISO 45001 certification?
-                      </summary>
-                      <p className="text-gray-700 mt-4">
-                        Absolutely! ISO 45001 is applicable to organizations of all sizes. Many small and medium enterprises in Dubai, UAE have successfully obtained certification with WIZMS' support.
-                      </p>
-                    </details>
+                    </div>
                   </div>
                 </div>
               </div>

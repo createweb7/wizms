@@ -1,28 +1,16 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { MdArrowForward, MdKeyboardArrowDown, MdCheckCircle } from 'react-icons/md';
+import { getConsultantPageBySlug } from '@/lib/supabase-data';
 import EnquiryForm from '@/components/EnquiryForm';
 
-const faqStyle = `
-  details > summary::-webkit-details-marker {
-    display: none;
-  }
-  details > summary {
-    list-style: none;
-  }
-  details[open] > summary .faq-icon {
-    transform: rotate(180deg);
-    transition: transform 0.3s ease;
-  }
-  details > summary .faq-icon {
-    transition: transform 0.3s ease;
-  }
-`;
-
-export const metadata: Metadata = {
-  title: 'ISO 14064 Certification in UAE | Carbon Footprint & GHG Verification | Wizms',
-  description: 'ISO 14064-1 Carbon Footprint & Greenhouse Gas Verification in Dubai, UAE. Sustainability certification.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getConsultantPageBySlug('iso-14064-1-certification-consultants-in-uae');
+  return {
+    title: page?.meta_title || undefined,
+    description: page?.meta_description || undefined,
+    keywords: page?.meta_keywords || undefined,
+  };
+}
 
 export default function ISO14064Page() {
   return (
@@ -33,7 +21,7 @@ export default function ISO14064Page() {
             <nav className="flex items-center gap-2 text-sm text-gray-600">
               <Link href="/" className="hover:text-gray-900 hover:underline">Home</Link>
               <span className="text-gray-400">/</span>
-              <span className="text-gray-900 font-semibold">ISO 14064 Certification</span>
+              <span className="text-gray-900 font-semibold">ISO 14064 Certification in UAE, Dubai- Carbon Footprint Verification</span>
             </nav>
           </div>
         </div>
@@ -42,75 +30,66 @@ export default function ISO14064Page() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
               <div className="bg-white rounded-lg shadow-sm p-8">
-                <h1 className="text-4xl font-bold text-gray-900 mb-4">ISO 14064 Carbon Footprint Certification in Dubai, UAE</h1>
-                <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                  ISO 14064 is the international standard for quantifying, monitoring, reporting, and verifying greenhouse gas (GHG) emissions and carbon footprint. It enables organizations to measure their environmental impact and demonstrate commitment to climate action.
-                </p>
+                <h1 className="text-4xl font-bold text-gray-900 mb-4">ISO 14064 Certification in UAE, Dubai- Carbon Footprint Verification</h1>
 
                 <div className="mb-10">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Greenhouse Gas Emissions Verification</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Carbon FootPrint Verification</h2>
                   <p className="text-gray-700 mb-4">
-                    ISO 14064 helps organizations quantify their carbon footprint, identify reduction opportunities, and communicate environmental sustainability efforts to stakeholders.
+                    Global warming is rising rapidly due to the emission of green house gases (GHG)- notably carbon dioxide. Therefore, immediate action is needed to minimize these emissions. In short, carbon footprint verification is an unbiased evaluation of the greenhouse gases emitted by a corporation or organization over a specific time period.
+                  </p>
+                  <p className="text-gray-700">
+                    The main reason for carbon footprint verification is, business partners, investors, analysts, the media, and consumers are increasingly judging companies based on their long-term actions. Carbon footprint verification quantifies the greenhouse gas emissions caused by a company&apos;s operations, allowing them to prove its commitment to mitigating the effects of climate change. A carbon footprint inventory can be used by businesses to determine their climate-relevant emissions. It is then used as a decision-making basis for developing climate protection targets and mapping out a strategic path. This is possible only after an independent verification of a Greenhouse Gas (GHG) balance and it become truly reliable.
+                  </p>
+                </div>
+
+                <div className="mb-10">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">ISO 14064 Certification in UAE, Dubai</h2>
+                  <p className="text-gray-700 mb-4">
+                    ISO 14064 certification in UAE, Dubai specifies explicit rules and procedures for calculating and verifying emissions in a GHG inventory. ISO 14064 certification is applied to Industries as well as companies of all sizes. WIZMS provides consulting services for ISO 14064 certification in Dubai and rest of UAE.
+                  </p>
+                  <p className="text-gray-700">
+                    The World Business Council for Sustainable Development (WBCSD) and the World Resources Institute (WRI) published this standard in 1998 to standardize so-called carbon accounting. ISO 14064 standards consists of 3 series of standards. ISO 14064-1 certification in Dubai is based on the Greenhouse Gas Protocol (GHG Protocol). ISO 14064-1 certification is the foundation for calculating a company&apos;s greenhouse gas emissions, i.e. its corporate carbon footprint (CCF). The standard outlines the principles and requirements for a company&apos;s planning, development, and reporting of GHG inventories.
+                  </p>
+                </div>
+
+                <div className="mb-10">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">ISO 14064-1 – Carbon Footprint Verification</h2>
+                  <p className="text-gray-700 mb-4">
+                    ISO 14064-1 certification is a foundational standard for creating a corporate GHG inventory, or calculating the corporate carbon footprint. GHG emissions from corporations can be classified into two categories:
+                  </p>
+                  <p className="text-gray-700 mb-4">
+                    <strong><em>Direct emissions</em></strong> – Emissions caused directly by sources owned or controlled by your company.
+                  </p>
+                  <p className="text-gray-700 mb-4">
+                    <strong><em>Indirect emissions</em></strong> - Emissions from your operations&apos; purchased electricity, steam, and heating/cooling; Emissions from sources that your company does not own or control, such as supplier emissions, business travel, and end-of-life emissions from sold products.
+                  </p>
+                  <p className="text-gray-700">
+                    We, at WIZMS one of the best{' '}
+                    <Link href="/" className="text-blue-600 hover:text-blue-800">ISO certification consultant in UAE</Link>
+                    {' '}develop the scope based on the company&apos;s needs and the location where majority of the emissions takes place. Our ISO consultants in UAE, Dubai focus on confirming your annual GHG emissions and start the verification process. The verification is carried out in accordance with ISO 14064-1, which is a guideline for verifiers on how to verify emissions. At last, our ISO 14064 certification consultants in Dubai will give you a verification statement. This statement gives an assurance to your stakeholders and investors about the accuracy of your carbon footprint claims. Our carbon footprint verification services in Dubai and rest of UAE have also received external recognition from types of organizations.
+                  </p>
+                </div>
+
+                <div className="mb-10">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Advantages of ISO 14064 Certification in Dubai, UAE</h2>
+                  <p className="text-gray-700 mb-2"><strong>Integrity</strong></p>
+                  <p className="text-gray-700 mb-4">
+                    ISO 14064-1 certification in Dubai demonstrates the authenticity of your systems and processes by proving your GHG inventory, assertions, and reports that fit to the ISO 14064 standard and are free of errors, omissions, or misstatements.
+                  </p>
+                  <p className="text-gray-700 mb-2"><strong>Targets</strong></p>
+                  <p className="text-gray-700 mb-4">
+                    ISO 14064-1 certification ensures the integrity of your project baseline, design plan, and supporting assumptions, guaranteed that your projected GHG emissions are reduced.
+                  </p>
+                  <p className="text-gray-700 mb-2"><strong>Success</strong></p>
+                  <p className="text-gray-700">
+                    ISO 14064-1 carbon footprint verification provides the necessary assurance. Our ISO consultants will validate your GHG projects to ISO 14064-1 certification and provides assurance that it is implemented as planned and assist them to achieve projected emission reductions. ISO 14064-1 carbon footprint verification assures your stakeholders that GHG emission reductions are attained.
                   </p>
                 </div>
 
                 <div className="mb-10 bg-lime-50 border-l-4 border-lime-500 p-6 rounded">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">ISO 14064 Benefits</h2>
-                  <ul className="space-y-3 text-gray-700">
-                    <li className="flex gap-3 items-start">
-                      <MdCheckCircle className="text-lime-600 shrink-0 mt-1" />
-                      <span>Accurate carbon footprint measurement</span>
-                    </li>
-                    <li className="flex gap-3 items-start">
-                      <MdCheckCircle className="text-lime-600 shrink-0 mt-1" />
-                      <span>Identify GHG reduction opportunities</span>
-                    </li>
-                    <li className="flex gap-3 items-start">
-                      <MdCheckCircle className="text-lime-600 shrink-0 mt-1" />
-                      <span>Enhanced sustainability credentials</span>
-                    </li>
-                    <li className="flex gap-3 items-start">
-                      <MdCheckCircle className="text-lime-600 shrink-0 mt-1" />
-                      <span>Cost savings through emission reduction</span>
-                    </li>
-                    <li className="flex gap-3 items-start">
-                      <MdCheckCircle className="text-lime-600 shrink-0 mt-1" />
-                      <span>Regulatory compliance and reporting</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="mb-10">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">GHG Emissions Categories</h2>
-                  <p className="text-gray-700 mb-4">ISO 14064 covers measurement of three types of emissions:</p>
-                  <ul className="list-disc list-inside space-y-2 text-gray-700">
-                    <li><strong>Scope 1:</strong> Direct emissions from owned/controlled sources</li>
-                    <li><strong>Scope 2:</strong> Indirect emissions from purchased electricity and energy</li>
-                    <li><strong>Scope 3:</strong> Other indirect emissions from value chain</li>
-                  </ul>
-                </div>
-
-                <div className="mt-12">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6">FAQs - ISO 14064 Certification</h2>
-                  <div className="space-y-4">
-                    <style>{faqStyle}</style>
-                    <details open className="border border-gray-200 rounded-lg p-4 group">
-                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">What is carbon footprint? <MdKeyboardArrowDown className="text-lime-600 text-xl faq-icon" /></summary>
-                      <p className="text-gray-700 mt-4">Carbon footprint is the total amount of greenhouse gases (primarily CO2) emitted directly or indirectly by an organization's activities.</p>
-                    </details>
-                    <details className="border border-gray-200 rounded-lg p-4 group">
-                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">How is carbon footprint calculated? <MdKeyboardArrowDown className="text-lime-600 text-xl faq-icon" /></summary>
-                      <p className="text-gray-700 mt-4">ISO 14064 uses standardized methodologies to measure energy consumption, fuel usage, waste, and other sources of emissions, then converts them to CO2 equivalents.</p>
-                    </details>
-                    <details className="border border-gray-200 rounded-lg p-4 group">
-                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">Who needs ISO 14064 certification? <MdKeyboardArrowDown className="text-lime-600 text-xl faq-icon" /></summary>
-                      <p className="text-gray-700 mt-4">Organizations committed to sustainability, compliance with environmental regulations, and stakeholder reporting benefit from ISO 14064 certification.</p>
-                    </details>
-                    <details className="border border-gray-200 rounded-lg p-4 group">
-                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">How does ISO 14064 support sustainability goals? <MdKeyboardArrowDown className="text-lime-600 text-xl faq-icon" /></summary>
-                      <p className="text-gray-700 mt-4">By measuring emissions, organizations can set targets, track progress, and demonstrate commitment to reducing their carbon footprint and environmental impact.</p>
-                    </details>
-                  </div>
+                  <p className="text-gray-700">
+                    WIZMS was the first verification bodies in Dubai, UAE to achieve accreditation to ISO 14064. We deliver carbon footprint verification to ISO 14064-1 to any type of organization and in any business sector. Our ISO 14064-1 carbon footprint verification services are designed to develop robust, and reproducible strategies to monitor & report GHG emissions, both at project and organization level.
+                  </p>
                 </div>
               </div>
             </div>

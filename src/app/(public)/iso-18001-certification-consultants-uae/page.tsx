@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { getConsultantPageBySlug } from '@/lib/supabase-data';
 import { MdArrowForward, MdKeyboardArrowDown, MdCheckCircle } from 'react-icons/md';
 import EnquiryForm from '@/components/EnquiryForm';
 
@@ -19,10 +20,14 @@ const faqStyle = `
   }
 `;
 
-export const metadata: Metadata = {
-  title: 'ISO 18001 in UAE | ISO 18001 Consultant in UAE | ISO 18001 Certification in Dubai | Wizms',
-  description: 'ISO 18001 Certification Consultants in Dubai, UAE. Get professional OHSAS 18001 certification services. Call +971 55 277 4123 for expert guidance and affordable cost.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getConsultantPageBySlug('iso-18001-certification-consultants-uae');
+  return {
+    title: page?.meta_title || undefined,
+    description: page?.meta_description || undefined,
+    keywords: page?.meta_keywords || undefined,
+  };
+}
 
 export default function ISO18001Page() {
   return (
@@ -34,7 +39,7 @@ export default function ISO18001Page() {
             <nav className="flex items-center gap-2 text-sm text-gray-600">
               <Link href="/" className="hover:text-gray-900 hover:underline">Home</Link>
               <span className="text-gray-400">/</span>
-              <span className="text-gray-900 font-semibold">ISO 18001 Certification in UAE</span>
+              <span className="text-gray-900 font-semibold">ISO 18001 certification in Dubai</span>
             </nav>
           </div>
         </div>
@@ -47,160 +52,284 @@ export default function ISO18001Page() {
               <div className="bg-white rounded-lg shadow-sm p-8">
                 {/* Hero Section */}
                 <div className="mb-8">
-                  <h1 className="text-4xl font-bold text-gray-900 mb-4">
-                    ISO 18001 Certification Consultants in Dubai, UAE
+                  <h1 className="text-4xl font-bold text-gray-900 mb-6">
+                    ISO 18001 Certification Consultants in Dubai, UAE, Abu Dhabi, Sharjah, Ras al-Khaimah, Ajman, Al Ain and Fujairah
                   </h1>
-                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                    <Link href="/iso-18001-certification-consultants-uae" className="text-red-600 hover:text-red-800">
-                      ISO 18001 Certification in Dubai
-                    </Link>
-                    {' '}is an International Standard that specifies the requirements for an Occupational Health and Safety (OHSAS) management system. OHSAS 18001 was created by the world's top standard bodies, certification bodies, and professional consultancies to help organizations develop healthy and safe working environments.
+                </div>
+
+                {/* ISO 18001 Certification in Dubai */}
+                <div className="mb-10">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">ISO 18001 Certification in Dubai</h2>
+                  <p className="text-gray-700 mb-4 leading-relaxed">
+                    ISO 18001 certification in Dubai is an International Standard that specifies the requirements and designed to provide organizations with the elements of OH&S management system. OHSAS 18001 was created by world&apos;s top standard bodies, certification bodies, and professional consultancies.
+                  </p>
+                  <p className="text-gray-700 leading-relaxed">
+                    All types of organizations are worried about achieving the OHSAS performance by controlling their OHSAS hazards. An effective method to develop a healthy and safe environment is to integrate OHSAS risk management into an association&apos;s business activities. The success of the system depends on the commitment from all levels of the organization.
                   </p>
                 </div>
 
-                {/* ISO 18001 in UAE */}
+                {/* ISO 18001 Certification in UAE */}
                 <div className="mb-10">
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">ISO 18001 Certification in UAE</h2>
-                  <p className="text-gray-700 mb-4">
-                    OHSAS 18001 determines the requirements for an ISO 18001 management system to empower organizations to create and implement a policy and goals based on legal requirements and information about OH&S risks. Implementation includes:
+                  <p className="text-gray-700 mb-4 leading-relaxed">
+                    <Link href="/iso-18001-certification-consultants-uae" className="text-red-600 hover:text-red-800 font-semibold">
+                      ISO 18001 Certification in UAE
+                    </Link>
+                    {' '}determines the requirements for an ISO 18001 management system to empower an organization, to create and implement a policy and goals based on the legal requirements and information about OH&S risks.
                   </p>
-                  <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4">
-                    <li>Set objectives, monitor and measure performance</li>
-                    <li>Commitment from management team</li>
-                    <li>Adequate planning and allocation of resources</li>
-                  </ul>
-                </div>
-
-                {/* Who Should Implement */}
-                <div className="mb-10 bg-orange-50 border-l-4 border-orange-500 p-6 rounded">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Who Should Implement OHSAS 18001?</h2>
-                  <p className="text-gray-700 mb-4">ISO 18001 applies to organizations of all types and sizes that wish to:</p>
-                  <ul className="list-disc list-inside space-y-2 text-gray-700">
-                    <li>Build an OHSAS management system to limit risks on staff and invested parties</li>
-                    <li>Implement, maintain and improve OHSAS 18001 performance</li>
-                    <li>Assure conformity with stated OHSAS policy</li>
-                  </ul>
-                </div>
-
-                {/* Ways to Demonstrate Conformity */}
-                <div className="mb-10">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Ways to Demonstrate Conformity</h2>
-                  <ul className="space-y-2 text-gray-700">
+                  <p className="text-gray-700 mb-4">OHSAS system is implemented with OHSAS 18001 by including:</p>
+                  <ul className="space-y-2 mb-6">
                     <li className="flex gap-3 items-start">
-                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1" />
-                      <span>Self-assurance and self-declaration</span>
+                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1 text-lg" />
+                      <span className="text-gray-700">Set the objectives, monitor and measure the performance.</span>
                     </li>
                     <li className="flex gap-3 items-start">
-                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1" />
-                      <span>Confirmation from interested parties</span>
+                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1 text-lg" />
+                      <span className="text-gray-700">Commitment from management team.</span>
                     </li>
                     <li className="flex gap-3 items-start">
-                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1" />
-                      <span>External confirmation of self-declaration</span>
-                    </li>
-                    <li className="flex gap-3 items-start">
-                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1" />
-                      <span>OHSAS 18001 certification from external organization</span>
+                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1 text-lg" />
+                      <span className="text-gray-700">Adequate planning and allocation of resources to implement OHSAS 18001 certification in Dubai.</span>
                     </li>
                   </ul>
-                </div>
 
-                {/* Connection with ISO Standards */}
-                <div className="mb-10">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Connection with Other ISO Standards</h2>
                   <p className="text-gray-700 mb-4">
-                    OHSAS 18001 is structured similarly to <Link href="/iso-9001-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 9001</Link> (Quality Management) and <Link href="/iso-14001-certification-consultants-uae" className="text-green-600 hover:text-green-800">ISO 14001</Link> (Environmental Management). Organizations can integrate these systems for comprehensive management across Quality, Environmental, and Health & Safety domains.
+                    <Link href="/iso-18001-certification-consultants-uae" className="text-red-600 hover:text-red-800 font-semibold">
+                      Important steps of OHSAS 18001 Certification
+                    </Link>
+                    {' '}applies to different kinds and sizes of organizations that wish to:
+                  </p>
+                  <ul className="space-y-2">
+                    <li className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1 text-lg" />
+                      <span className="text-gray-700">Build up an OHSAS management system to limit the risks on staff and other invested parties who could be exposed to OHSAS 18001 hazards.</span>
+                    </li>
+                    <li className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1 text-lg" />
+                      <span className="text-gray-700">Implement, maintain and improve the performance of OHSAS 18001.</span>
+                    </li>
+                    <li className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1 text-lg" />
+                      <span className="text-gray-700">Assure conformity with it stated OHSAS policy.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Easy ways to demonstrate conformity */}
+                <div className="mb-10">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Easy ways to demonstrate conformity with OHSAS 18001 Standard</h3>
+                  <ul className="space-y-2 mb-4">
+                    <li className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1 text-lg" />
+                      <span className="text-gray-700">Making self-assurance and self-declaration</span>
+                    </li>
+                    <li className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1 text-lg" />
+                      <span className="text-gray-700">Looking for confirmation from parties who have interest in the organization.</span>
+                    </li>
+                    <li className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1 text-lg" />
+                      <span className="text-gray-700">Looking for confirmation for its self-declaration from parties outside the organization, and</span>
+                    </li>
+                    <li className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1 text-lg" />
+                      <span className="text-gray-700">Getting OHSAS 18001 certification from the external organization.</span>
+                    </li>
+                  </ul>
+                  <p className="text-gray-700 mt-4">
+                    OHSAS 18001 certification in Dubai,UAE has been drafted as per the principles given in the ISO/IEC Directives, Part 2. This implies OHSAS 18001 is completely lined up with other management system standards principles created by ISO.
                   </p>
                 </div>
 
-                {/* Certification Process */}
+                {/* Connecting OHSAS 18001 with other ISO standards */}
+                <div className="mb-10">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Connecting OHSAS 18001 with other ISO standards</h2>
+                  <p className="text-gray-700 mb-4">
+                    OHSAS 18001 is created similar to ISO 9001 Quality Management System standard and the ISO 14001 Environmental Management System standard. They are connected together to encourage the reconciliation of Quality(QMS), Environmental (EMS) and Occupational Health and Safety Management Systems(OHSAS) by the organizations.
+                  </p>
+                  <p className="text-gray-700">
+                    It is feasible for an organization to adapt its current management system. Every organization might implement different components of ISO standards depending upon the invested parties in order to get <Link href="/iso-certification-in-uae" className="text-red-600 hover:text-red-800">ISO certification in UAE</Link>.
+                  </p>
+                </div>
+
+                {/* Business benefits */}
+                <div className="mb-10">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Business benefits of achieving OHSAS 18001 certification:</h2>
+                  <p className="text-gray-700">
+                    The best way to get benefits for your business is, to achieve ISO 18001 certificate by illustrating the positive aspects of having an occupational health and safety management process, instead of highlighting the negative aspects.
+                  </p>
+                </div>
+
+                {/* OHSAS 18001 Certification Process */}
                 <div className="mb-10">
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">OHSAS 18001 Certification Process</h2>
-                  <div className="space-y-4">
-                    <div className="border-l-4 border-orange-600 pl-4 py-2">
-                      <h3 className="font-bold text-gray-900 mb-1">Step 1: Choose a Consultant</h3>
-                      <p className="text-gray-700 text-sm">Appoint a management representative and establish technical communication with an ISO consultant</p>
-                    </div>
-                    <div className="border-l-4 border-orange-600 pl-4 py-2">
-                      <h3 className="font-bold text-gray-900 mb-1">Step 2: Gap Analysis</h3>
-                      <p className="text-gray-700 text-sm">Our consultants generate a gap analysis report to identify areas for improvement</p>
-                    </div>
-                    <div className="border-l-4 border-orange-600 pl-4 py-2">
-                      <h3 className="font-bold text-gray-900 mb-1">Step 3: Operational Plan</h3>
-                      <p className="text-gray-700 text-sm">Establish a comprehensive operational plan for gap treatment</p>
-                    </div>
-                    <div className="border-l-4 border-orange-600 pl-4 py-2">
-                      <h3 className="font-bold text-gray-900 mb-1">Step 4-7: Implementation & Audit</h3>
-                      <p className="text-gray-700 text-sm">Initial audit, training, document preparation, and final certification audit</p>
-                    </div>
-                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Steps to get OHSAS 18001 Certification in UAE</h3>
+                  <ul className="space-y-3">
+                    <li className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1 text-lg" />
+                      <span className="text-gray-700">Choose a <Link href="/iso-certification-in-uae" className="text-red-600 hover:text-red-800">right ISO consultant in Dubai</Link>. Appoint a representative from the management side and have a technical communication with ISO consultant in Dubai.</span>
+                    </li>
+                    <li className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1 text-lg" />
+                      <span className="text-gray-700">Analyse the gap in the ISO 18001. Our ISO 18001 consultant in Dubai,UAE will generate and provide a gap analysis report to the organization based on ISO 18001 certificate.</span>
+                    </li>
+                    <li className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1 text-lg" />
+                      <span className="text-gray-700">Wizms, ISO 18001 consultant in UAE will establish an operational plan for the gap treatment.</span>
+                    </li>
+                    <li className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1 text-lg" />
+                      <span className="text-gray-700">Perform initial OHSAS 18001 audit with the help of the best ISO certification consultant in Dubai.</span>
+                    </li>
+                    <li className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1 text-lg" />
+                      <span className="text-gray-700">Training and awareness program is conducted by our ISO certification consultant. Hence, employees can implement OHSAS 18001 certification easier.</span>
+                    </li>
+                    <li className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1 text-lg" />
+                      <span className="text-gray-700">With the help of our ISO consultant, operational plan, document preparation, preparing all system works for the organization to implement ISO 18001 certification.</span>
+                    </li>
+                    <li className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-orange-600 shrink-0 mt-1 text-lg" />
+                      <span className="text-gray-700">Conduct a final audit, finding out the non-matches and resolving the issues.</span>
+                    </li>
+                  </ul>
+                  <p className="text-gray-700 mt-4">
+                    A senior management can conduct planned periodic audits and resolve the problems during the implementation process and to audit whether the organization has met the requirements of ISO 18001 certificate. ISO consultancy in Dubai monitors and audits the organization. If the audit was positive, ISO 18001 certificate is issued to the organization.
+                  </p>
+                </div>
+
+                {/* OHSAS 18001 certification cost */}
+                <div className="mb-10">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">OHSAS 18001 certification cost in Dubai</h2>
+                  <p className="text-gray-700">
+                    OHSAS 18001 certification cost in Dubai,UAE depends upon the organization. Wizms offers the best quality ISO certification for all companies in Dubai at an affordable price, and provides the certification within 4 to 6 weeks.
+                  </p>
+                </div>
+
+                {/* OHSAS 18001 replaced by ISO 45001 */}
+                <div className="mb-10 bg-blue-50 border-l-4 border-blue-600 p-6 rounded">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">OHSAS 18001 replaced by ISO 45001</h2>
+                  <p className="text-gray-700 mb-4">
+                    The OHSAS 18001 standards are incorporated into the new ISO 45001 standards. The new standard is released on 12th March 2018. All organizations must undergo a transition from OHSAS 18001:2007 to ISO 45001:2018 before March 2021.
+                  </p>
+                  <p className="text-gray-700">
+                    Our ISO certification experts have provided consultancy services with remarkable Occupational Health and Safety System to several industries that have been audited and certified with the OHSAS 18001 Certification in the very first attempt. The ideal safety systems have resulted in enormous benefits for certified companies.
+                  </p>
                 </div>
 
                 {/* FAQ Section */}
                 <div className="mt-12">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6">FAQs - ISO 18001 Certification</h2>
-                  <div className="space-y-6">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">FAQ ISO OHSAS 18001 Certification</h2>
+                  <div className="space-y-4">
                     <style>{faqStyle}</style>
-                    <details open className="border border-gray-200 rounded-lg p-4 group">
+
+                    <details className="border border-gray-200 rounded-lg p-4">
                       <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
                         What is ISO OHSAS 18001 Certification? <MdKeyboardArrowDown className="text-orange-600 text-xl faq-icon" />
                       </summary>
                       <p className="text-gray-700 mt-4">
-                        OHSAS 18001 is an Occupational Health and Safety Management System standard. Implementing it signals to clients that worker health and safety are priorities within your organization.
+                        OHSAS 18001 is Occupational healthy and safety management systems. Implementing the ISO OHSAS 18001 standard will send a clear signal to your clients that you view worker&apos;s health and safety as a priority within your association.
                       </p>
                     </details>
 
-                    <details className="border border-gray-200 rounded-lg p-4 group">
+                    <details className="border border-gray-200 rounded-lg p-4">
                       <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
-                        What are the requirements for OHSAS 18001 in Dubai? <MdKeyboardArrowDown className="text-orange-600 text-xl faq-icon" />
+                        What is the requirements of OHSAS 18001 Certification in Dubai? <MdKeyboardArrowDown className="text-orange-600 text-xl faq-icon" />
                       </summary>
                       <p className="text-gray-700 mt-4">
-                        Management must address OH&S hazards and risks to prevent injuries and illnesses. Organizations must establish policies, objectives, and implementation procedures aligned with OHSAS 18001 requirements.
+                        The requirements that an organization must meet while implementing <Link href="/iso-18001-certification-consultants-uae" className="text-red-600 hover:text-red-800">ISO OHSAS 18001 certification in Dubai</Link>, the management must address the OH&S hazards and risks to prevent injuries and weakness.
                       </p>
                     </details>
 
-                    <details className="border border-gray-200 rounded-lg p-4 group">
+                    <details className="border border-gray-200 rounded-lg p-4">
                       <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
-                        Do I need internal audits every 12 months? <MdKeyboardArrowDown className="text-orange-600 text-xl faq-icon" />
+                        Is ISO OHSAS 18001 Certification is being revised? <MdKeyboardArrowDown className="text-orange-600 text-xl faq-icon" />
                       </summary>
                       <p className="text-gray-700 mt-4">
-                        Yes. ISO OHSAS 18001 requires internal audits at equal intervals to ensure the system meets standard requirements and your management system objectives.
+                        In 2005, the OHSAS Working Group chose to re-examine OHSAS 18001 to adjust it to ISO 14001:2004. Following a 2-year time of drafting and public survey, the overhauled standard was distributed in July of 2007.
                       </p>
                     </details>
 
-                    <details className="border border-gray-200 rounded-lg p-4 group">
+                    <details className="border border-gray-200 rounded-lg p-4">
                       <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
-                        Do I need an ISO consultant? <MdKeyboardArrowDown className="text-orange-600 text-xl faq-icon" />
+                        Do I need to have an internal audit for every 12 months? <MdKeyboardArrowDown className="text-orange-600 text-xl faq-icon" />
                       </summary>
                       <p className="text-gray-700 mt-4">
-                        While not mandatory, an experienced ISO consultant can significantly reduce implementation time and ensure comprehensive documentation. WIZMS helps organizations prepare all required documents and achieve certification faster.
+                        Yes. Initially, ISO OHSAS 18001 standard states that you should audit your organization internally at equal interval period.
+                      </p>
+                      <ul className="space-y-2 mt-4">
+                        <li className="flex gap-3 items-start">
+                          <MdCheckCircle className="text-orange-600 shrink-0 text-sm" />
+                          <span className="text-gray-700">meets the requirements of ISO OHSAS 18001 standard.</span>
+                        </li>
+                        <li className="flex gap-3 items-start">
+                          <MdCheckCircle className="text-orange-600 shrink-0 text-sm" />
+                          <span className="text-gray-700">meets the requirements of your management system.</span>
+                        </li>
+                      </ul>
+                    </details>
+
+                    <details className="border border-gray-200 rounded-lg p-4">
+                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+                        Whether the organization needs an ISO consultant to design the system? <MdKeyboardArrowDown className="text-orange-600 text-xl faq-icon" />
+                      </summary>
+                      <p className="text-gray-700 mt-4">
+                        Utilizing an <Link href="/" className="text-red-600 hover:text-red-800">ISO consultant in Dubai</Link> could imply that you gain your endorsement in a more limited time. Wizms, is the best ISO consultant in Dubai helps the organization to prepare the documents in all aspects. Likewise, an organization must be cautious in choosing the best ISO consultant in Dubai as there are numerous inadequate individuals helping organizations in accomplishing registration to the international standards.
                       </p>
                     </details>
 
-                    <details className="border border-gray-200 rounded-lg p-4 group">
+                    <details className="border border-gray-200 rounded-lg p-4">
                       <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
-                        What is the difference between OHSAS 18001 and ISO 45001? <MdKeyboardArrowDown className="text-orange-600 text-xl faq-icon" />
+                        What Makes OHSAS 18001 Different? <MdKeyboardArrowDown className="text-orange-600 text-xl faq-icon" />
                       </summary>
                       <p className="text-gray-700 mt-4">
-                        ISO 45001 is the newer international standard that replaced OHSAS 18001. It focuses on interaction between the organization and its environment with a stronger emphasis on risk-based thinking and worker participation.
+                        OHSAS 18001 standard is different from other standards, is its inescapable use by third-party certification. More than 16,000 associations have certified their OH&S management system to ISO OHSAS 18001.
                       </p>
                     </details>
 
-                    <details className="border border-gray-200 rounded-lg p-4 group">
+                    <details className="border border-gray-200 rounded-lg p-4">
                       <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
-                        How long is certification valid? <MdKeyboardArrowDown className="text-orange-600 text-xl faq-icon" />
+                        How might I get a copy of the standard? <MdKeyboardArrowDown className="text-orange-600 text-xl faq-icon" />
                       </summary>
                       <p className="text-gray-700 mt-4">
-                        ISO 18001 certification is valid for 3 years. Organizations must undergo annual surveillance audits and a full recertification audit in the third year.
+                        Wizms provides an electronic duplicate of OHSAS 18001:2007. To arrange feel free to <Link href="/contact" className="text-red-600 hover:text-red-800">contact us.</Link>
                       </p>
                     </details>
 
-                    <details className="border border-gray-200 rounded-lg p-4 group">
+                    <details className="border border-gray-200 rounded-lg p-4">
                       <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
-                        How much does OHSAS 18001 Certification cost? <MdKeyboardArrowDown className="text-orange-600 text-xl faq-icon" />
+                        How would you pick the perfect people to lead internal audit? <MdKeyboardArrowDown className="text-orange-600 text-xl faq-icon" />
                       </summary>
                       <p className="text-gray-700 mt-4">
-                        Cost depends on organization size, industry, and current OH&S maturity. WIZMS provides customized quotes and helps manage costs through efficient implementation. Certification typically takes 4-6 weeks.
+                        Internal auditing ought to be focused on improving the administrative system. Senior directors ought to be engaged in internal auditing. One of the ISO consultants approaches in Dubai is to get them included in auditing for improvement, with more junior staff associated with the additional tedious tasks of conformance inspecting.
+                      </p>
+                    </details>
+
+                    <details className="border border-gray-200 rounded-lg p-4">
+                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+                        Want to Implement ISO OHSAS 18001 Certification. How Do I Get Started? <MdKeyboardArrowDown className="text-orange-600 text-xl faq-icon" />
+                      </summary>
+                      <p className="text-gray-700 mt-4">
+                        Before you begin making changes to your current OH&S projects and systems, ISO consultant in Dubai helps you to get a duplicate of the norm and make sure that you have understood the <Link href="/iso-18001-certification-consultants-uae" className="text-red-600 hover:text-red-800">ISO OHSAS 18001 requirements</Link>.
+                      </p>
+                    </details>
+
+                    <details className="border border-gray-200 rounded-lg p-4">
+                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+                        Compare OHSAS 18001 and ISO 45001? <MdKeyboardArrowDown className="text-orange-600 text-xl faq-icon" />
+                      </summary>
+                      <p className="text-gray-700 mt-4">
+                        The main difference between <Link href="/iso-45001-certification-consultants-uae" className="text-red-600 hover:text-red-800">ISO 45001 OHSAS 18001</Link> is <Link href="/iso-45001-certification-consultants-uae" className="text-red-600 hover:text-red-800">ISO 45001 Certification in Dubai</Link> focuses on the interaction between an association and its business environment while ISO OHSAS 18001 Certification in Dubai was focused on OH&S risks and other internal issues.
+                      </p>
+                    </details>
+
+                    <details className="border border-gray-200 rounded-lg p-4">
+                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+                        How much does OHSAS 18001 Certification Cost? <MdKeyboardArrowDown className="text-orange-600 text-xl faq-icon" />
+                      </summary>
+                      <p className="text-gray-700 mt-4">
+                        OHSAS 18001 Certification Cost depends on the good estimation which is the key to success. Hidden costs can sink your company, and the easy way to prevent them is to conduct a thorough analysis, have discussions, and find the best possible solutions is to hire a right OHSAS 18001 Consultant who helps you to manage the ohsas 18001 certification cost.
                       </p>
                     </details>
                   </div>
@@ -257,8 +386,13 @@ export default function ISO18001Page() {
           '@context': 'https://schema.org',
           '@type': 'Article',
           headline: 'ISO 18001 in UAE | ISO 18001 Consultant in UAE | ISO 18001 Certification in Dubai | Wizms',
-          description: 'ISO 18001 Certification Consultants in Dubai, UAE. Get professional OHSAS 18001 certification services.',
+          description: 'ISO 18001 Certification Consultants in Dubai, UAE. Get professional OHSAS 18001 certification services in Dubai, Sharjah, Abu Dhabi and other UAE emirates.',
           author: {
+            '@type': 'Organization',
+            name: 'Wizms',
+            url: 'https://wizms.net',
+          },
+          publisher: {
             '@type': 'Organization',
             name: 'Wizms',
             url: 'https://wizms.net',

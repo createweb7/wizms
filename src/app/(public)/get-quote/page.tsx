@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import Script from "next/script";
 
@@ -50,7 +50,9 @@ export default function GetQuotePage() {
   const [submitted, setSubmitted] = useState(false);
   const [generalError, setGeneralError] = useState("");
   const [recaptchaToken, setRecaptchaToken] = useState("");
-  const [isMounted, setIsMounted] = useState(false);
+  const [recaptchaReady, setRecaptchaReady] = useState(false);
+  const recaptchaContainerRef = useRef<HTMLDivElement>(null);
+  const widgetIdRef = useRef<number | null>(null);
 
   // Validation functions
   const validateEmail = (email: string) => {
@@ -119,15 +121,28 @@ export default function GetQuotePage() {
     }
   };
 
-  const handleRecaptchaChange = (token: string | null) => {
+  const handleRecaptchaChange = useCallback((token: string | null) => {
     setRecaptchaToken(token || "");
-    if (token && errors.recaptcha) {
-      setErrors((prev) => ({
-        ...prev,
-        recaptcha: "",
-      }));
-    }
-  };
+    if (token) setErrors((prev) => ({ ...prev, recaptcha: "" }));
+  }, []);
+
+  const renderRecaptcha = useCallback(() => {
+    if (
+      !recaptchaContainerRef.current ||
+      !(window as any).grecaptcha?.render ||
+      widgetIdRef.current !== null
+    ) return;
+
+    widgetIdRef.current = (window as any).grecaptcha.render(
+      recaptchaContainerRef.current,
+      {
+        sitekey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+        callback: handleRecaptchaChange,
+        "expired-callback": () => setRecaptchaToken(""),
+      }
+    );
+    setRecaptchaReady(true);
+  }, [handleRecaptchaChange]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -191,18 +206,19 @@ export default function GetQuotePage() {
   };
 
   useEffect(() => {
-    // Make the callback function available globally
-    (
-      window as unknown as {
-        handleRecaptchaChange: typeof handleRecaptchaChange;
-      }
-    ).handleRecaptchaChange = handleRecaptchaChange;
-    setIsMounted(true);
-  }, [handleRecaptchaChange]);
+    (window as any).onQuoteRecaptchaLoad = renderRecaptcha;
+    if ((window as any).grecaptcha?.render) {
+      renderRecaptcha();
+    }
+  }, [renderRecaptcha]);
 
   return (
     <>
-      <Script src={`https://www.google.com/recaptcha/api.js`} async defer />
+      <Script
+        src="https://www.google.com/recaptcha/api.js?onload=onQuoteRecaptchaLoad&render=explicit"
+        strategy="lazyOnload"
+        onLoad={renderRecaptcha}
+      />
       <div className="min-h-screen bg-linear-to-b from-gray-50 to-white pt-24 pb-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
@@ -458,16 +474,14 @@ export default function GetQuotePage() {
 
             {/* reCAPTCHA */}
             <div className="mb-6">
-              {isMounted && (
-                <div
-                  className={`g-recaptcha ${
-                    errors.recaptcha
-                      ? "border border-red-500 p-2 rounded-lg"
-                      : ""
-                  }`}
-                  data-sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-                  data-callback="handleRecaptchaChange"
-                ></div>
+              <div
+                ref={recaptchaContainerRef}
+                className={errors.recaptcha ? "border border-red-500 p-2 rounded-lg" : ""}
+              />
+              {!recaptchaReady && (
+                <div className="text-sm text-gray-400 py-2">
+                  Loading security verification...
+                </div>
               )}
               {errors.recaptcha && (
                 <p className="text-red-500 text-sm mt-2">{errors.recaptcha}</p>
@@ -479,9 +493,18 @@ export default function GetQuotePage() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="flex-1 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
+                className="flex-1 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-70 flex items-center justify-center gap-2"
+                style={{ cursor: isLoading ? "not-allowed" : "pointer" }}
               >
-                {isLoading ? "Sending..." : "Send Quote Request"}
+                {isLoading ? (
+                  <>
+                    <svg className="animate-spin w-5 h-5" viewBox="0 0 24 24" fill="none">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+                    </svg>
+                    Sending...
+                  </>
+                ) : "Send Quote Request"}
               </button>
               <Link
                 href="/"

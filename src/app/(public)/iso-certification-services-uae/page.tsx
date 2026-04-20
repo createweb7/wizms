@@ -44,52 +44,62 @@ export default function ServicesPage() {
     {
       title: 'ISO 9001 Certification',
       description: 'ISO 9001 standard is used to integrate a quality management system in an organization. If an organization follows the ISO 9001 standard properly than it can provide quality products and services. It applies to organizations of all sizes and nature.',
-      link: '/iso-9001-certification-consultants-uae'
+      link: '/iso-9001-certification-consultants-uae',
+      icon: '✓'
     },
     {
       title: 'ISO 14001 Certification',
       description: 'ISO 14001 is the standard for the management of the organization\'s environmental program. As ISO 14001 certification consultants, we recommend you to integrate this certification with ISO 9001 to enhance the performance of the organization. It applies to organizations of all sizes and nature.',
-      link: '/iso-14001-certification-consultants-uae'
+      link: '/iso-14001-certification-consultants-uae',
+      icon: '🌱'
     },
     {
       title: 'ISO 45001 Certification',
       description: 'ISO 45001 is an international standard that specifies the requirement for occupational health and safety management systems. All organizations are users of this standard. ISO 45001 Certification helps to reduce workplace risk and ensures that the employees reach home safely.',
-      link: '/iso-45001-certification-consultants-uae'
+      link: '/iso-45001-certification-consultants-uae',
+      icon: '🛡️'
     },
     {
       title: 'OHSAS 18001 Certification',
       description: 'OHSAS is the British standard for occupational health and safety management system. With OHSAS certification, you can have an incident-free workplace. Moreover, with OHSAS 18001 certification, you will gain worldwide recognition, which leads to an increase in business.',
-      link: '/iso-18001-certification-consultants-uae'
+      link: '/iso-18001-certification-consultants-uae',
+      icon: '🛡️'
     },
     {
       title: 'ISO 50001 Certification',
       description: 'ISO 50001 is the international standard for energy management. ISO 50001 Certification helps to reduce greenhouse emission and saves organizations operation cost. This certification is not mandatory, but we recommend it considering all the benefits.',
-      link: '/iso-50001-certification-consultants-uae'
+      link: '/iso-50001-certification-consultants-uae',
+      icon: '⚡'
     },
     {
       title: 'ISO 27001 Certification',
       description: 'ISO 27001 is the standard for international security management. Your organization can have many important data sets like financial data, employee database etc. ISO 27001 helps to reduce risk related to data protection of your organization.',
-      link: '/iso-27001-certification-consultants-uae'
+      link: '/iso-27001-certification-consultants-uae',
+      icon: '🔒'
     },
     {
       title: 'ISO 22000 Certification',
       description: 'ISO 22000 is a food safety management standard for any organization that follows the food chain. ISO 22000 helps to reduce the business risk that can be created because of food safety. ISO 22000 Certification helps to increase the level of food hygiene and safety.',
-      link: '/iso-22000-certification-consultants-uae'
+      link: '/iso-22000-certification-consultants-uae',
+      icon: '🍽️'
     },
     {
       title: 'ISO 22301 Certification',
       description: 'ISO 22301 is the international standard for business continuity management. With ISO 22301 Certification, you can demonstrate your potential customers that your organization can overcome disruptions easily.',
-      link: '/iso-22301-certification-consultants-uae'
+      link: '/iso-22301-certification-consultants-uae',
+      icon: '⚠️'
     },
     {
       title: 'ISO 10002 Certification',
       description: 'ISO 10002 is complaint handling process published by the International organization for standardization in 2004. With, ISO 10002 Certification organizations can avail of high customer satisfaction. It applies to organizations of all sizes and nature.',
-      link: '/iso-10002-certification-consultants-uae'
+      link: '/iso-10002-certification-consultants-uae',
+      icon: '👥'
     },
     {
       title: 'ISO 41001 Certification',
       description: 'ISO 41001 is an international standard for Facility Management System. ISO 41001 can be easily integrated with other ISO standards to improve the workforce productivity, safety and health and wellbeing.',
-      link: '/iso-41001-certification-consultants-uae'
+      link: '/iso-41001-certification-consultants-uae',
+      icon: '🏢'
     }
   ];
 
@@ -135,10 +145,17 @@ export default function ServicesPage() {
                       {certifications.map((cert, idx) => (
                         <div key={idx} className="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow">
                           <Link href={cert.link} className="block group">
-                            <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
-                              {cert.title}
-                            </h3>
-                            <p className="text-gray-700 text-sm">{cert.description}</p>
+                            <div className="flex items-start gap-4">
+                              <div className="flex-shrink-0 text-3xl">
+                                {cert.icon}
+                              </div>
+                              <div className="flex-1">
+                                <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                                  {cert.title}
+                                </h3>
+                                <p className="text-gray-700 text-sm">{cert.description}</p>
+                              </div>
+                            </div>
                           </Link>
                         </div>
                       ))}

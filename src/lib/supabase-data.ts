@@ -7,6 +7,32 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export type ContentType = "blog" | "microblog";
 
+export interface ConsultantPage {
+  id?: number;
+  slug: string;
+  page_name: string;
+  meta_title?: string;
+  meta_description?: string;
+  meta_keywords?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export async function getConsultantPageBySlug(slug: string): Promise<ConsultantPage | null> {
+  try {
+    const { data, error } = await supabase
+      .from("consultant_pages")
+      .select("*")
+      .eq("slug", slug)
+      .single();
+
+    if (error) return null;
+    return data;
+  } catch {
+    return null;
+  }
+}
+
 export interface Content {
   id?: number;
   slug: string;

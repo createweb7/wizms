@@ -72,6 +72,10 @@ export default function AMLAdvisoryPage() {
                   </div>
                 </section>
 
+                <p className="text-gray-700 mb-12">
+                  It is necessary for an organization to <Link href="/iso-9001-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">get ISO 9001 certification</Link> in Dubai and UAE and some sectors consider it to be mandatory. By holding an ISO 9001 certification, an organization can upgrade its creditability and indicates the clients that its product and services have met the expectations of ISO 9001.
+                </p>
+
                 {/* Section 2: Regulatory Compliance */}
                 <section className="mb-12">
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">2. Regulatory Compliance</h2>

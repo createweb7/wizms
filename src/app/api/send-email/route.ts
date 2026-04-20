@@ -1,5 +1,11 @@
 import nodemailer from "nodemailer";
 import { NextRequest, NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
@@ -135,6 +141,17 @@ export async function POST(request: NextRequest) {
       }`,
       html: confirmationHtml,
     });
+
+    // Save enquiry to Supabase
+    await supabase.from("enquiries").insert([{
+      form_type: formType || "enquiry",
+      name,
+      email,
+      phone,
+      company: company || null,
+      service: service || null,
+      message: message || null,
+    }]);
 
     return NextResponse.json(
       {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Script from "next/script";
 import { MdCheckCircle, MdPhone, MdEmail } from "react-icons/md";
 
@@ -23,9 +23,12 @@ export default function EnquiryForm({
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [recaptchaToken, setRecaptchaToken] = useState<string>("");
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  const [isMounted, setIsMounted] = useState(false);
+  const [recaptchaReady, setRecaptchaReady] = useState(false);
+  const recaptchaContainerRef = useRef<HTMLDivElement>(null);
+  const widgetIdRef = useRef<number | null>(null);
 
   const validateField = (name: string, value: string): string => {
     switch (name) {
@@ -63,21 +66,38 @@ export default function EnquiryForm({
     }
   };
 
-  const handleRecaptchaChange = (token: string | null) => {
+  const handleRecaptchaChange = useCallback((token: string | null) => {
     setRecaptchaToken(token || "");
-    if (token && errors.recaptcha) {
-      setErrors((prev) => ({
-        ...prev,
-        recaptcha: "",
-      }));
+    if (token) {
+      setErrors((prev) => ({ ...prev, recaptcha: "" }));
     }
-  };
+  }, []);
+
+  const renderRecaptcha = useCallback(() => {
+    if (
+      !recaptchaContainerRef.current ||
+      !(window as any).grecaptcha?.render ||
+      widgetIdRef.current !== null
+    ) return;
+
+    widgetIdRef.current = (window as any).grecaptcha.render(
+      recaptchaContainerRef.current,
+      {
+        sitekey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+        callback: handleRecaptchaChange,
+        "expired-callback": () => setRecaptchaToken(""),
+      }
+    );
+    setRecaptchaReady(true);
+  }, [handleRecaptchaChange]);
 
   useEffect(() => {
-    // Make the callback function available globally
-    (window as any).handleRecaptchaChange = handleRecaptchaChange;
-    setIsMounted(true);
-  }, []);
+    (window as any).onEnquiryRecaptchaLoad = renderRecaptcha;
+    // If grecaptcha already loaded (e.g. cached on refresh), render immediately
+    if ((window as any).grecaptcha?.render) {
+      renderRecaptcha();
+    }
+  }, [renderRecaptcha]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -105,6 +125,7 @@ export default function EnquiryForm({
       return;
     }
 
+    setIsLoading(true);
     try {
       const response = await fetch("/api/send-email", {
         method: "POST",
@@ -150,12 +171,18 @@ export default function EnquiryForm({
           error instanceof Error ? error.message : "Failed to send enquiry",
       });
       alert("Failed to send enquiry. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <>
-      <Script src={`https://www.google.com/recaptcha/api.js`} async defer />
+      <Script
+        src="https://www.google.com/recaptcha/api.js?onload=onEnquiryRecaptchaLoad&render=explicit"
+        strategy="lazyOnload"
+        onLoad={renderRecaptcha}
+      />
       <div
         className={`w-full px-4 sm:px-6 lg:px-8 py-16 bg-linear-to-r ${bgColor}`}
       >
@@ -374,18 +401,14 @@ export default function EnquiryForm({
 
                   {/* reCAPTCHA */}
                   <div className="mb-4">
-                    {isMounted && (
-                      <div
-                        className={`g-recaptcha ${
-                          errors.recaptcha
-                            ? "border border-red-500 p-2 rounded-lg"
-                            : ""
-                        }`}
-                        data-sitekey={
-                          process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY
-                        }
-                        data-callback="handleRecaptchaChange"
-                      ></div>
+                    <div
+                      ref={recaptchaContainerRef}
+                      className={errors.recaptcha ? "border border-red-500 p-2 rounded-lg" : ""}
+                    />
+                    {!recaptchaReady && (
+                      <div className="text-sm text-gray-400 py-2">
+                        Loading security verification...
+                      </div>
                     )}
                     {errors.recaptcha && (
                       <p className="text-red-500 text-sm mt-2">
@@ -396,10 +419,24 @@ export default function EnquiryForm({
 
                   <button
                     type="submit"
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+                    disabled={isLoading}
+                    className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-70 text-white font-bold py-3 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+                    style={{ cursor: isLoading ? "not-allowed" : "pointer" }}
                   >
-                    <MdCheckCircle className="w-5 h-5" />
-                    Submit Enquiry
+                    {isLoading ? (
+                      <>
+                        <svg className="animate-spin w-5 h-5" viewBox="0 0 24 24" fill="none">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+                        </svg>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <MdCheckCircle className="w-5 h-5" />
+                        Submit Enquiry
+                      </>
+                    )}
                   </button>
 
                   <p className="text-xs text-gray-500 text-center">

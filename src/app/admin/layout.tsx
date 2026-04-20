@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
-import { MdDashboard, MdArticle, MdMessage, MdLogout } from "react-icons/md";
+import { MdDashboard, MdArticle, MdMessage, MdLogout, MdBusiness, MdInbox } from "react-icons/md";
 import AdminHeader from "@/components/admin/AdminHeader";
 import "@/styles/admin.css";
 
@@ -90,6 +90,29 @@ export default function AdminLayout({
             >
               <MdMessage size={20} />
               <span>Microblogs</span>
+            </Link>
+
+            <Link
+              href="/admin/consultant"
+              className={`nav-link ${
+                pathname?.includes("/admin/consultant") ? "active" : ""
+              }`}
+            >
+              <MdBusiness size={20} />
+              <span>Consultant Pages</span>
+            </Link>
+          </div>
+
+          <div className="nav-section">
+            <p className="nav-section-title">Enquiries</p>
+            <Link
+              href="/admin/enquiries"
+              className={`nav-link ${
+                pathname?.includes("/admin/enquiries") ? "active" : ""
+              }`}
+            >
+              <MdInbox size={20} />
+              <span>Enquiries</span>
             </Link>
           </div>
         </nav>

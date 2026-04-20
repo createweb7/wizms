@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { getConsultantPageBySlug } from '@/lib/supabase-data';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import EnquiryForm from '@/components/EnquiryForm';
 
@@ -19,11 +20,14 @@ const faqStyle = `
   }
 `;
 
-export const metadata: Metadata = {
-  title: 'ISO Certification in UAE | ISO Certification in Dubai | Wizms',
-  description: 'Wizms offers ISO Certification in UAE for all major certification standards. Get your ISO Certificate in UAE from the Best ISO Certification Consultant in Dubai, UAE',
-  keywords: 'ISO Certification in Dubai, ISO Certification in UAE, ISO Certification Cost price, ISO Consultant Dubai, ISO Consultant UAE',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getConsultantPageBySlug('iso-certification-in-uae');
+  return {
+    title: page?.meta_title || undefined,
+    description: page?.meta_description || undefined,
+    keywords: page?.meta_keywords || undefined,
+  };
+}
 
 export default function ISOCertificationUAEPage() {
   return (
@@ -74,7 +78,7 @@ export default function ISOCertificationUAEPage() {
                     </li>
                     <li className="flex items-start text-gray-700">
                       <span className="text-blue-600 font-bold mr-3 mt-1">✓</span>
-                      <span>Committed to ISO cost effective auditing, ISO certification & ISO training services in Dubai, UAE.</span>
+                      <span>Committed to ISO cost effective auditing, ISO certification &amp; ISO training services in Dubai, UAE.</span>
                     </li>
                     <li className="flex items-start text-gray-700">
                       <span className="text-blue-600 font-bold mr-3 mt-1">✓</span>
@@ -94,11 +98,9 @@ export default function ISOCertificationUAEPage() {
                   <p className="text-gray-700 mb-4">
                     Wizms is the best ISO certification consultant in Dubai who aids value to the effectiveness of your ISO management system irrespective of the current stage, where your organization is - initial phase of ISO implementation, midway through the implementation, moving towards ISO certification audit or even if your system is robust and well-established.
                   </p>
-
                   <p className="text-gray-700 mb-4">
                     Our ISO certification services in Dubai covers documentation review, gap assessment, assistance in implementation, training courses, internal and pre-assessment audit. We ensure that your organization continue to reap the benefits from our post certification services for continuous improvement of system effectiveness in order to obtain <Link href="/" className="text-blue-600 hover:text-blue-800">ISO Certification in Dubai</Link>. Moreover, our ISO experts will complete periodic surveillance and recertification audits without any setback. Wizms have worked with several organizations across the world to deliver <span className="font-bold">ISO certification in Dubai</span> and related services that focus on cost-effectiveness and timely delivery of solutions resulting in an impressive 100% success rate for all the clients.
                   </p>
-
                   <p className="text-gray-700">
                     Our team of immensely experienced ISO consultants works with all the leading ISO certification bodies across the world, to facilitate your organization in getting ISO Certification in UAE, Dubai from the certification body of your preference.
                   </p>
@@ -108,17 +110,11 @@ export default function ISOCertificationUAEPage() {
                 <div className="mb-10">
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">Advantages of ISO Certification in UAE</h2>
                   <p className="text-gray-700 mb-6"><span className="font-bold">Exceeds Customer Expectations</span> - Wizms will provide the organizations to follow best practices that will help to quickly retrieve all the related customer information to serve customers better than before.</p>
-                  
-                  <p className="text-gray-700 mb-6"><span className="font-bold">Consistent Product & Service Quality</span> - ISO Certification in Dubai, UAE will help to bring consistency in the production of goods and delivering services.</p>
-                  
-                  <p className="text-gray-700 mb-6"><span className="font-bold">Improved Employee's Performance</span> - With the availability of required information or data for the employees to complete their job without delays. Hence, the employee's performance will enhance significantly.</p>
-                  
+                  <p className="text-gray-700 mb-6"><span className="font-bold">Consistent Product &amp; Service Quality</span> - ISO Certification in Dubai, UAE will help to bring consistency in the production of goods and delivering services.</p>
+                  <p className="text-gray-700 mb-6"><span className="font-bold">Improved Employee&apos;s Performance</span> - With the availability of required information or data for the employees to complete their job without delays. Hence, the employee&apos;s performance will enhance significantly.</p>
                   <p className="text-gray-700 mb-6"><span className="font-bold">Reduces the Operational Costs</span> - Enable organizations to keep the overall operational cost low. Having a robust system in place is necessary to streamline business operations is highly beneficial.</p>
-                  
                   <p className="text-gray-700 mb-6"><span className="font-bold">Organize the Business Processes</span> - ISO Certification in UAE, Dubai helps in structuring the business process to achieve standardization in the organization.</p>
-                  
                   <p className="text-gray-700 mb-6"><span className="font-bold">Problem Solving and Corrective Actions</span> - To comply with the ISO guidelines a standard operating procedure is required. Thus, it will help in efficient problem solving and taking necessary corrective action in place.</p>
-                  
                   <p className="text-gray-700"><span className="font-bold">Enhance Business Profitability</span> - ISO Certification in Dubai helps in managing all the department operations and monitor their performance.</p>
                 </div>
 
@@ -126,15 +122,13 @@ export default function ISOCertificationUAEPage() {
                 <div className="mb-10">
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">To get ISO Certification in UAE</h2>
                   <p className="text-gray-700 mb-4">
-                    In order to obtain an ISO certificate in UAE, you must go through several phases in the certification process. The certification process begins with a gap analysis, followed by the implementation of a Quality Management System, an internal audit to ensure process compliance, and finally the final certification audit and certification issuing&apos;s.
+                    In order to obtain an ISO certificate in UAE, you must go through several phases in the certification process. The certification process begins with a gap analysis, followed by the implementation of a Quality Management System, an internal audit to ensure process compliance, and finally the final certification audit and certification issuings.
                   </p>
-
                   <p className="text-gray-700 mb-4">
-                    Organizations from all industries in the UAE desire ISO Certification. Companies seek ISO certification in UAE for a variety of reasons, including constant service quality, global reputation, and improved customer satisfaction. WIZMS offers ISO Certificates in UAE for all key standards, including ISO 9001:2015, ISO 14001:2015, ISO 27001:2015, ISO 17025:2017, ISO 13485:2016, ISO 45001:2018, and others. Our ISO Consultants in Dubai are experts in certain ISO Standards&apos;.
+                    Organizations from all industries in the UAE desire ISO Certification. Companies seek ISO certification in UAE for a variety of reasons, including constant service quality, global reputation, and improved customer satisfaction. WIZMS offers ISO Certificates in UAE for all key standards, including ISO 9001:2015, ISO 14001:2015, ISO 27001:2015, ISO 17025:2017, ISO 13485:2016, ISO 45001:2018, and others. Our ISO Consultants in Dubai are experts in certain ISO Standards.
                   </p>
-
                   <p className="text-gray-700">
-                    We maintain the highest quality standards in our business operations, client relations, and project delivery as an ISO 9001:2015 Certified Company. Discover our ISO Certification Single Window Solution in Dubai, which includes ISO Consulting, <Link href="/iso-training-uae" className="text-blue-600 hover:text-blue-800">ISO Training</Link>, <Link href="/iso-implementation-consultancy-uae" className="text-blue-600 hover:text-blue-800">ISO Implementation</Link>, and ISO Certification Audit Services. Transform your firm into a quality-first one with our ISO Certification in the UAE. Obtain an ISO Certificate from your reputable <span className="font-bold">ISO Consultant in UAE</span> to become globally acknowledged. Increase the worth of your company by expanding into foreign markets with high-quality products/services and gaining the trust of your clients and customers. Our ISO Certificate can now be obtained remotely in the United Arab Emirates&apos;.
+                    We maintain the highest quality standards in our business operations, client relations, and project delivery as an ISO 9001:2015 Certified Company. Discover our ISO Certification Single Window Solution in Dubai, which includes ISO Consulting, <Link href="/iso-training-uae" className="text-blue-600 hover:text-blue-800">ISO Training</Link>, <Link href="/iso-implementation-consultancy-uae" className="text-blue-600 hover:text-blue-800">ISO Implementation</Link>, and ISO Certification Audit Services. Transform your firm into a quality-first one with our ISO Certification in the UAE. Obtain an ISO Certificate from your reputable <span className="font-bold">ISO Consultant in UAE</span> to become globally acknowledged.
                   </p>
                 </div>
 
@@ -150,36 +144,6 @@ export default function ISOCertificationUAEPage() {
                       </summary>
                       <p className="text-gray-700 mt-4">
                         ISO certification in Dubai is a benchmark for the quality of products and services which is recognized globally. The errors in production or services are totally minimized which not only saves time and energy but also improves the quality of the product. It creates confidence among clients and huge profitability in business. To learn more about <Link href="/essential-of-iso-certifications" className="text-blue-600 hover:text-blue-800">Essential of ISO Certifications in UAE</Link>
-                      </p>
-                    </details>
-
-                    <details className="border border-gray-200 rounded-lg p-4">
-                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center gap-2">
-                        <MdKeyboardArrowDown className="text-blue-600 text-xl faq-icon" />
-                        How long does ISO Certification take in UAE?
-                      </summary>
-                      <p className="text-gray-700 mt-4">
-                        The ISO certification process typically takes 4-6 weeks depending on the organization's size and complexity. WIZMS helps expedite this process with expert consultancy services across Dubai, Abu Dhabi, Sharjah, and other emirates.
-                      </p>
-                    </details>
-
-                    <details className="border border-gray-200 rounded-lg p-4">
-                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center gap-2">
-                        <MdKeyboardArrowDown className="text-blue-600 text-xl faq-icon" />
-                        Is ISO Certification applicable to small businesses?
-                      </summary>
-                      <p className="text-gray-700 mt-4">
-                        Yes, ISO Certification is applicable to organizations of all sizes. Many small and medium enterprises (SMEs) in Dubai and UAE have successfully obtained ISO certification through WIZMS consultancy services.
-                      </p>
-                    </details>
-
-                    <details className="border border-gray-200 rounded-lg p-4">
-                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center gap-2">
-                        <MdKeyboardArrowDown className="text-blue-600 text-xl faq-icon" />
-                        Which ISO standards does WIZMS provide?
-                      </summary>
-                      <p className="text-gray-700 mt-4">
-                        WIZMS provides comprehensive consultancy for all major ISO standards including ISO 9001 (Quality), ISO 14001 (Environment), ISO 45001 (Health & Safety), ISO 27001 (Information Security), ISO 22000 (Food Safety), and many more.
                       </p>
                     </details>
                   </div>

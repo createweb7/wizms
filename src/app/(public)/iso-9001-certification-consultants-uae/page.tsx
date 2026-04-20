@@ -1,28 +1,16 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { MdArrowForward, MdKeyboardArrowDown } from 'react-icons/md';
+import { getConsultantPageBySlug } from '@/lib/supabase-data';
 import EnquiryForm from '@/components/EnquiryForm';
 
-const faqStyle = `
-  details > summary::-webkit-details-marker {
-    display: none;
-  }
-  details > summary {
-    list-style: none;
-  }
-  details[open] > summary .faq-icon {
-    transform: rotate(180deg);
-    transition: transform 0.3s ease;
-  }
-  details > summary .faq-icon {
-    transition: transform 0.3s ease;
-  }
-`;
-
-export const metadata: Metadata = {
-  title: 'ISO 9001 Certification in UAE | ISO 9001 Consultants in Dubai | Wizms',
-  description: 'ISO 9001 certification in Dubai, UAE, Abu Dhabi, Sharjah providing top-class ISO 9001 certification services by Wizms',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getConsultantPageBySlug('iso-9001-certification-consultants-uae');
+  return {
+    title: page?.meta_title || undefined,
+    description: page?.meta_description || undefined,
+    keywords: page?.meta_keywords || undefined,
+  };
+}
 
 export default function ISO9001Page() {
   return (
@@ -115,52 +103,6 @@ export default function ISO9001Page() {
                   </p>
                 </div>
 
-                {/* FAQ Section */}
-                <div className="mt-12">
-                  <style>{faqStyle}</style>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6">FAQs - ISO 9001 Certification</h2>
-                  <div className="space-y-6">
-                    <details className="border border-gray-200 rounded-lg p-4" open>
-                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center gap-2">
-                        <MdKeyboardArrowDown className="text-blue-600 text-xl faq-icon" />
-                        What is ISO 9001 Certification?
-                      </summary>
-                      <p className="text-gray-700 mt-4">
-                        ISO 9001 is a Quality Management System (QMS) standard that helps organizations ensure they consistently provide products and services that meet customer and legal requirements.
-                      </p>
-                    </details>
-
-                    <details className="border border-gray-200 rounded-lg p-4">
-                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center gap-2">
-                        <MdKeyboardArrowDown className="text-blue-600 text-xl faq-icon" />
-                        How long does ISO 9001 certification take?
-                      </summary>
-                      <p className="text-gray-700 mt-4">
-                        The ISO 9001 certification process typically takes 4-6 weeks depending on the organization's size and complexity. WIZMS helps expedite this process with expert consultancy.
-                      </p>
-                    </details>
-
-                    <details className="border border-gray-200 rounded-lg p-4">
-                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center gap-2">
-                        <MdKeyboardArrowDown className="text-blue-600 text-xl faq-icon" />
-                        What are the benefits of ISO 9001 certification?
-                      </summary>
-                      <p className="text-gray-700 mt-4">
-                        Benefits include improved customer satisfaction, increased operational efficiency, better process management, enhanced reputation, and access to global markets.
-                      </p>
-                    </details>
-
-                    <details className="border border-gray-200 rounded-lg p-4">
-                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center gap-2">
-                        <MdKeyboardArrowDown className="text-blue-600 text-xl faq-icon" />
-                        Is ISO 9001 applicable to small businesses?
-                      </summary>
-                      <p className="text-gray-700 mt-4">
-                        Yes, ISO 9001 is applicable to organizations of all sizes. Many small and medium enterprises (SMEs) in Dubai and UAE have successfully obtained ISO 9001 certification.
-                      </p>
-                    </details>
-                  </div>
-                </div>
               </div>
             </div>
 

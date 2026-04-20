@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { MdCheckCircle } from 'react-icons/md';
 import EnquiryForm from '@/components/EnquiryForm';
 
 export const metadata: Metadata = {
@@ -37,18 +38,58 @@ export default function ISOTrainingPage() {
                     Our ISO consultants in Dubai provides the listed down ISO trainings:
                   </p>
 
-                  <ul className="list-disc list-inside space-y-2 text-gray-700">
-                    <li><Link href="/iso-9001-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 9001 Certification in Dubai</Link> (Quality Management System - QMS)</li>
-                    <li><Link href="/iso-14001-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 14001 Certification in Dubai</Link> (Environment Management System - EMS)</li>
-                    <li><Link href="/iso-45001-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 45001 Certification in Dubai</Link> (Occupational Health and Safety Management System - OHSMS)</li>
-                    <li><Link href="/iso-18001-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 18001 Certification in Dubai</Link> (Occupational Health and Safety Management System - OHSAS)</li>
-                    <li><Link href="/iso-50001-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 50001 Certification in Dubai</Link> (Energy Management System - EnMS)</li>
-                    <li><Link href="/iso-27001-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 27001 Certification in Dubai</Link> (Information Security Management System - ISMS)</li>
-                    <li><Link href="/iso-22000-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 22000 Certification in Dubai</Link> (Food Safety Management System - FSMS)</li>
-                    <li><Link href="/iso-22301-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 22301 Certification in Dubai</Link> (Business Continuity Management Standards - BCMS)</li>
-                    <li><Link href="/iso-10002-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 10002 Certification in Dubai</Link> (Quality Management and Customer Satisfaction)</li>
-                    <li><Link href="/iso-41001-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 41001 Certification in Dubai</Link> (Facility Management System)</li>
-                  </ul>
+                  <div className="space-y-2 text-gray-700">
+                    <div className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-blue-600 shrink-0 mt-1" />
+                      <Link href="/iso-9001-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 9001 Certification in Dubai</Link>
+                      <span>(Quality Management System - QMS)</span>
+                    </div>
+                    <div className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-blue-600 shrink-0 mt-1" />
+                      <Link href="/iso-14001-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 14001 Certification in Dubai</Link>
+                      <span>(Environment Management System - EMS)</span>
+                    </div>
+                    <div className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-blue-600 shrink-0 mt-1" />
+                      <Link href="/iso-45001-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 45001 Certification in Dubai</Link>
+                      <span>(Occupational Health and Safety Management System - OHSMS)</span>
+                    </div>
+                    <div className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-blue-600 shrink-0 mt-1" />
+                      <Link href="/iso-18001-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 18001 Certification in Dubai</Link>
+                      <span>(Occupational Health and Safety Management System - OHSAS)</span>
+                    </div>
+                    <div className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-blue-600 shrink-0 mt-1" />
+                      <Link href="/iso-50001-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 50001 Certification in Dubai</Link>
+                      <span>(Energy Management System - EnMS)</span>
+                    </div>
+                    <div className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-blue-600 shrink-0 mt-1" />
+                      <Link href="/iso-27001-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 27001 Certification in Dubai</Link>
+                      <span>(Information Security Management System - ISMS)</span>
+                    </div>
+                    <div className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-blue-600 shrink-0 mt-1" />
+                      <Link href="/iso-22000-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 22000 Certification in Dubai</Link>
+                      <span>(Food Safety Management System - FSMS)</span>
+                    </div>
+                    <div className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-blue-600 shrink-0 mt-1" />
+                      <Link href="/iso-22301-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 22301 Certification in Dubai</Link>
+                      <span>(Business Continuity Management Standards - BCMS)</span>
+                    </div>
+                    <div className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-blue-600 shrink-0 mt-1" />
+                      <Link href="/iso-10002-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 10002 Certification in Dubai</Link>
+                      <span>(Quality Management and Customer Satisfaction)</span>
+                    </div>
+                    <div className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-blue-600 shrink-0 mt-1" />
+                      <Link href="/iso-41001-certification-consultants-uae" className="text-blue-600 hover:text-blue-800">ISO 41001 Certification in Dubai</Link>
+                      <span>(Facility Management System)</span>
+                    </div>
+                  </div>
 
                   <p>
                     Our ISO training courses in Dubai are well structured and customized made to meet the business requirements. We provide you with the best ISO Training course in Dubai based on the content and delivery style.
@@ -56,31 +97,46 @@ export default function ISOTrainingPage() {
 
                   <p className="font-semibold mt-6">Our ISO Training in Dubai, UAE and Globally covers:</p>
 
-                  <div className="mt-6 space-y-4">
-                    <div>
-                      <h3 className="font-bold text-gray-900 mb-2">Awareness Training</h3>
-                      <p>Provides ISO training on basic concepts of ISO certification, requirements, principles, approach, and benefits of ISO implementation.</p>
-                      <p>Extensive training is provided by ISO consultants that covers frameworks for implementing ISO Certifications, key concepts and requirements for ISO Certification. It also covers gap analysis concepts and to use it for a baseline review of the current systems, etc.</p>
+                  <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="border border-blue-200 bg-blue-50 rounded-lg p-4">
+                      <h3 className="font-bold text-gray-900 mb-2 flex items-start gap-2">
+                        <MdCheckCircle className="text-blue-600 shrink-0 mt-0.5" />
+                        Awareness Training
+                      </h3>
+                      <p className="text-sm text-gray-700 mb-2">Provides ISO training on basic concepts of ISO certification, requirements, principles, approach, and benefits of ISO implementation.</p>
+                      <p className="text-sm text-gray-700">Extensive training is provided by ISO consultants that covers frameworks for implementing ISO Certifications, key concepts and requirements for ISO Certification. It also covers gap analysis concepts and to use it for a baseline review of the current systems, etc.</p>
                     </div>
 
-                    <div>
-                      <h3 className="font-bold text-gray-900 mb-2">Documentation Training</h3>
-                      <p>ISO Training to prepare the required documents for ISO Certification internal as well as external audits. It covers the Quality Policy, objectives, Quality Manual, procedures, records specified by ISO, and other documents for effective planning, operation, and control.</p>
+                    <div className="border border-blue-200 bg-blue-50 rounded-lg p-4">
+                      <h3 className="font-bold text-gray-900 mb-2 flex items-start gap-2">
+                        <MdCheckCircle className="text-blue-600 shrink-0 mt-0.5" />
+                        Documentation Training
+                      </h3>
+                      <p className="text-sm text-gray-700">ISO Training to prepare the required documents for ISO Certification internal as well as external audits. It covers the Quality Policy, objectives, Quality Manual, procedures, records specified by ISO, and other documents for effective planning, operation, and control.</p>
                     </div>
 
-                    <div>
-                      <h3 className="font-bold text-gray-900 mb-2">Training for Executives</h3>
-                      <p>Training is provided by ISO consultants that covers the overall benefits of ISO Certifications and its expected business value post the implementation.</p>
+                    <div className="border border-blue-200 bg-blue-50 rounded-lg p-4">
+                      <h3 className="font-bold text-gray-900 mb-2 flex items-start gap-2">
+                        <MdCheckCircle className="text-blue-600 shrink-0 mt-0.5" />
+                        Training for Executives
+                      </h3>
+                      <p className="text-sm text-gray-700">Training is provided by ISO consultants that covers the overall benefits of ISO Certifications and its expected business value post the implementation.</p>
                     </div>
 
-                    <div>
-                      <h3 className="font-bold text-gray-900 mb-2">Training for ISO Internal Audit</h3>
-                      <p>ISO certified training course for conducting internal audits that comply with the ISO Standards. The knowledge and skills required for conducting an internal audit are also shared during the training session.</p>
+                    <div className="border border-blue-200 bg-blue-50 rounded-lg p-4">
+                      <h3 className="font-bold text-gray-900 mb-2 flex items-start gap-2">
+                        <MdCheckCircle className="text-blue-600 shrink-0 mt-0.5" />
+                        Training for ISO Internal Audit
+                      </h3>
+                      <p className="text-sm text-gray-700">ISO certified training course for conducting internal audits that comply with the ISO Standards. The knowledge and skills required for conducting an internal audit are also shared during the training session.</p>
                     </div>
 
-                    <div>
-                      <h3 className="font-bold text-gray-900 mb-2">Process Owner Training</h3>
-                      <p>ISO training for the Process Owner to empower them with the new process updates and compliance requirements of the ISO Certification body.</p>
+                    <div className="border border-blue-200 bg-blue-50 rounded-lg p-4 md:col-span-2">
+                      <h3 className="font-bold text-gray-900 mb-2 flex items-start gap-2">
+                        <MdCheckCircle className="text-blue-600 shrink-0 mt-0.5" />
+                        Process Owner Training
+                      </h3>
+                      <p className="text-sm text-gray-700">ISO training for the Process Owner to empower them with the new process updates and compliance requirements of the ISO Certification body.</p>
                     </div>
                   </div>
 
@@ -100,12 +156,24 @@ export default function ISOTrainingPage() {
                     Irrespective of organization, is at any stage of ISO Certification Standard implementation process, i.e.:
                   </p>
 
-                  <ul className="list-disc list-inside space-y-2 text-gray-700">
-                    <li>starting phase of ISO implementation</li>
-                    <li>midway of the implementation</li>
-                    <li>Approaching the ISO certification audit</li>
-                    <li>The ISO system is well established and matured</li>
-                  </ul>
+                  <div className="space-y-2 text-gray-700">
+                    <div className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-blue-600 shrink-0 mt-1" />
+                      <span>Starting phase of ISO implementation</span>
+                    </div>
+                    <div className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-blue-600 shrink-0 mt-1" />
+                      <span>Midway of the implementation</span>
+                    </div>
+                    <div className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-blue-600 shrink-0 mt-1" />
+                      <span>Approaching the ISO certification audit</span>
+                    </div>
+                    <div className="flex gap-3 items-start">
+                      <MdCheckCircle className="text-blue-600 shrink-0 mt-1" />
+                      <span>The ISO system is well established and matured</span>
+                    </div>
+                  </div>
 
                   <p>
                     Our ISO training course in Dubai will surely add value to the overall effectiveness of your ISO standard and helps the management to realize their goal of sustainable competitive advantage.

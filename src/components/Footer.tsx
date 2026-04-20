@@ -262,6 +262,18 @@ export default function Footer() {
                   </a>
                 </div>
               </div>
+
+              {/* Small Map */}
+              <div className="mt-6">
+                <iframe
+                  src="https://www.google.com/maps/d/u/3/embed?mid=1M1KBam_G3-SIggN4Hr1AhybFN35MpvA&ehbc=2E312F&noprof=1"
+                  width="100%"
+                  height="200"
+                  className="rounded-lg"
+                  loading="lazy"
+                  title="WIZMS Office Location"
+                ></iframe>
+              </div>
             </div>
           </div>
         </div>

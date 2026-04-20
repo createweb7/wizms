@@ -188,9 +188,9 @@ export default function Header() {
                 </div>
                 <div className="text-sm">
                   <p className="text-gray-500 text-xs font-semibold uppercase">
-                    ADDRESS HERE
+                    VISIT US AT
                   </p>
-                  <p className="text-gray-900 font-semibold">Dubai, UAE</p>
+                  <p className="text-gray-900 font-semibold">Office 31, Al Karama, Dubai</p>
                 </div>
               </div>
             </div>

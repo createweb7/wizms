@@ -56,6 +56,11 @@ export default function MicroblogsPage() {
     fetchMicroblogs();
   }, []);
 
+  // Scroll to top when page changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentPage]);
+
   // Filter microblogs based on search term
   const filteredMicroblogs = microblogs.filter(
     (post) =>
@@ -72,12 +77,10 @@ export default function MicroblogsPage() {
 
   const handlePrevPage = () => {
     setCurrentPage((prev) => Math.max(prev - 1, 1));
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleNextPage = () => {
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   // Get 3 most recent microblogs

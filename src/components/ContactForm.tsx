@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Script from "next/script";
 
 declare global {
@@ -27,8 +27,9 @@ export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [recaptchaToken, setRecaptchaToken] = useState<string>("");
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  const [isMounted, setIsMounted] = useState(false);
   const [recaptchaReady, setRecaptchaReady] = useState(false);
+  const recaptchaContainerRef = useRef<HTMLDivElement>(null);
+  const widgetIdRef = useRef<number | null>(null);
 
   const validateField = (name: string, value: string): string => {
     switch (name) {
@@ -71,34 +72,33 @@ export default function ContactForm() {
 
   const handleRecaptchaChange = useCallback((token: string | null) => {
     setRecaptchaToken(token || "");
-    if (token && errors.recaptcha) {
-      setErrors((prev) => ({
-        ...prev,
-        recaptcha: "",
-      }));
-    }
-  }, [errors.recaptcha]);
+    if (token) setErrors((prev) => ({ ...prev, recaptcha: "" }));
+  }, []);
+
+  const renderRecaptcha = useCallback(() => {
+    if (
+      !recaptchaContainerRef.current ||
+      !(window as any).grecaptcha?.render ||
+      widgetIdRef.current !== null
+    ) return;
+
+    widgetIdRef.current = (window as any).grecaptcha.render(
+      recaptchaContainerRef.current,
+      {
+        sitekey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+        callback: handleRecaptchaChange,
+        "expired-callback": () => setRecaptchaToken(""),
+      }
+    );
+    setRecaptchaReady(true);
+  }, [handleRecaptchaChange]);
 
   useEffect(() => {
-    // Make the callback function available globally
-    window.handleRecaptchaChange = handleRecaptchaChange;
-    setIsMounted(true);
-
-    // Wait for reCAPTCHA script to load with longer timeout
-    const checkRecaptcha = () => {
-      if (window.grecaptcha) {
-        setRecaptchaReady(true);
-      } else {
-        // Exponential backoff: 100ms, 200ms, 300ms...
-        setTimeout(checkRecaptcha, Math.min(100 + Math.random() * 200, 500));
-      }
-    };
-
-    // Start checking after a small delay to ensure script has started loading
-    const timeoutId = setTimeout(checkRecaptcha, 50);
-    
-    return () => clearTimeout(timeoutId);
-  }, [handleRecaptchaChange]);
+    (window as any).onContactRecaptchaLoad = renderRecaptcha;
+    if ((window as any).grecaptcha?.render) {
+      renderRecaptcha();
+    }
+  }, [renderRecaptcha]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -173,14 +173,10 @@ export default function ContactForm() {
 
   return (
     <>
-      <Script 
-        src="https://www.google.com/recaptcha/api.js" 
+      <Script
+        src="https://www.google.com/recaptcha/api.js?onload=onContactRecaptchaLoad&render=explicit"
         strategy="lazyOnload"
-        onLoad={() => {
-          if (window.grecaptcha) {
-            setRecaptchaReady(true);
-          }
-        }}
+        onLoad={renderRecaptcha}
       />
       {submitted ? (
         <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
@@ -337,16 +333,11 @@ export default function ContactForm() {
 
           {/* reCAPTCHA */}
           <div className="my-4">
-            {isMounted && recaptchaReady && (
-              <div
-                className={`g-recaptcha ${
-                  errors.recaptcha ? "border border-red-500 p-2 rounded-lg" : ""
-                }`}
-                data-sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-                data-callback="handleRecaptchaChange"
-              ></div>
-            )}
-            {!recaptchaReady && isMounted && (
+            <div
+              ref={recaptchaContainerRef}
+              className={errors.recaptcha ? "border border-red-500 p-2 rounded-lg" : ""}
+            />
+            {!recaptchaReady && (
               <div className="text-center text-gray-500 text-sm py-2">
                 Loading security verification...
               </div>
