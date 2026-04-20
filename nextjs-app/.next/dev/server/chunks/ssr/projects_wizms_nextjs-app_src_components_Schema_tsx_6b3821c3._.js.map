@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/mahadeer/projects/wizms/nextjs-app/src/components/Schema.tsx"],"sourcesContent":["\"use client\";\n\ninterface SchemaProps {\n  schema: Record<string, any>;\n}\n\nexport default function Schema({ schema }: SchemaProps) {\n  return (\n    <script\n      type=\"application/ld+json\"\n      dangerouslySetInnerHTML={{\n        __html: JSON.stringify(schema, null, 2),\n      }}\n    />\n  );\n}\n"],"names":[],"mappings":";;;;;AAAA;;AAMe,SAAS,OAAO,EAAE,MAAM,EAAe;IACpD,qBACE,oRAAC;QACC,MAAK;QACL,yBAAyB;YACvB,QAAQ,KAAK,SAAS,CAAC,QAAQ,MAAM;QACvC;;;;;;AAGN"}}]
+}

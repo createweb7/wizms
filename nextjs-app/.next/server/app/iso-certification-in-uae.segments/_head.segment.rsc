@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[73131,["/_next/static/chunks/4a3611fa0ac70f16.js","/_next/static/chunks/65ae8c4607f57c2f.js"],"ViewportBoundary"]
+3:I[73131,["/_next/static/chunks/4a3611fa0ac70f16.js","/_next/static/chunks/65ae8c4607f57c2f.js"],"MetadataBoundary"]
+4:"$Sreact.suspense"
+5:I[88483,["/_next/static/chunks/4a3611fa0ac70f16.js","/_next/static/chunks/65ae8c4607f57c2f.js"],"IconMark"]
+0:{"buildId":"I3GEKSVLVTWqxcEXDRaWq","rsc":["$","$1","h",{"children":[null,["$","$L2",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L3",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"ISO Certification in UAE | ISO Certification in Dubai | Wizms"}],["$","meta","1",{"name":"description","content":"Wizms offers ISO Certification in UAE for all major certification standards. Get your ISO Certificate in UAE from the Best ISO Certification Consultant in Dubai"}],["$","meta","2",{"name":"keywords","content":"ISO Certification in Dubai, ISO Certification in UAE, ISO Certification Cost price"}],["$","link","3",{"rel":"icon","href":"/favicon.ico"}],["$","$L5","4",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"loading":null,"isPartial":false}

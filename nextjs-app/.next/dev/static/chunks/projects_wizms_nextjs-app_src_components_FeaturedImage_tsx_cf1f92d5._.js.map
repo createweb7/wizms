@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/mahadeer/projects/wizms/nextjs-app/src/components/FeaturedImage.tsx"],"sourcesContent":["\"use client\";\n\nimport Image from \"next/image\";\nimport { useState } from \"react\";\n\ninterface FeaturedImageProps {\n  src: string;\n  alt: string;\n  title: string;\n}\n\nexport default function FeaturedImage({ src, alt, title }: FeaturedImageProps) {\n  const [imageError, setImageError] = useState(false);\n\n  if (imageError) {\n    return null;\n  }\n\n  return (\n    <div className=\"mb-8 relative w-full h-96 rounded-lg overflow-hidden shadow-lg\">\n      <Image\n        src={src}\n        alt={alt || title}\n        fill\n        className=\"object-cover\"\n        priority\n        onError={() => setImageError(true)}\n      />\n    </div>\n  );\n}\n"],"names":[],"mappings":";;;;;AAEA;AACA;;;AAHA;;;AAWe,SAAS,cAAc,EAAE,GAAG,EAAE,GAAG,EAAE,KAAK,EAAsB;;IAC3E,MAAM,CAAC,YAAY,cAAc,GAAG,IAAA,+MAAQ,EAAC;IAE7C,IAAI,YAAY;QACd,OAAO;IACT;IAEA,qBACE,mOAAC;QAAI,WAAU;kBACb,cAAA,mOAAC,iLAAK;YACJ,KAAK;YACL,KAAK,OAAO;YACZ,IAAI;YACJ,WAAU;YACV,QAAQ;YACR,SAAS,IAAM,cAAc;;;;;;;;;;;AAIrC;GAnBwB;KAAA"}}]
+}

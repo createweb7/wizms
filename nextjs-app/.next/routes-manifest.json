@@ -1,0 +1,325 @@
+{
+  "version": 3,
+  "pages404": true,
+  "appType": "app",
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "priority": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [
+    {
+      "page": "/admin/blogs/[id]/edit",
+      "regex": "^/admin/blogs/([^/]+?)/edit(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/admin/blogs/(?<nxtPid>[^/]+?)/edit(?:/)?$"
+    },
+    {
+      "page": "/admin/consultant/[id]/edit",
+      "regex": "^/admin/consultant/([^/]+?)/edit(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/admin/consultant/(?<nxtPid>[^/]+?)/edit(?:/)?$"
+    },
+    {
+      "page": "/admin/microblogs/[id]/edit",
+      "regex": "^/admin/microblogs/([^/]+?)/edit(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/admin/microblogs/(?<nxtPid>[^/]+?)/edit(?:/)?$"
+    },
+    {
+      "page": "/api/content/[slug]",
+      "regex": "^/api/content/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/api/content/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/[slug]",
+      "regex": "^/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/(?<nxtPslug>[^/]+?)(?:/)?$"
+    }
+  ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_global-error",
+      "regex": "^/_global\\-error(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_global\\-error(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/about",
+      "regex": "^/about(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/about(?:/)?$"
+    },
+    {
+      "page": "/admin",
+      "regex": "^/admin(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin(?:/)?$"
+    },
+    {
+      "page": "/admin/blogs",
+      "regex": "^/admin/blogs(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/blogs(?:/)?$"
+    },
+    {
+      "page": "/admin/blogs/new",
+      "regex": "^/admin/blogs/new(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/blogs/new(?:/)?$"
+    },
+    {
+      "page": "/admin/consultant",
+      "regex": "^/admin/consultant(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/consultant(?:/)?$"
+    },
+    {
+      "page": "/admin/enquiries",
+      "regex": "^/admin/enquiries(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/enquiries(?:/)?$"
+    },
+    {
+      "page": "/admin/login",
+      "regex": "^/admin/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/login(?:/)?$"
+    },
+    {
+      "page": "/admin/microblogs",
+      "regex": "^/admin/microblogs(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/microblogs(?:/)?$"
+    },
+    {
+      "page": "/admin/microblogs/new",
+      "regex": "^/admin/microblogs/new(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/microblogs/new(?:/)?$"
+    },
+    {
+      "page": "/aml-advisory",
+      "regex": "^/aml\\-advisory(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/aml\\-advisory(?:/)?$"
+    },
+    {
+      "page": "/api/content",
+      "regex": "^/api/content(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/content(?:/)?$"
+    },
+    {
+      "page": "/api/send-email",
+      "regex": "^/api/send\\-email(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/send\\-email(?:/)?$"
+    },
+    {
+      "page": "/blog",
+      "regex": "^/blog(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/blog(?:/)?$"
+    },
+    {
+      "page": "/clients",
+      "regex": "^/clients(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/clients(?:/)?$"
+    },
+    {
+      "page": "/contact",
+      "regex": "^/contact(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/contact(?:/)?$"
+    },
+    {
+      "page": "/get-quote",
+      "regex": "^/get\\-quote(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/get\\-quote(?:/)?$"
+    },
+    {
+      "page": "/iso-10002-certification-consultants-uae",
+      "regex": "^/iso\\-10002\\-certification\\-consultants\\-uae(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/iso\\-10002\\-certification\\-consultants\\-uae(?:/)?$"
+    },
+    {
+      "page": "/iso-14001-certification-consultants-uae",
+      "regex": "^/iso\\-14001\\-certification\\-consultants\\-uae(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/iso\\-14001\\-certification\\-consultants\\-uae(?:/)?$"
+    },
+    {
+      "page": "/iso-14064-certification-consultants-uae",
+      "regex": "^/iso\\-14064\\-certification\\-consultants\\-uae(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/iso\\-14064\\-certification\\-consultants\\-uae(?:/)?$"
+    },
+    {
+      "page": "/iso-17025-certification-consultants-uae",
+      "regex": "^/iso\\-17025\\-certification\\-consultants\\-uae(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/iso\\-17025\\-certification\\-consultants\\-uae(?:/)?$"
+    },
+    {
+      "page": "/iso-18001-certification-consultants-uae",
+      "regex": "^/iso\\-18001\\-certification\\-consultants\\-uae(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/iso\\-18001\\-certification\\-consultants\\-uae(?:/)?$"
+    },
+    {
+      "page": "/iso-22000-certification-consultants-uae",
+      "regex": "^/iso\\-22000\\-certification\\-consultants\\-uae(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/iso\\-22000\\-certification\\-consultants\\-uae(?:/)?$"
+    },
+    {
+      "page": "/iso-22301-certification-consultants-uae",
+      "regex": "^/iso\\-22301\\-certification\\-consultants\\-uae(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/iso\\-22301\\-certification\\-consultants\\-uae(?:/)?$"
+    },
+    {
+      "page": "/iso-27001-certification-consultants-uae",
+      "regex": "^/iso\\-27001\\-certification\\-consultants\\-uae(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/iso\\-27001\\-certification\\-consultants\\-uae(?:/)?$"
+    },
+    {
+      "page": "/iso-31000-certification-consultants-uae",
+      "regex": "^/iso\\-31000\\-certification\\-consultants\\-uae(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/iso\\-31000\\-certification\\-consultants\\-uae(?:/)?$"
+    },
+    {
+      "page": "/iso-41001-certification-consultants-uae",
+      "regex": "^/iso\\-41001\\-certification\\-consultants\\-uae(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/iso\\-41001\\-certification\\-consultants\\-uae(?:/)?$"
+    },
+    {
+      "page": "/iso-45001-certification-consultants-uae",
+      "regex": "^/iso\\-45001\\-certification\\-consultants\\-uae(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/iso\\-45001\\-certification\\-consultants\\-uae(?:/)?$"
+    },
+    {
+      "page": "/iso-50001-certification-consultants-uae",
+      "regex": "^/iso\\-50001\\-certification\\-consultants\\-uae(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/iso\\-50001\\-certification\\-consultants\\-uae(?:/)?$"
+    },
+    {
+      "page": "/iso-9001-certification-consultants-uae",
+      "regex": "^/iso\\-9001\\-certification\\-consultants\\-uae(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/iso\\-9001\\-certification\\-consultants\\-uae(?:/)?$"
+    },
+    {
+      "page": "/iso-certification-in-uae",
+      "regex": "^/iso\\-certification\\-in\\-uae(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/iso\\-certification\\-in\\-uae(?:/)?$"
+    },
+    {
+      "page": "/iso-certification-services-uae",
+      "regex": "^/iso\\-certification\\-services\\-uae(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/iso\\-certification\\-services\\-uae(?:/)?$"
+    },
+    {
+      "page": "/iso-implementation-consultancy-uae",
+      "regex": "^/iso\\-implementation\\-consultancy\\-uae(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/iso\\-implementation\\-consultancy\\-uae(?:/)?$"
+    },
+    {
+      "page": "/iso-training-uae",
+      "regex": "^/iso\\-training\\-uae(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/iso\\-training\\-uae(?:/)?$"
+    },
+    {
+      "page": "/micro-blogs",
+      "regex": "^/micro\\-blogs(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/micro\\-blogs(?:/)?$"
+    },
+    {
+      "page": "/sa-8000-certification-consultants-uae",
+      "regex": "^/sa\\-8000\\-certification\\-consultants\\-uae(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/sa\\-8000\\-certification\\-consultants\\-uae(?:/)?$"
+    },
+    {
+      "page": "/sedex-certification-consultants-uae",
+      "regex": "^/sedex\\-certification\\-consultants\\-uae(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/sedex\\-certification\\-consultants\\-uae(?:/)?$"
+    },
+    {
+      "page": "/services",
+      "regex": "^/services(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/services(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments",
+    "clientParamParsing": false,
+    "dynamicRSCPrerender": false
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}

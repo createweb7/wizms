@@ -1,0 +1,3 @@
+module.exports=[25186,a=>{"use strict";var b=a.i(792),c=a.i(62196),d=a.i(91428);function e({src:a,alt:e,title:f}){let[g,h]=(0,d.useState)(!1);return g?null:(0,b.jsx)("div",{className:"mb-8 relative w-full h-96 rounded-lg overflow-hidden shadow-lg",children:(0,b.jsx)(c.default,{src:a,alt:e||f,fill:!0,className:"object-cover",priority:!0,onError:()=>h(!0)})})}a.s(["default",()=>e])}];
+
+//# sourceMappingURL=projects_wizms_nextjs-app_src_components_FeaturedImage_tsx_76e207eb._.js.map

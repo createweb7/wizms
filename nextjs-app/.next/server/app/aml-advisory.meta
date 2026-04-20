@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(public)/layout,_N_T_/(public)/aml-advisory/layout,_N_T_/(public)/aml-advisory/page,_N_T_/aml-advisory"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/!KHB1YmxpYyk/aml-advisory/__PAGE__",
+    "/!KHB1YmxpYyk/aml-advisory",
+    "/!KHB1YmxpYyk",
+    "/_index",
+    "/_head"
+  ]
+}

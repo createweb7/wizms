@@ -1,0 +1,3 @@
+{
+  "/(public)/get-quote/page": "app/(public)/get-quote/page.js"
+}

@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[73131,["/_next/static/chunks/4a3611fa0ac70f16.js","/_next/static/chunks/65ae8c4607f57c2f.js"],"ViewportBoundary"]
+3:I[73131,["/_next/static/chunks/4a3611fa0ac70f16.js","/_next/static/chunks/65ae8c4607f57c2f.js"],"MetadataBoundary"]
+4:"$Sreact.suspense"
+5:I[88483,["/_next/static/chunks/4a3611fa0ac70f16.js","/_next/static/chunks/65ae8c4607f57c2f.js"],"IconMark"]
+0:{"buildId":"I3GEKSVLVTWqxcEXDRaWq","rsc":["$","$1","h",{"children":[null,["$","$L2",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L3",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"AML Advisory | Wizms"}],["$","meta","1",{"name":"description","content":"Our services include the development of the regulatory universe, gap analysis and benchmarking as well as designing and implementation planning of the Policies and Procedure Manuals."}],["$","meta","2",{"name":"keywords","content":"AML Advisory, KYC Solutions, AML Compliance, Anti-Money Laundering, Regulatory Compliance, MLRO, Compliance Officer"}],["$","link","3",{"rel":"icon","href":"/favicon.ico"}],["$","$L5","4",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"loading":null,"isPartial":false}
