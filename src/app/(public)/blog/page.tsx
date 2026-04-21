@@ -233,11 +233,11 @@ export default function BlogPage() {
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 Recent Posts
               </h2>
-              <div className="space-y-6">
+              <div className="space-y-8">
                 {recentBlogs.map((blog) => (
                   <div
                     key={blog.slug}
-                    className="pb-6 border-b border-gray-200 last:border-b-0"
+                    className="pb-8 border-b border-gray-200 last:border-b-0"
                   >
                     <div>
                       <div className="flex items-center gap-2 mb-2">
