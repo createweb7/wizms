@@ -65,6 +65,24 @@ export default async function Page({
 
   return (
     <article className="min-h-screen bg-gray-50">
+      {/* Breadcrumb */}
+      <div className="border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <nav className="flex items-center gap-2 text-sm text-gray-600">
+            <Link href="/" className="hover:text-gray-900 hover:underline">Home</Link>
+            <span className="text-gray-400">/</span>
+            <Link
+              href={content.type === 'microblog' ? '/micro-blogs' : '/blog'}
+              className="hover:text-gray-900 hover:underline"
+            >
+              {content.type === 'microblog' ? 'Micro Blogs' : 'Blog'}
+            </Link>
+            <span className="text-gray-400">/</span>
+            <span className="text-gray-900 font-semibold line-clamp-1">{content.title}</span>
+          </nav>
+        </div>
+      </div>
+
       {/* Main Content with Sidebar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -111,8 +129,8 @@ export default async function Page({
             <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
               {content.content.includes("<") ? (
                 <div
-                  className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-4 prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-700 prose-strong:text-gray-900 prose-em:text-gray-800 prose-li:text-gray-700 prose-li:mb-2"
-                  dangerouslySetInnerHTML={{ __html: content.content }}
+                  className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-4 prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-700 prose-strong:text-gray-900 prose-em:text-gray-800 prose-li:text-gray-700 prose-li:mb-2 [&_a]:text-blue-600 [&_a]:underline [&_a:hover]:text-blue-800"
+                  dangerouslySetInnerHTML={{ __html: content.content.replace(/<h1[^>]*>.*?<\/h1>/i, '') }}
                 />
               ) : (
                 <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">

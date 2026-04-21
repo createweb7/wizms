@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { FaFacebook, FaWhatsapp, FaLinkedin } from "react-icons/fa";
 import { MdPhone, MdEmail } from "react-icons/md";
 
@@ -14,9 +15,20 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Logo & Contact Info */}
           <div className="space-y-6">
-            <div>
-              <h3 className="text-2xl font-bold mb-2">WIZ Management</h3>
-              <p className="text-gray-300">Solutions</p>
+            <div className="flex flex-col items-start gap-4">
+              <div className="bg-white rounded-lg p-3">
+                <Image
+                  src="/logo.webp"
+                  alt="WIZMS Logo"
+                  width={120}
+                  height={120}
+                  className="object-contain"
+                />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold">WIZ Management</h3>
+                <p className="text-2xl font-bold">Solutions</p>
+              </div>
             </div>
             <div className="text-sm text-gray-400 leading-relaxed">
               <p>Office 31, Corridor 15,</p>

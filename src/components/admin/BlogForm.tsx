@@ -3,6 +3,9 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase, Content } from "@/lib/supabase-data";
+import { useEditor, EditorContent } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
+import Link from "@tiptap/extension-link";
 
 interface BlogFormProps {
   initialBlog?: Content;
@@ -27,6 +30,23 @@ export default function BlogForm({ initialBlog }: BlogFormProps) {
     featured_image_alt: "",
   });
 
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+      Link.configure({
+        openOnClick: false,
+      }),
+    ],
+    content: formData.content,
+    immediatelyRender: false,
+    onUpdate: ({ editor }) => {
+      setFormData((prev) => ({
+        ...prev,
+        content: editor.getHTML(),
+      }));
+    },
+  });
+
   useEffect(() => {
     if (initialBlog) {
       setFormData({
@@ -45,8 +65,11 @@ export default function BlogForm({ initialBlog }: BlogFormProps) {
         featured_image: initialBlog.featured_image || "",
         featured_image_alt: initialBlog.featured_image_alt || "",
       });
+      if (editor) {
+        editor.commands.setContent(initialBlog.content || "");
+      }
     }
-  }, [initialBlog]);
+  }, [initialBlog, editor]);
 
   const handleInputChange = (
     e: React.ChangeEvent<
@@ -181,16 +204,74 @@ export default function BlogForm({ initialBlog }: BlogFormProps) {
         </div>
 
         <div className="form-group">
-          <label htmlFor="content">Content *</label>
-          <textarea
+          <label htmlFor="content">Content * (Rich Text Editor)</label>
+          <div className="editor-toolbar" style={{ marginBottom: "10px", display: "flex", gap: "5px", flexWrap: "wrap", padding: "10px", backgroundColor: "#f5f5f5", borderRadius: "4px" }}>
+            <button
+              type="button"
+              onClick={() => editor?.chain().focus().toggleBold().run()}
+              className="editor-btn"
+              style={{ padding: "8px 12px", backgroundColor: editor?.isActive("bold") ? "#0066cc" : "#ddd", color: editor?.isActive("bold") ? "#fff" : "#000", border: "none", borderRadius: "4px", cursor: "pointer" }}
+            >
+              Bold
+            </button>
+            <button
+              type="button"
+              onClick={() => editor?.chain().focus().toggleItalic().run()}
+              className="editor-btn"
+              style={{ padding: "8px 12px", backgroundColor: editor?.isActive("italic") ? "#0066cc" : "#ddd", color: editor?.isActive("italic") ? "#fff" : "#000", border: "none", borderRadius: "4px", cursor: "pointer" }}
+            >
+              Italic
+            </button>
+            <button
+              type="button"
+              onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()}
+              className="editor-btn"
+              style={{ padding: "8px 12px", backgroundColor: editor?.isActive("heading", { level: 2 }) ? "#0066cc" : "#ddd", color: editor?.isActive("heading", { level: 2 }) ? "#fff" : "#000", border: "none", borderRadius: "4px", cursor: "pointer" }}
+            >
+              H2
+            </button>
+            <button
+              type="button"
+              onClick={() => editor?.chain().focus().toggleBulletList().run()}
+              className="editor-btn"
+              style={{ padding: "8px 12px", backgroundColor: editor?.isActive("bulletList") ? "#0066cc" : "#ddd", color: editor?.isActive("bulletList") ? "#fff" : "#000", border: "none", borderRadius: "4px", cursor: "pointer" }}
+            >
+              Bullet List
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                const url = prompt("Enter URL:");
+                if (url) {
+                  editor?.chain().focus().setLink({ href: url }).run();
+                }
+              }}
+              className="editor-btn"
+              style={{ padding: "8px 12px", backgroundColor: editor?.isActive("link") ? "#0066cc" : "#ddd", color: editor?.isActive("link") ? "#fff" : "#000", border: "none", borderRadius: "4px", cursor: "pointer" }}
+            >
+              Link
+            </button>
+            <button
+              type="button"
+              onClick={() => editor?.chain().focus().clearNodes().run()}
+              className="editor-btn"
+              style={{ padding: "8px 12px", backgroundColor: "#ddd", border: "none", borderRadius: "4px", cursor: "pointer" }}
+            >
+              Clear Format
+            </button>
+          </div>
+          <EditorContent
+            editor={editor}
             id="content"
-            name="content"
-            value={formData.content}
-            onChange={handleInputChange}
-            placeholder="Enter blog content"
-            rows={10}
-            required
-            disabled={isLoading}
+            style={{
+              border: "1px solid #ccc",
+              borderRadius: "4px",
+              padding: "12px",
+              minHeight: "300px",
+              backgroundColor: "#fff",
+              fontFamily: "monospace",
+              fontSize: "14px",
+            }}
           />
         </div>
       </div>

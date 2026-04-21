@@ -88,16 +88,14 @@ export default function MicroblogsPage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <div
-        className="w-full px-4 sm:px-6 lg:px-8 py-12"
-        style={{ backgroundColor: "#295e8f" }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold text-white mb-4">Micro Blogs</h1>
-          <p className="text-blue-100 text-lg">
-            Quick insights and tips on ISO certification
-          </p>
+      {/* Breadcrumb */}
+      <div className="border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <nav className="flex items-center gap-2 text-sm text-gray-600">
+            <Link href="/" className="hover:text-gray-900 hover:underline">Home</Link>
+            <span className="text-gray-400">/</span>
+            <span className="text-gray-900 font-semibold">Micro Blogs</span>
+          </nav>
         </div>
       </div>
 
