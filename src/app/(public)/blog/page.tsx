@@ -237,7 +237,7 @@ export default function BlogPage() {
                 {recentBlogs.map((blog) => (
                   <div
                     key={blog.slug}
-                    className="pb-8 border-b border-gray-200 last:border-b-0"
+                    className="bg-gray-50 p-4 rounded-lg"
                   >
                     <div>
                       <div className="flex items-center gap-2 mb-2">
