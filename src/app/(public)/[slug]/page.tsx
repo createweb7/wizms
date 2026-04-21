@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import FeaturedImage from "@/components/FeaturedImage";
-import { getContentBySlug, getAllSlugs } from "@/lib/supabase-data";
+import { getContentBySlug, getAllSlugs, getContentByType } from "@/lib/supabase-data";
+import Link from "next/link";
+import { BlogCard } from "@/components/BlogCard";
 
 export async function generateMetadata({
   params,
@@ -45,90 +47,182 @@ export default async function Page({
 }) {
   const { slug } = await params;
   const content = await getContentBySlug(slug);
+  const allBlogs = await getContentByType("blog", 100);
 
   if (!content || !content.published) {
     notFound();
   }
 
+  // Get 5 most recent blogs (excluding current post)
+  const recentBlogs = allBlogs
+    .filter((blog) => blog.slug !== slug)
+    .sort(
+      (a, b) =>
+        new Date(b.publish_date || "").getTime() -
+        new Date(a.publish_date || "").getTime()
+    )
+    .slice(0, 5);
+
   return (
-    <article className="min-h-screen bg-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Header */}
-        <header className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            {content.title}
-          </h1>
-          <div className="flex items-center gap-4 text-gray-600">
-            {content.publish_date && (
-              <time dateTime={content.publish_date}>
-                {new Date(content.publish_date).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </time>
+    <article className="min-h-screen bg-gray-50">
+      {/* Main Content with Sidebar */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left Column - Article Content */}
+          <div className="lg:col-span-2">
+            {/* Title and Metadata */}
+            <header className="mb-8">
+              <h1 className="text-5xl font-bold text-gray-900 mb-4">
+                {content.title}
+              </h1>
+              <div className="flex items-center gap-4 text-gray-600">
+                {content.publish_date && (
+                  <time dateTime={content.publish_date} className="text-sm font-medium">
+                    {new Date(content.publish_date).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </time>
+                )}
+                {content.category && (
+                  <span
+                    className="inline-block px-4 py-1 rounded-full text-sm font-semibold text-white"
+                    style={{ backgroundColor: "#295e8f" }}
+                  >
+                    {content.category}
+                  </span>
+                )}
+              </div>
+            </header>
+
+            {/* Featured Image */}
+            {(content as any).featured_image && (
+              <div className="mb-8">
+                <FeaturedImage
+                  src={(content as any).featured_image}
+                  alt={(content as any).featured_image_alt || content.title}
+                  title={content.title}
+                />
+              </div>
             )}
-            {content.category && (
-              <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                {content.category}
-              </span>
-            )}
-          </div>
-        </header>
 
-        {/* Featured Image */}
-        {(content as any).featured_image && (
-          <FeaturedImage
-            src={(content as any).featured_image}
-            alt={(content as any).featured_image_alt || content.title}
-            title={content.title}
-          />
-        )}
-
-        {/* Meta Description */}
-        {content.meta_description && (
-          <div className="mb-8 p-4 bg-gray-50 rounded-lg border-l-4 border-blue-500">
-            <p className="text-gray-700 italic">{content.meta_description}</p>
-          </div>
-        )}
-
-        {/* Main Content */}
-        {content.content.includes("<") ? (
-          // If content contains HTML tags, render as HTML
-          <div
-            className="prose prose-lg max-w-none mb-8 prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-4 prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-700 prose-strong:text-gray-900 prose-em:text-gray-800 prose-li:text-gray-700 prose-li:mb-2"
-            dangerouslySetInnerHTML={{ __html: content.content }}
-          />
-        ) : (
-          // If plain text, split by multiple newlines or single newline before capital letter
-          <div className="prose prose-lg max-w-none mb-8 text-gray-700 leading-relaxed">
-            {content.content
-              // Split by double newlines OR single newline followed by spaces and capital letter
-              .split(/\n\n+|\n(?=\s*[A-Z])/)
-              .filter((p) => p.trim().length > 0)
-              .map((paragraph, i) => (
-                <p key={i} className="mb-6 text-justify leading-8">
-                  {paragraph.trim().replace(/\n/g, " ").replace(/\s+/g, " ")}
-                </p>
-              ))}
-          </div>
-        )}
-
-        {/* Keywords */}
-        {content.meta_keywords && (
-          <footer className="mt-12 pt-8 border-t border-gray-200">
-            <div className="flex flex-wrap gap-2">
-              {content.meta_keywords.split(",").map((keyword, i) => (
-                <span
-                  key={i}
-                  className="text-xs font-semibold text-gray-600 bg-gray-100 px-2 py-1 rounded"
-                >
-                  {keyword.trim()}
-                </span>
-              ))}
+            {/* Main Content */}
+            <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
+              {content.content.includes("<") ? (
+                <div
+                  className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-4 prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-700 prose-strong:text-gray-900 prose-em:text-gray-800 prose-li:text-gray-700 prose-li:mb-2"
+                  dangerouslySetInnerHTML={{ __html: content.content }}
+                />
+              ) : (
+                <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                  {content.content
+                    .split(/\n\n+|\n(?=\s*[A-Z])/)
+                    .filter((p) => p.trim().length > 0)
+                    .map((paragraph, i) => (
+                      <p key={i} className="mb-6 text-justify leading-8">
+                        {paragraph.trim().replace(/\n/g, " ").replace(/\s+/g, " ")}
+                      </p>
+                    ))}
+                </div>
+              )}
             </div>
-          </footer>
-        )}
+
+            {/* Keywords */}
+            {content.meta_keywords && (
+              <div className="bg-white rounded-lg shadow-sm p-6">
+                <h3 className="text-sm font-semibold text-gray-900 mb-4">Keywords</h3>
+                <div className="flex flex-wrap gap-2">
+                  {content.meta_keywords.split(",").map((keyword, i) => (
+                    <span
+                      key={i}
+                      className="text-xs font-semibold text-white px-3 py-1 rounded-full"
+                      style={{ backgroundColor: "#ee991a" }}
+                    >
+                      {keyword.trim()}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Right Column - Sidebar */}
+          <div className="lg:col-span-1 space-y-6 sticky top-6 h-fit">
+            {/* Search Box */}
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <h3 className="text-lg font-bold text-gray-900 mb-4" style={{ color: "#295e8f" }}>
+                Search
+              </h3>
+              <form action="/blog" method="GET" className="flex gap-2">
+                <input
+                  type="text"
+                  placeholder="Search blogs..."
+                  name="q"
+                  className="flex-1 px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 text-sm"
+                  style={{ "--tw-ring-color": "#295e8f" } as React.CSSProperties}
+                />
+                <button
+                  type="submit"
+                  className="px-4 py-3 text-white font-semibold rounded-lg hover:opacity-90 transition-opacity"
+                  style={{ backgroundColor: "#ee991a" }}
+                >
+                  🔍
+                </button>
+              </form>
+            </div>
+
+            {/* Recent Posts */}
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <h3 className="text-lg font-bold text-gray-900 mb-4" style={{ color: "#295e8f" }}>
+                Recent Posts
+              </h3>
+              <div className="space-y-3">
+                {recentBlogs.map((blog) => (
+                  <Link key={blog.id || blog.slug} href={`/${blog.slug}`}>
+                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
+                      <h4 className="font-semibold text-sm text-gray-900 line-clamp-2 mb-2">
+                        {blog.title}
+                      </h4>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-gray-500">
+                          {new Date(blog.publish_date || "").toLocaleDateString("en-US", {
+                            month: "short",
+                            day: "numeric",
+                            year: "numeric",
+                          })}
+                        </span>
+                        {blog.category && (
+                          <span
+                            className="text-xs font-semibold px-2 py-1 rounded-full text-white"
+                            style={{ backgroundColor: "#295e8f" }}
+                          >
+                            {blog.category}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* CTA Box */}
+            <div className="rounded-lg shadow-md p-6 text-center text-white" style={{ backgroundColor: "#295e8f" }}>
+              <h3 className="text-lg font-bold mb-2">Need Consultancy?</h3>
+              <p className="text-sm mb-4 text-blue-100">
+                Get expert guidance on ISO certifications
+              </p>
+              <Link
+                href="/contact"
+                className="inline-block px-6 py-2 rounded-lg font-semibold transition-all hover:opacity-90"
+                style={{ backgroundColor: "#ee991a", color: "white" }}
+              >
+                Contact Us →
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     </article>
   );
