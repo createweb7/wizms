@@ -16,7 +16,7 @@ export default function FloatingQuoteButton() {
       {/* Mobile only - visible only on small screens */}
       <Link
         href="/get-quote"
-        className="fixed bottom-6 right-6 md:hidden"
+        className="fixed bottom-6 left-1/2 -translate-x-1/2 md:hidden"
         aria-label="Get Quote"
       >
         <div className="relative">
