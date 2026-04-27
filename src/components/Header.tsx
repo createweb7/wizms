@@ -207,6 +207,7 @@ export default function Header() {
             {/* Mobile Menu Button */}
             <button
               className="lg:hidden"
+              aria-label="Toggle mobile menu"
               onClick={() => setMenuOpen(!menuOpen)}
             >
               <svg

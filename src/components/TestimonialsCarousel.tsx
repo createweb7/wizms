@@ -116,6 +116,7 @@ export default function TestimonialsCarousel() {
           {/* Navigation Arrows */}
           <button
             onClick={handlePrev}
+            aria-label="Previous testimonial"
             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 md:-translate-x-12 p-3 rounded-full transition-all hover:scale-110"
             style={{ backgroundColor: "#295e8f", color: "white" }}
           >
@@ -124,6 +125,7 @@ export default function TestimonialsCarousel() {
 
           <button
             onClick={handleNext}
+            aria-label="Next testimonial"
             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 md:translate-x-12 p-3 rounded-full transition-all hover:scale-110"
             style={{ backgroundColor: "#295e8f", color: "white" }}
           >
@@ -136,6 +138,7 @@ export default function TestimonialsCarousel() {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
+                aria-label={`Go to testimonial ${index + 1}`}
                 className={`w-3 h-3 rounded-full transition-all ${
                   index === currentIndex ? "w-8" : ""
                 }`}

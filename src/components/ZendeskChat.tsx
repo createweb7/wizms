@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 declare global {
   interface Window {
@@ -9,7 +10,14 @@ declare global {
 }
 
 export default function ZendeskChat() {
+  const pathname = usePathname();
+
   useEffect(() => {
+    // Don't load chat on admin pages
+    if (pathname?.startsWith("/admin")) {
+      return;
+    }
+
     // Check if not on mobile device
     const ua = navigator.userAgent.toLowerCase();
     const platformName = ua.match(/ip(?:ad|od|hone)/)
@@ -40,7 +48,7 @@ export default function ZendeskChat() {
           e!.parentNode!.insertBefore($, e);
         })(document, "script");
     }
-  }, []);
+  }, [pathname]);
 
   return null;
 }

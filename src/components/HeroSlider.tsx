@@ -148,6 +148,7 @@ export default function HeroSlider() {
       <button
         onClick={prevSlide}
         onMouseEnter={() => setIsAutoPlay(false)}
+        aria-label="Previous slide"
         className="absolute left-8 top-1/2 -translate-y-1/2 z-10 bg-black/60 hover:bg-black/80 text-white p-3 rounded-full transition-all"
       >
         <MdKeyboardArrowLeft className="w-8 h-8" />
@@ -156,6 +157,7 @@ export default function HeroSlider() {
       <button
         onClick={nextSlide}
         onMouseEnter={() => setIsAutoPlay(false)}
+        aria-label="Next slide"
         className="absolute right-8 top-1/2 -translate-y-1/2 z-10 bg-black/60 hover:bg-black/80 text-white p-3 rounded-full transition-all"
       >
         <MdKeyboardArrowRight className="w-8 h-8" />
@@ -167,6 +169,7 @@ export default function HeroSlider() {
           <button
             key={index}
             onClick={() => goToSlide(index)}
+            aria-label={`Go to slide ${index + 1}`}
             className={`w-3 h-3 rounded-full transition-all ${
               index === currentSlide
                 ? "bg-white w-8"
