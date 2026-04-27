@@ -30,9 +30,6 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Preconnect to critical origins */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://www.google.com" />
         <link rel="preconnect" href="https://www.wizms.net" crossOrigin="anonymous" />
 
         <script

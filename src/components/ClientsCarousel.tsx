@@ -126,6 +126,8 @@ export default function ClientsCarousel() {
                 <img
                   src={client.src}
                   alt={client.name}
+                  width={120}
+                  height={96}
                   onError={(e) => {
                     (e.target as HTMLImageElement).src =
                       "data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%2280%22%3E%3Crect fill=%22%23f0f0f0%22 width=%22100%22 height=%2280%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2212%22 fill=%22%23999%22 text-anchor=%22middle%22 dy=%22.3em%22%3E" +
@@ -141,6 +143,8 @@ export default function ClientsCarousel() {
                 <img
                   src={client.src}
                   alt={client.name}
+                  width={120}
+                  height={96}
                   onError={(e) => {
                     (e.target as HTMLImageElement).src =
                       "data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%2280%22%3E%3Crect fill=%22%23f0f0f0%22 width=%22100%22 height=%2280%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2212%22 fill=%22%23999%22 text-anchor=%22middle%22 dy=%22.3em%22%3E" +
