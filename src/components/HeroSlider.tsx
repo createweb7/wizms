@@ -100,7 +100,7 @@ export default function HeroSlider() {
             className="object-cover"
             priority={index === 0}
             sizes="100vw"
-            quality={75}
+            quality={index === 0 ? 75 : 60}
             {...(index === 0 && { fetchPriority: "high" as const })}
           />
 

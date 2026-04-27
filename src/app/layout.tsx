@@ -29,8 +29,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Preconnect to critical origins */}
+        {/* Preconnect to critical CDN origins */}
         <link rel="preconnect" href="https://www.wizms.net" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.gstatic.com" crossOrigin="anonymous" />
 
         <script
           src="https://www.google.com/recaptcha/api.js"
