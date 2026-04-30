@@ -1,33 +1,16 @@
-'use client';
+import { Metadata } from 'next';
+import { getStaticPageBySlug } from '@/lib/supabase-data';
+import HomeContent from './HomeContent';
 
-import Link from 'next/link';
-import HeroSlider from '@/components/HeroSlider';
-import AboutSection from '@/components/AboutSection';
-import CertificationsGrid from '@/components/CertificationsGrid';
-import ClientsCarousel from '@/components/ClientsCarousel';
-import TestimonialsCarousel from '@/components/TestimonialsCarousel';
-import HowToGetISO from '@/components/HowToGetISO';
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getStaticPageBySlug('home');
+  return {
+    title: page?.meta_title || 'WIZ Management Solutions | ISO Certification Consultants',
+    description: page?.meta_description || 'Expert ISO certification consulting services in Dubai, UAE. We help organizations achieve ISO 9001, ISO 14001, ISO 45001 and other certifications.',
+    keywords: page?.meta_keywords || undefined,
+  };
+}
 
 export default function Home() {
-  return (
-    <div>
-      {/* Hero Slider */}
-      <HeroSlider />
-
-      {/* About Section */}
-      <AboutSection />
-
-      {/* Certifications Grid */}
-      <CertificationsGrid />
-
-      {/* Clients Carousel */}
-      <ClientsCarousel />
-
-      {/* Testimonials Carousel */}
-      <TestimonialsCarousel />
-
-      {/* How to Get ISO */}
-      <HowToGetISO />
-    </div>
-  );
+  return <HomeContent />;
 }

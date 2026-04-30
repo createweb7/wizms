@@ -2,12 +2,16 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { MdCheckCircle } from 'react-icons/md';
 import EnquiryForm from '@/components/EnquiryForm';
+import { getStaticPageBySlug } from '@/lib/supabase-data';
 
-export const metadata: Metadata = {
-  title: 'ISO Training in Dubai | ISO Training in UAE | Abudhabi | Sharjah | Wizms',
-  description: 'ISO training in Dubai, UAE: Provides ISO training in ISO 9001, OHSAS 18001, ISO 17025, ISO 14001, ISO 27001, ISO implementation training, ISO documentation training, Awareness training and internal auditor training in Dubai, UAE.',
-  keywords: 'ISO Training in Dubai, ISO Training in UAE, ISO Certification Training, ISO Training Courses, ISO Awareness Training, ISO Internal Audit Training, ISO Documentation Training, ISO Training in Abu Dhabi, ISO Training in Sharjah',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getStaticPageBySlug('iso-training-uae');
+  return {
+    title: page?.meta_title || 'ISO Training in Dubai | ISO Training in UAE | Abudhabi | Sharjah | Wizms',
+    description: page?.meta_description || 'ISO training in Dubai, UAE: Provides ISO training in ISO 9001, OHSAS 18001, ISO 17025, ISO 14001, ISO 27001, ISO implementation training, ISO documentation training, Awareness training and internal auditor training in Dubai, UAE.',
+    keywords: page?.meta_keywords || 'ISO Training in Dubai, ISO Training in UAE, ISO Certification Training, ISO Training Courses, ISO Awareness Training, ISO Internal Audit Training, ISO Documentation Training, ISO Training in Abu Dhabi, ISO Training in Sharjah',
+  };
+}
 
 export default function ISOTrainingPage() {
   return (

@@ -149,6 +149,32 @@ export async function getContentBySlug(slug: string): Promise<Content | null> {
   }
 }
 
+export interface StaticPage {
+  id?: number;
+  slug: string;
+  page_name: string;
+  meta_title?: string;
+  meta_description?: string;
+  meta_keywords?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export async function getStaticPageBySlug(slug: string): Promise<StaticPage | null> {
+  try {
+    const { data, error } = await supabase
+      .from("static_pages")
+      .select("*")
+      .eq("slug", slug)
+      .single();
+
+    if (error) return null;
+    return data;
+  } catch {
+    return null;
+  }
+}
+
 export async function getAllSlugs(): Promise<string[]> {
   try {
     const blogs = await getContentByType("blog");

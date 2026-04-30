@@ -1,11 +1,15 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { getStaticPageBySlug } from '@/lib/supabase-data';
 
-export const metadata: Metadata = {
-  title: 'About WIZ Management Solutions | ISO Certification Consultants',
-  description: 'Learn about WIZ Management Solutions - expert ISO certification consultants with proven track record in helping organizations achieve and maintain ISO compliance.',
-  keywords: 'about WIZ, ISO certification consultants, management solutions, ISO expertise',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getStaticPageBySlug('about');
+  return {
+    title: page?.meta_title || 'About WIZ Management Solutions | ISO Certification Consultants',
+    description: page?.meta_description || 'Learn about WIZ Management Solutions - expert ISO certification consultants with proven track record in helping organizations achieve and maintain ISO compliance.',
+    keywords: page?.meta_keywords || 'about WIZ, ISO certification consultants, management solutions, ISO expertise',
+  };
+}
 
 export default function AboutPage() {
   return (

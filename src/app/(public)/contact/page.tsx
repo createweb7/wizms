@@ -2,12 +2,16 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
 import { MdPhone, MdEmail, MdLocationOn, MdAccessTime } from 'react-icons/md';
+import { getStaticPageBySlug } from '@/lib/supabase-data';
 
-export const metadata: Metadata = {
-  title: 'Contact WIZ Management Solutions | ISO Certification Services',
-  description: 'Get in touch with WIZ Management Solutions for ISO certification consulting. Contact us today to discuss your organization\'s certification needs.',
-  keywords: 'contact WIZ, ISO certification inquiries, consulting contact, management solutions contact',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getStaticPageBySlug('contact');
+  return {
+    title: page?.meta_title || 'Contact WIZ Management Solutions | ISO Certification Services',
+    description: page?.meta_description || "Get in touch with WIZ Management Solutions for ISO certification consulting. Contact us today to discuss your organization's certification needs.",
+    keywords: page?.meta_keywords || 'contact WIZ, ISO certification inquiries, consulting contact, management solutions contact',
+  };
+}
 
 export default function ContactPage() {
   return (

@@ -1,12 +1,16 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
+import { getStaticPageBySlug } from '@/lib/supabase-data';
 
-export const metadata: Metadata = {
-  title: 'Our Clients | WIZ Management Solutions',
-  description: 'See the organizations we have successfully guided through ISO certification processes across various industries.',
-  keywords: 'WIZ clients, ISO certification success, client testimonials, industry expertise',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getStaticPageBySlug('clients');
+  return {
+    title: page?.meta_title || 'Our Clients | WIZ Management Solutions',
+    description: page?.meta_description || 'See the organizations we have successfully guided through ISO certification processes across various industries.',
+    keywords: page?.meta_keywords || 'WIZ clients, ISO certification success, client testimonials, industry expertise',
+  };
+}
 
 export default function ClientsPage() {
   // Logo filenames - these will be served as WebP format

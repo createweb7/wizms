@@ -1,12 +1,16 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
 import EnquiryForm from '@/components/EnquiryForm';
+import { getStaticPageBySlug } from '@/lib/supabase-data';
 
-export const metadata: Metadata = {
-  title: 'AML Advisory | Wizms',
-  description: 'Our services include the development of the regulatory universe, gap analysis and benchmarking as well as designing and implementation planning of the Policies and Procedure Manuals.',
-  keywords: 'AML Advisory, KYC Solutions, AML Compliance, Anti-Money Laundering, Regulatory Compliance, MLRO, Compliance Officer',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getStaticPageBySlug('aml-advisory');
+  return {
+    title: page?.meta_title || 'AML Advisory | Wizms',
+    description: page?.meta_description || 'Our services include the development of the regulatory universe, gap analysis and benchmarking as well as designing and implementation planning of the Policies and Procedure Manuals.',
+    keywords: page?.meta_keywords || 'AML Advisory, KYC Solutions, AML Compliance, Anti-Money Laundering, Regulatory Compliance, MLRO, Compliance Officer',
+  };
+}
 
 export default function AMLAdvisoryPage() {
   return (

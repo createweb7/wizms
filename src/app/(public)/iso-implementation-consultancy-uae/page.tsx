@@ -2,12 +2,16 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { MdCheckCircle } from 'react-icons/md';
 import EnquiryForm from '@/components/EnquiryForm';
+import { getStaticPageBySlug } from '@/lib/supabase-data';
 
-export const metadata: Metadata = {
-  title: 'ISO Implementation consultancy in Dubai| ISO Implementation consultancy UAE | Wizms',
-  description: 'Wizms is the No.1 ISO Implementation Consultancy in Dubai, UAE. Wizms is considered to be the best consultancy with great approach, fastest service delivery, completion & effectiveness of the implementation.',
-  keywords: 'ISO Implementation Consultancy in Dubai, ISO Implementation Consultancy, ISO Implementation Consultancy in UAE, ISO Implementation Consultancy in Abu Dhabi, ISO Consultancy in UAE, ISO Implementation Consultancy in Sharjah, Best ISO Consultancy in UAE',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getStaticPageBySlug('iso-implementation-consultancy-uae');
+  return {
+    title: page?.meta_title || 'ISO Implementation consultancy in Dubai| ISO Implementation consultancy UAE | Wizms',
+    description: page?.meta_description || 'Wizms is the No.1 ISO Implementation Consultancy in Dubai, UAE. Wizms is considered to be the best consultancy with great approach, fastest service delivery, completion & effectiveness of the implementation.',
+    keywords: page?.meta_keywords || 'ISO Implementation Consultancy in Dubai, ISO Implementation Consultancy, ISO Implementation Consultancy in UAE, ISO Implementation Consultancy in Abu Dhabi, ISO Consultancy in UAE, ISO Implementation Consultancy in Sharjah, Best ISO Consultancy in UAE',
+  };
+}
 
 export default function ISOImplementationPage() {
   return (
