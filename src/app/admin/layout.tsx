@@ -111,7 +111,6 @@ export default function AdminLayout({
               <MdPages size={20} />
               <span>Static Pages</span>
             </Link>
-          </div>
 
             <Link
               href="/admin/sitemap"
