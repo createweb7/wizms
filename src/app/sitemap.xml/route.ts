@@ -7,24 +7,24 @@ const supabase = createClient(
 );
 
 export async function GET() {
-  try {
-    const { data, error } = await supabase
-      .from("site_settings")
-      .select("value")
-      .eq("key", "sitemap")
-      .single();
+  const { data, error } = await supabase
+    .from("site_settings")
+    .select("value")
+    .eq("key", "sitemap")
+    .maybeSingle();
 
-    if (error || !data?.value) {
-      return new NextResponse("Sitemap not found", { status: 404 });
-    }
-
-    return new NextResponse(data.value, {
-      headers: {
-        "Content-Type": "application/xml; charset=utf-8",
-        "Cache-Control": "public, max-age=3600",
-      },
-    });
-  } catch {
-    return new NextResponse("Internal Server Error", { status: 500 });
+  if (error) {
+    return new NextResponse(`Supabase error: ${error.message}`, { status: 500 });
   }
+
+  if (!data?.value) {
+    return new NextResponse("Sitemap not found — upload one via Admin > Sitemap", { status: 404 });
+  }
+
+  return new NextResponse(data.value, {
+    headers: {
+      "Content-Type": "application/xml; charset=utf-8",
+      "Cache-Control": "public, max-age=3600",
+    },
+  });
 }
