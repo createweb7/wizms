@@ -36,15 +36,32 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid XML: missing <urlset> root element" }, { status: 400 });
     }
 
-    const { error } = await supabase
+    // Try update first, then insert if not exists
+    const { data: existing } = await supabase
       .from("site_settings")
-      .upsert({ key: "sitemap", value: content, updated_at: new Date().toISOString() });
+      .select("key")
+      .eq("key", "sitemap")
+      .single();
 
-    if (error) throw error;
+    let error;
+    if (existing) {
+      ({ error } = await supabase
+        .from("site_settings")
+        .update({ value: content, updated_at: new Date().toISOString() })
+        .eq("key", "sitemap"));
+    } else {
+      ({ error } = await supabase
+        .from("site_settings")
+        .insert({ key: "sitemap", value: content, updated_at: new Date().toISOString() }));
+    }
+
+    if (error) {
+      return NextResponse.json({ error: error.message || JSON.stringify(error) }, { status: 500 });
+    }
 
     return NextResponse.json({ success: true });
   } catch (err) {
-    const msg = err instanceof Error ? err.message : "Failed to save sitemap";
+    const msg = err instanceof Error ? err.message : String(err);
     return NextResponse.json({ error: msg }, { status: 500 });
   }
 }
