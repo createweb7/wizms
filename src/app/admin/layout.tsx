@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
-import { MdDashboard, MdArticle, MdMessage, MdLogout, MdBusiness, MdInbox, MdPages } from "react-icons/md";
+import { MdDashboard, MdArticle, MdMessage, MdLogout, MdBusiness, MdInbox, MdPages, MdMap } from "react-icons/md";
 import AdminHeader from "@/components/admin/AdminHeader";
 import "@/styles/admin.css";
 
@@ -110,6 +110,17 @@ export default function AdminLayout({
             >
               <MdPages size={20} />
               <span>Static Pages</span>
+            </Link>
+          </div>
+
+            <Link
+              href="/admin/sitemap"
+              className={`nav-link ${
+                pathname?.includes("/admin/sitemap") ? "active" : ""
+              }`}
+            >
+              <MdMap size={20} />
+              <span>Sitemap</span>
             </Link>
           </div>
 
