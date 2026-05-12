@@ -55,7 +55,7 @@ export default function Header() {
     },
     {
       label: "ISO 14064-1 Certification",
-      href: "/iso-14064-certification-consultants-uae",
+      href: "/iso-14064-1-certification-consultants-uae",
     },
     {
       label: "OHSMS-ISO 45001 Certification",
