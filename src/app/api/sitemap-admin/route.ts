@@ -1,15 +1,26 @@
 import { NextRequest, NextResponse } from "next/server";
-import { promises as fs } from "fs";
-import path from "path";
+import { createClient } from "@supabase/supabase-js";
 
-const SITEMAP_PATH = path.join(process.cwd(), "public", "sitemap.xml");
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
 
 export async function GET() {
   try {
-    const content = await fs.readFile(SITEMAP_PATH, "utf-8");
-    return NextResponse.json({ content });
+    const { data, error } = await supabase
+      .from("site_settings")
+      .select("value")
+      .eq("key", "sitemap")
+      .single();
+
+    if (error || !data) {
+      return NextResponse.json({ content: "" });
+    }
+
+    return NextResponse.json({ content: data.value });
   } catch {
-    return NextResponse.json({ error: "Failed to read sitemap.xml" }, { status: 500 });
+    return NextResponse.json({ error: "Failed to read sitemap" }, { status: 500 });
   }
 }
 
@@ -25,9 +36,15 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid XML: missing <urlset> root element" }, { status: 400 });
     }
 
-    await fs.writeFile(SITEMAP_PATH, content, "utf-8");
+    const { error } = await supabase
+      .from("site_settings")
+      .upsert({ key: "sitemap", value: content, updated_at: new Date().toISOString() });
+
+    if (error) throw error;
+
     return NextResponse.json({ success: true });
-  } catch {
-    return NextResponse.json({ error: "Failed to write sitemap.xml" }, { status: 500 });
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : "Failed to save sitemap";
+    return NextResponse.json({ error: msg }, { status: 500 });
   }
 }
