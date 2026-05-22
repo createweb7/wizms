@@ -122,7 +122,10 @@ export default function BlogForm({ initialBlog }: BlogFormProps) {
 
       // Strip fields that don't exist as columns in the blogs table
       const { id, type, ...blogData } = formData as any;
-      console.log("Saving blog data:", blogData);
+      // Always ensure url is set
+      if (!blogData.url) {
+        blogData.url = `https://www.wizms.net/${blogData.slug}`;
+      }
 
       if (initialBlog?.id) {
         const { error: updateError } = await supabase
@@ -209,6 +212,7 @@ export default function BlogForm({ initialBlog }: BlogFormProps) {
             disabled={isLoading}
           />
         </div>
+
 
         <div className="form-group">
           <label htmlFor="content">Content * (Rich Text Editor)</label>
