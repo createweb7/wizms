@@ -88,10 +88,13 @@ export default function MicroblogForm({
     const { name, value, type } = e.target;
     const checked = (e.target as HTMLInputElement).checked;
 
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+    setFormData((prev) => {
+      const updated = { ...prev, [name]: type === "checkbox" ? checked : value };
+      if (name === "slug") {
+        updated.url = `https://www.wizms.net/${value}`;
+      }
+      return updated;
+    });
   };
 
   const generateSlug = (title: string) => {
@@ -105,10 +108,12 @@ export default function MicroblogForm({
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const title = e.target.value;
+    const slug = generateSlug(title);
     setFormData((prev) => ({
       ...prev,
       title,
-      slug: generateSlug(title),
+      slug,
+      url: `https://www.wizms.net/${slug}`,
     }));
   };
 
@@ -291,7 +296,7 @@ export default function MicroblogForm({
         // Create new microblog
         const insertData = {
           slug: formData.slug,
-          url: formData.url,
+          url: formData.url || `https://www.wizms.net/${formData.slug}`,
           title: formData.title,
           meta_title: formData.meta_title,
           meta_description: formData.meta_description,
