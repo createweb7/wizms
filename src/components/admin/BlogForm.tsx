@@ -117,6 +117,7 @@ export default function BlogForm({ initialBlog }: BlogFormProps) {
 
       // Strip fields that don't exist as columns in the blogs table
       const { id, type, ...blogData } = formData as any;
+      console.log("Saving blog data:", blogData);
 
       if (initialBlog?.id) {
         const { error: updateError } = await supabase
@@ -134,8 +135,9 @@ export default function BlogForm({ initialBlog }: BlogFormProps) {
       }
 
       router.push("/admin/blogs");
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to save blog");
+    } catch (err: any) {
+      const msg = err?.message || err?.error_description || JSON.stringify(err);
+      setError(msg || "Failed to save blog");
     } finally {
       setIsLoading(false);
     }
