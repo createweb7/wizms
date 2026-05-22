@@ -79,10 +79,13 @@ export default function BlogForm({ initialBlog }: BlogFormProps) {
     const { name, value, type } = e.target;
     const checked = (e.target as HTMLInputElement).checked;
 
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+    setFormData((prev) => {
+      const updated = { ...prev, [name]: type === "checkbox" ? checked : value };
+      if (name === "slug") {
+        updated.url = `https://www.wizms.net/${value}`;
+      }
+      return updated;
+    });
   };
 
   const generateSlug = (title: string) => {
@@ -96,10 +99,12 @@ export default function BlogForm({ initialBlog }: BlogFormProps) {
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const title = e.target.value;
+    const slug = generateSlug(title);
     setFormData((prev) => ({
       ...prev,
       title,
-      slug: generateSlug(title),
+      slug,
+      url: `https://www.wizms.net/${slug}`,
     }));
   };
 
@@ -180,15 +185,14 @@ export default function BlogForm({ initialBlog }: BlogFormProps) {
           </div>
 
           <div className="form-group">
-            <label htmlFor="url">URL</label>
+            <label htmlFor="url">URL (auto-generated)</label>
             <input
               type="text"
               id="url"
               name="url"
               value={formData.url}
-              onChange={handleInputChange}
-              placeholder="https://example.com"
-              disabled={isLoading}
+              readOnly
+              style={{ background: "#f1f5f9", color: "#64748b" }}
             />
           </div>
         </div>
