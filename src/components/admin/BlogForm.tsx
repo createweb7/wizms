@@ -115,19 +115,20 @@ export default function BlogForm({ initialBlog }: BlogFormProps) {
         return;
       }
 
+      // Strip fields that don't exist as columns in the blogs table
+      const { id, type, ...blogData } = formData as any;
+
       if (initialBlog?.id) {
-        // Update existing blog
         const { error: updateError } = await supabase
           .from("blogs")
-          .update(formData)
+          .update(blogData)
           .eq("id", initialBlog.id);
 
         if (updateError) throw updateError;
       } else {
-        // Create new blog
         const { error: insertError } = await supabase
           .from("blogs")
-          .insert([formData]);
+          .insert([blogData]);
 
         if (insertError) throw insertError;
       }
