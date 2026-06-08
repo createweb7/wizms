@@ -157,7 +157,7 @@ export default function ISO9001Page() {
               <span className="ml-4 text-blue-600 text-xl group-open:rotate-180 transition-transform duration-200">&#8964;</span>
             </summary>
             <div className="px-5 pb-5 pt-2 bg-white text-gray-700 leading-relaxed">
-              No, ISO 9001 certification in UAE is not legally required for all businesses. However, it is highly recommended and often demanded by public authorities (e.g., municipalities), major corporations, and private contractors during vendor onboarding and government tenders.
+              No, <Link href="/iso-9001-certification-consultants-uae" className="text-blue-600 hover:underline">ISO 9001 certification in UAE</Link> is not legally required for all businesses. However, it is highly recommended and often demanded by public authorities (e.g., municipalities), major corporations, and private contractors during vendor onboarding and government tenders.
             </div>
           </details>
 
