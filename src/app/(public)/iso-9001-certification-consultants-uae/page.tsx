@@ -146,6 +146,44 @@ export default function ISO9001Page() {
         </div>
       </div>
 
+      {/* FAQ Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h2 className="text-3xl font-bold text-gray-900 mb-8">Frequently Asked Questions</h2>
+        <div className="space-y-4">
+
+          <details className="border border-gray-200 rounded-lg overflow-hidden group">
+            <summary className="flex items-center justify-between p-5 cursor-pointer bg-white hover:bg-gray-50 font-semibold text-gray-900 list-none">
+              1. Is ISO 9001 mandatory for UAE companies?
+              <span className="ml-4 text-blue-600 text-xl group-open:rotate-180 transition-transform duration-200">&#8964;</span>
+            </summary>
+            <div className="px-5 pb-5 pt-2 bg-white text-gray-700 leading-relaxed">
+              No, ISO 9001 certification in UAE is not legally required for all businesses. However, it is highly recommended and often demanded by public authorities (e.g., municipalities), major corporations, and private contractors during vendor onboarding and government tenders.
+            </div>
+          </details>
+
+          <details className="border border-gray-200 rounded-lg overflow-hidden group">
+            <summary className="flex items-center justify-between p-5 cursor-pointer bg-white hover:bg-gray-50 font-semibold text-gray-900 list-none">
+              2. How much does the certification cost?
+              <span className="ml-4 text-blue-600 text-xl group-open:rotate-180 transition-transform duration-200">&#8964;</span>
+            </summary>
+            <div className="px-5 pb-5 pt-2 bg-white text-gray-700 leading-relaxed">
+              Costs vary greatly based on factors like your company's employee count, the complexity of your business, the number of locations, and the chosen certification body. Call WIZMS today and get a free quote for the ISO 9001 certification process.
+            </div>
+          </details>
+
+          <details className="border border-gray-200 rounded-lg overflow-hidden group">
+            <summary className="flex items-center justify-between p-5 cursor-pointer bg-white hover:bg-gray-50 font-semibold text-gray-900 list-none">
+              3. How long does the process take?
+              <span className="ml-4 text-blue-600 text-xl group-open:rotate-180 transition-transform duration-200">&#8964;</span>
+            </summary>
+            <div className="px-5 pb-5 pt-2 bg-white text-gray-700 leading-relaxed">
+              For small to medium-sized UAE businesses, ISO 9001 implementation and certification process generally takes 1 to 6 weeks. Larger, highly complex organizations may require 1 to 2 months.
+            </div>
+          </details>
+
+        </div>
+      </div>
+
       {/* Enquiry Form */}
       <EnquiryForm serviceType="ISO 9001 - Quality Management System" bgColor="from-blue-600 to-blue-700" />
 
