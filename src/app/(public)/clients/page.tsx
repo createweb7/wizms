@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { Metadata } from 'next';
 import { getStaticPageBySlug } from '@/lib/supabase-data';
 
@@ -12,50 +11,36 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function ClientsPage() {
-  // Logo filenames - these will be served as WebP format
-  // Only includes visible logos from original clients.php (not commented out)
-  const logos = [
-    'airbus-logo',
-    '4',
-    'Ain_dubai',
-    'carnaval',
-    'Dubai_holding',
-    'enoc',
-    '1',
-    'toshiba',
-    'arn',
-    'hatta',
-    'government_of_ajman',
-    'hutchinson_sports',
-    '34',
-    '35',
-    '36',
-    '2',
-    '12',
-    'emirates_national',
-    '15',
-    '13',
-    '8',
-    '9',
-    '30',
-    '6',
-    'doneevents',
-    'grundfos',
-    '3',
-    '37',
-    '28',
-    '33',
-    '20',
-    '16',
-    '26',
-    '27',
-    'horizon_terminals',
-    'alrashed',
-    'LDPL_Middle_East',
-    'Seal_for_life',
-  ];
+const logos = [
+  '1 Dubai Airports',
+  '2 Salik',
+  '3 Airbus',
+  '4 Global Village',
+  '5 Enoc',
+  '6 EPPCO',
+  '7 Ain Dubai',
+  '8 Carnaval',
+  '9 Dubai Holding Entertainment',
+  '10 Dubai Holding Real Estate',
+  '11 AtkinsRealis',
+  '12 Henkel',
+  '13 Terberg',
+  '14 Laticrete',
+  '15 Ajman Port',
+  '16 Arabian Radio Network',
+  '17 Green Planet',
+  '18 Roxy Cinemas',
+  '19 Motion Gate',
+  '20 Jetex',
+  '21 Fujairah Oil Terminal',
+  '22 Ecomar',
+  '23 Emirates Electrical Engineering',
+  '24 Vopak',
+  '25 Dedienne Aerospace',
+  '26 B3 International',
+];
 
+export default function ClientsPage() {
   return (
     <>
       <div className="min-h-screen bg-gray-50">
@@ -89,8 +74,8 @@ export default function ClientsPage() {
                   className="flex items-center justify-center p-6 bg-white rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300"
                 >
                   <img
-                    src={`/clients/${logo}.webp`}
-                    alt={`Client logo ${logo}`}
+                    src={`/clients/${encodeURIComponent(logo)}.webp`}
+                    alt={logo.replace(/^\d+\s*/, '')}
                     className="max-w-full h-auto max-h-24 object-contain"
                   />
                 </div>
