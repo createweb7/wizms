@@ -12,32 +12,32 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const logos = [
-  '1 Dubai Airports',
-  '2 Salik',
-  '3 Airbus',
-  '4 Global Village',
-  '5 Enoc',
-  '6 EPPCO',
-  '7 Ain Dubai',
-  '8 Carnaval',
-  '9 Dubai Holding Entertainment',
-  '10 Dubai Holding Real Estate',
-  '11 AtkinsRealis',
-  '12 Henkel',
-  '13 Terberg',
-  '14 Laticrete',
-  '15 Ajman Port',
-  '16 Arabian Radio Network',
-  '17 Green Planet',
-  '18 Roxy Cinemas',
-  '19 Motion Gate',
-  '20 Jetex',
-  '21 Fujairah Oil Terminal',
-  '22 Ecomar',
-  '23 Emirates Electrical Engineering',
-  '24 Vopak',
-  '25 Dedienne Aerospace',
-  '26 B3 International',
+  { file: '1-Dubai-Airports', name: 'Dubai Airports' },
+  { file: '2-Salik', name: 'Salik' },
+  { file: '3-Airbus', name: 'Airbus' },
+  { file: '4-Global-Village', name: 'Global Village' },
+  { file: '5-Enoc', name: 'Enoc' },
+  { file: '6-EPPCO', name: 'EPPCO' },
+  { file: '7-Ain-Dubai', name: 'Ain Dubai' },
+  { file: '8-Carnaval', name: 'Carnaval' },
+  { file: '9-Dubai-Holding-Entertainment', name: 'Dubai Holding Entertainment' },
+  { file: '10-Dubai-Holding-Real-Estate', name: 'Dubai Holding Real Estate' },
+  { file: '11-AtkinsRealis', name: 'AtkinsRealis' },
+  { file: '12-Henkel', name: 'Henkel' },
+  { file: '13-Terberg', name: 'Terberg' },
+  { file: '14-Laticrete', name: 'Laticrete' },
+  { file: '15-Ajman-Port', name: 'Ajman Port' },
+  { file: '16-Arabian-Radio-Network', name: 'Arabian Radio Network' },
+  { file: '17-Green-Planet', name: 'Green Planet' },
+  { file: '18-Roxy-Cinemas', name: 'Roxy Cinemas' },
+  { file: '19-Motion-Gate', name: 'Motion Gate' },
+  { file: '20-Jetex', name: 'Jetex' },
+  { file: '21-Fujairah-Oil-Terminal', name: 'Fujairah Oil Terminal' },
+  { file: '22-Ecomar', name: 'Ecomar' },
+  { file: '23-Emirates-Electrical-Engineering', name: 'Emirates Electrical Engineering' },
+  { file: '24-Vopak', name: 'Vopak' },
+  { file: '25-Dedienne-Aerospace', name: 'Dedienne Aerospace' },
+  { file: '26-B3-International', name: 'B3 International' },
 ];
 
 export default function ClientsPage() {
@@ -68,14 +68,14 @@ export default function ClientsPage() {
           <section className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Organizations We Serve</h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
-              {logos.map((logo, index) => (
+              {logos.map(({ file, name }, index) => (
                 <div
                   key={index}
                   className="flex items-center justify-center p-6 bg-white rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300"
                 >
                   <img
-                    src={`/clients/${encodeURIComponent(logo)}.webp`}
-                    alt={logo.replace(/^\d+\s*/, '')}
+                    src={`/clients/${file}.webp`}
+                    alt={name}
                     className="max-w-full h-auto max-h-24 object-contain"
                   />
                 </div>
