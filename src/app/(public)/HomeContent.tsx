@@ -11,9 +11,9 @@ export default function HomeContent() {
   return (
     <div>
       <HeroSlider />
+      <ClientsCarousel />
       <AboutSection />
       <CertificationsGrid />
-      <ClientsCarousel />
       <TestimonialsCarousel />
       <HowToGetISO />
     </div>
