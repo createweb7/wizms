@@ -243,6 +243,14 @@ export default function BlogForm({ initialBlog }: BlogFormProps) {
             </button>
             <button
               type="button"
+              onClick={() => editor?.chain().focus().toggleHeading({ level: 3 }).run()}
+              className="editor-btn"
+              style={{ padding: "8px 12px", backgroundColor: editor?.isActive("heading", { level: 3 }) ? "#0066cc" : "#ddd", color: editor?.isActive("heading", { level: 3 }) ? "#fff" : "#000", border: "none", borderRadius: "4px", cursor: "pointer" }}
+            >
+              H3
+            </button>
+            <button
+              type="button"
               onClick={() => editor?.chain().focus().toggleBulletList().run()}
               className="editor-btn"
               style={{ padding: "8px 12px", backgroundColor: editor?.isActive("bulletList") ? "#0066cc" : "#ddd", color: editor?.isActive("bulletList") ? "#fff" : "#000", border: "none", borderRadius: "4px", cursor: "pointer" }}
