@@ -15,6 +15,7 @@ export default function BlogForm({ initialBlog }: BlogFormProps) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [uploadingImage, setUploadingImage] = useState(false);
   const [formData, setFormData] = useState<Content>({
     slug: "",
     url: "",
@@ -106,6 +107,67 @@ export default function BlogForm({ initialBlog }: BlogFormProps) {
       slug,
       url: `https://www.wizms.net/${slug}`,
     }));
+  };
+
+  const convertImageToWebp = async (file: File): Promise<Blob> => {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext("2d")!;
+        ctx.drawImage(img, 0, 0);
+        canvas.toBlob(
+          (blob) => {
+            if (blob) resolve(blob);
+            else reject(new Error("Failed to convert image"));
+          },
+          "image/webp",
+          0.85
+        );
+      };
+      img.onerror = () => reject(new Error("Failed to load image"));
+      img.src = URL.createObjectURL(file);
+    });
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingImage(true);
+    setError("");
+
+    try {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setFormData((prev) => ({ ...prev, featured_image: event.target?.result as string }));
+      };
+      reader.readAsDataURL(file);
+
+      const webpBlob = await convertImageToWebp(file);
+      const timestamp = Date.now();
+      const fileName = `${timestamp}-${formData.slug || "image"}.webp`;
+
+      const { data, error: uploadError } = await supabase.storage
+        .from("blogs")
+        .upload(fileName, webpBlob, { contentType: "image/webp", upsert: false });
+
+      if (uploadError) throw uploadError;
+      if (!data) throw new Error("No upload response from server");
+
+      const { data: publicUrlData } = supabase.storage.from("blogs").getPublicUrl(data.path);
+      const imageUrl = publicUrlData?.publicUrl;
+      if (!imageUrl) throw new Error("Failed to generate public URL");
+
+      setFormData((prev) => ({ ...prev, featured_image: imageUrl }));
+    } catch (err) {
+      const errorMsg = err instanceof Error ? err.message : "Unknown error";
+      setError(`❌ Image upload failed: ${errorMsg}`);
+    } finally {
+      setUploadingImage(false);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -368,17 +430,50 @@ export default function BlogForm({ initialBlog }: BlogFormProps) {
         <h2>Featured Image</h2>
 
         <div className="form-group">
-          <label htmlFor="featured_image">Image URL</label>
+          <label htmlFor="featured_image">Upload Image (any format — will convert to WebP)</label>
           <input
-            type="url"
+            type="file"
             id="featured_image"
-            name="featured_image"
-            value={formData.featured_image}
-            onChange={handleInputChange}
-            placeholder="https://example.com/image.jpg"
-            disabled={isLoading}
+            accept="image/*"
+            onChange={handleImageUpload}
+            disabled={isLoading || uploadingImage}
           />
+          {uploadingImage && (
+            <p style={{ color: "#3b82f6", marginTop: "8px", fontWeight: "600" }}>
+              ⏳ Converting and uploading image...
+            </p>
+          )}
+          {!uploadingImage && formData.featured_image?.trim() &&
+            (formData.featured_image.startsWith("http") || formData.featured_image.startsWith("data:")) && (
+            <p style={{ color: "#10b981", marginTop: "8px", fontWeight: "600" }}>
+              ✅ Image uploaded successfully!
+            </p>
+          )}
         </div>
+
+        {formData.featured_image?.trim() &&
+          (formData.featured_image.startsWith("http") || formData.featured_image.startsWith("data:")) && (
+          <div className="form-group">
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
+              <label style={{ margin: 0 }}>Image Preview</label>
+              <button
+                type="button"
+                onClick={() => setFormData((prev) => ({ ...prev, featured_image: "", featured_image_alt: "" }))}
+                style={{ padding: "6px 12px", backgroundColor: "#ef4444", color: "white", border: "none", borderRadius: "6px", cursor: "pointer", fontSize: "0.85rem", fontWeight: "600" }}
+              >
+                🗑️ Delete Image
+              </button>
+            </div>
+            <div style={{ maxWidth: "400px", padding: "16px", backgroundColor: "#f8fafc", borderRadius: "8px", border: "2px solid #e2e8f0", textAlign: "center" }}>
+              <img
+                key={formData.featured_image}
+                src={formData.featured_image}
+                alt="Featured Preview"
+                style={{ maxWidth: "100%", maxHeight: "250px", borderRadius: "6px", display: "block", margin: "0 auto" }}
+              />
+            </div>
+          </div>
+        )}
 
         <div className="form-group">
           <label htmlFor="featured_image_alt">Image Alt Text</label>
