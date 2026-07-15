@@ -168,6 +168,17 @@ body {
   font-weight: 600;
 }
 
+/* Links */
+.prose a {
+  color: #2563eb;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose a:hover {
+  color: #1d4ed8;
+}
+
 /* Images */
 .prose img {
   max-width: 100%;

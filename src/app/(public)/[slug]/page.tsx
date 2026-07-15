@@ -129,7 +129,7 @@ export default async function Page({
             <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
               {content.content.includes("<") ? (
                 <div
-                  className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-4 prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-700 prose-strong:text-gray-900 prose-em:text-gray-800 prose-li:text-gray-700 prose-li:mb-2 [&_a]:text-blue-600 [&_a]:underline [&_a:hover]:text-blue-800"
+                  className="prose prose-lg max-w-none"
                   dangerouslySetInnerHTML={{ __html: content.content.replace(/<h1[^>]*>.*?<\/h1>/i, '') }}
                 />
               ) : (
