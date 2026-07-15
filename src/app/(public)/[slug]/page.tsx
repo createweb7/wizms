@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import FeaturedImage from "@/components/FeaturedImage";
 import { getContentBySlug, getAllSlugs, getContentByType } from "@/lib/supabase-data";
 import Link from "next/link";
+
+export const dynamic = "force-dynamic";
 import { BlogCard } from "@/components/BlogCard";
 
 export async function generateMetadata({
