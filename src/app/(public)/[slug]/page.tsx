@@ -4,7 +4,7 @@ import FeaturedImage from "@/components/FeaturedImage";
 import { getContentBySlug, getAllSlugs, getContentByType } from "@/lib/supabase-data";
 import Link from "next/link";
 
-export const revalidate = 300; // re-fetch from Supabase every 5 minutes
+export const revalidate = 86400; // cache for 24h to stay within Hobby tier limits
 import { BlogCard } from "@/components/BlogCard";
 
 export async function generateMetadata({
