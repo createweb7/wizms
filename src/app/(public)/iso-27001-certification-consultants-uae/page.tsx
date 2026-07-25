@@ -292,6 +292,12 @@ export default function ISO27001Page() {
                         <Link href="/why-should-startups-get-iso-27001-certification" className="text-purple-600 hover:text-purple-800">ISO 27001 for startups</Link> guides the organization why they must invest in ISO 27001 certification for startups, and how ISO certification implementation will offer your startup company a much needed competitive edge which you have been looking for.
                       </p>
                     </details>
+                    <details className="border border-gray-200 rounded-lg p-4">
+                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">How SME benefits from ISO 27001 certification? <MdKeyboardArrowDown className="text-purple-600 text-xl faq-icon" /></summary>
+                      <p className="text-gray-700 mt-4">
+                        An organization's dedication to safeguarding confidential information, minimizing cybersecurity risks, and adhering to regulatory standards is demonstrated by ISO 27001 certification. An Information Security Management System that is well-organized enhances business continuity, boosts stakeholder confidence and gives competitive advantage in today's digital economy. WIZMS provides comprehensive consulting services for ISO 27001 certification, ensuring that small and medium-sized businesses can achieve success while maintaining minimal disruption in their daily operations.
+                      </p>
+                    </details>
                   </div>
                 </div>
 

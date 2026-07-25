@@ -262,6 +262,12 @@ export default function ISO41001Page() {
                         <p>ISO 41001 Certification can be obtained in 4 - 6 weeks with one of the UAE's most trusted and largest ISO certification consultant in Dubai, Abu Dhabi, Sharjah, Ras al-Khaimah, Ajman, Al Ain and Fujairah.</p>
                       </div>
                     </details>
+                    <details className="border border-gray-200 rounded-lg p-4">
+                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">Why need to implement ISO 41001 Certification in Dubai? <MdKeyboardArrowDown className="text-teal-600 text-xl faq-icon" /></summary>
+                      <p className="text-gray-700 mt-4">
+                        Implementing ISO 41001 Certification in Dubai enables organizations to establish a structured Facility Management System (FMS) that improves operational efficiency, optimizes resource utilization, and enhances workplace performance. This standard provides a globally recognized framework for managing facilities, infrastructure, and support services while ensuring consistent service quality and regulatory compliance. With expert guidance from WIZMS, businesses across the UAE can implement ISO 41001 effectively and achieve long-term improvements in facility management performance.
+                      </p>
+                    </details>
                   </div>
                 </div>
               </div>

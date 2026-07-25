@@ -268,6 +268,12 @@ export default function ISO22000Page() {
                         <li>A technique for report and record control.</li>
                       </ul>
                     </details>
+                    <details className="border border-gray-200 rounded-lg p-4">
+                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">How ISO 22000 Food Safety Management System helps company in Dubai? <MdKeyboardArrowDown className="text-cyan-600 text-xl faq-icon" /></summary>
+                      <p className="text-gray-700 mt-4">
+                        A well-implemented ISO 22000 Food Safety Management System (FSMS) helps organizations identify, assess, and control food safety risks across every stage of the food supply chain. Achieving ISO 22000 Certification in Dubai, UAE demonstrates your commitment to delivering safe, high-quality food products while meeting customer and regulatory expectations. It also improves operational efficiency, strengthens supplier confidence, and enhances your organization's reputation in both local and international markets.
+                      </p>
+                    </details>
                   </div>
                 </div>
               </div>

@@ -332,6 +332,12 @@ export default function ISO18001Page() {
                         OHSAS 18001 Certification Cost depends on the good estimation which is the key to success. Hidden costs can sink your company, and the easy way to prevent them is to conduct a thorough analysis, have discussions, and find the best possible solutions is to hire a right OHSAS 18001 Consultant who helps you to manage the ohsas 18001 certification cost.
                       </p>
                     </details>
+                    <details className="border border-gray-200 rounded-lg p-4">
+                      <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">Why do many companies show interest in OHSAS 18001 certification? <MdKeyboardArrowDown className="text-orange-600 text-xl faq-icon" /></summary>
+                      <p className="text-gray-700 mt-4">
+                        OHSAS 18001 is still being sought by numerous companies. Despite the official replacement of the standard by ISO 45001, certification remains mandatory. While continuing the legacy of OHSAS 18001, ISO 45001 emphasizes the importance of risk-based thinking and leadership involvement alongside continual improvements in occupational health. By assisting businesses in Dubai and the UAE in transitioning from OHSAS 18001 to ISO 45001, WIZMS ensures compliance with current international workplace safety regulations and industry best practices.
+                      </p>
+                    </details>
                   </div>
                 </div>
               </div>
