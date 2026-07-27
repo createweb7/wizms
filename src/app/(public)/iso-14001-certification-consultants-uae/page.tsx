@@ -120,6 +120,15 @@ export default function ISO14001Page() {
         </div>
       </div>
 
+      {/* Closing Paragraph */}
+      <div className="bg-gray-50 py-12">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-gray-700 leading-relaxed text-lg">
+            ISO 14001 certification in Dubai, UAE enables companies to establish a structured Environmental Management System (EMS) that enhances environmental performance while complying with legal and regulatory regulations. Businesses can demonstrate their commitment to sustainability by complying with ISO 14001:2015, which can lead to reduced environmental risks and increased resource consumption. With the assistance of WIZMS ISO 14001 consultants in UAE, businesses can expedite the implementation of their EMS system, prepare for certification audits, and achieve ongoing environmental improvement. The ISO 14001 certification enhances a company&apos;s reputation, builds trust with stakeholders and provides an edge in local markets.
+          </p>
+        </div>
+      </div>
+
       {/* Enquiry Form */}
       <EnquiryForm serviceType="ISO 14001 - Environmental Management System" bgColor="from-green-600 to-green-700" />
 

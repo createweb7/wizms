@@ -89,6 +89,13 @@ export default function ISO9001Page() {
                   </p>
                 </div>
 
+                {/* Intro paragraph */}
+                <div className="mb-10">
+                  <p className="text-gray-700 leading-relaxed">
+                    ISO 9001 - The implementation of a Quality Management System (QMS) through certification in Dubai, UAE leads to operational efficiency, customer satisfaction, and regulatory compliance. ISO 9001:2015 provides a structured system for consistent quality, risk management and continual improvement that is suitable for all businesses regardless of their size or industry. Working alongside experienced ISO 9001 consultants in WIZMS guarantees a seamless certification process, from gap analysis and documentation to implementation, internal audits of the system, and certification.
+                  </p>
+                </div>
+
                 {/* Why Choose WIZMS */}
                 <div className="mb-10 bg-blue-50 border-l-4 border-blue-500 p-6 rounded">
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">Reason to Choose WIZMS to get ISO 9001 Certification in Dubai, UAE</h2>

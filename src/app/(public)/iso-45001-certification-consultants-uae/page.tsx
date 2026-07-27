@@ -388,6 +388,15 @@ export default function ISO45001Page() {
         </div>
       </div>
 
+      {/* Closing Paragraph */}
+      <div className="bg-gray-50 py-12">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-gray-700 leading-relaxed text-lg">
+            ISO 45001 certification in Dubai for a company is a clear indication of the company&apos;s dedication to providing safe, healthy, and legally compliant work environments. A well-functioning Occupational Health and Safety Management System (OHSMS) helps companies recognize workplace hazards, reduce occupational risks, improve the health of workers as well as enhance overall performance. Organizations can rely on WIZMS who are proficient ISO 45001 consultants in UAE to simplify implementation, meet ISO45001:2018 requirements, and successfully complete certification audits. The ISO 45001 certification is a crucial factor in elevating customer confidence, facilitating regulatory compliance, and creating enduringly positive work environments for employees.
+          </p>
+        </div>
+      </div>
+
       {/* Enquiry Form */}
       <EnquiryForm serviceType="ISO 45001 - Occupational Health & Safety Management" bgColor="from-red-600 to-orange-600" />
 
