@@ -60,6 +60,12 @@ export default function GoodManufacturingPracticePage() {
 
                 {/* Benefits */}
                 <div className="mb-10">
+                  <div className="mb-10">
+                    <p className="text-gray-700 leading-relaxed">
+                      GMP Certification in Dubai helps organizations establish robust manufacturing processes that consistently meet quality, safety, and regulatory requirements. Implementing Good Manufacturing Practices (GMP) enhances product quality, reduces operational risks, improves traceability, and strengthens customer confidence across pharmaceutical, food, cosmetics, and healthcare industries. Businesses that achieve GMP certification demonstrate their commitment to international quality standards, regulatory compliance, and continuous process improvement. WIZMS offers end-to-end GMP consulting services in Dubai and across the UAE, including gap analysis, documentation, implementation, staff training, and certification support to help organizations achieve compliance efficiently and confidently.
+                    </p>
+                  </div>
+
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">Benefits of GMP Certification in Dubai</h2>
                   <ul className="space-y-3 text-gray-700">
                     {[
