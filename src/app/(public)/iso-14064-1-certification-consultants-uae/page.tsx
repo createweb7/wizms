@@ -86,11 +86,14 @@ export default function ISO14064Page() {
                   </p>
                 </div>
 
-                <div className="mb-10 bg-lime-50 border-l-4 border-lime-500 p-6 rounded">
-                  <p className="text-gray-700 mb-4">
+                <div className="mb-6 bg-lime-50 border-l-4 border-lime-500 p-6 rounded">
+                  <p className="text-gray-700">
                     WIZMS was the first verification bodies in Dubai, UAE to achieve accreditation to ISO 14064. We deliver carbon footprint verification to ISO 14064-1 to any type of organization and in any business sector. Our ISO 14064-1 carbon footprint verification services are designed to develop robust, and reproducible strategies to monitor & report GHG emissions, both at project and organization level.
                   </p>
-                  <p className="text-gray-700">
+                </div>
+
+                <div className="mb-10">
+                  <p className="text-gray-700 leading-relaxed">
                     ISO 14064 Certification in Dubai, UAE enables organizations to measure and verify their greenhouse gas (GHG) emissions with precision using international standards. Implementing ISO 14064-1 Carbon Footprint Verification not only validates your organization&apos;s sustainability credentials but also ensures transparent and sustainable reporting, increasing the trustworthiness of your business to potential investors and stakeholders. SMEs in UAE seeking experienced ISO consultants can establish secure carbon accounting systems, identify potential for reductions, and comply with worldwide ESG and climate goals. In UAE, ISO 14064 certification is beneficial for corporate image, environmental performance, and sustainable business growth in the long run.
                   </p>
                 </div>
