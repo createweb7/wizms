@@ -115,6 +115,13 @@ export default function ISO22301Page() {
                   </p>
                 </div>
 
+                {/* Closing Paragraph */}
+                <div className="mb-10">
+                  <p className="text-gray-700 leading-relaxed">
+                    Businesses seeking iso 22301 certification in dubai can strengthen their ability to prepare for, respond to, and recover from operational disruptions. WIZMS supports organizations across Dubai and the UAE with Business Continuity Management System consultancy, including gap assessment, documentation, implementation guidance, employee training, internal audit support, and certification preparation. This structured approach helps businesses improve resilience, manage continuity risks, protect critical operations, and maintain essential services during unexpected incidents.
+                  </p>
+                </div>
+
                 <div className="mt-12">
                   <h2 className="text-2xl font-bold text-gray-900 mb-6">FAQs - ISO 22301 Certification in Dubai, UAE</h2>
                   <p className="text-gray-700 mb-4">Our ISO 22301 Certification consultant in Dubai have gathered the main queries and provided a perfect solution regarding ISO 22301 certification.</p>

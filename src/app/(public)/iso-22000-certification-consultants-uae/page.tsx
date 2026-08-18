@@ -162,6 +162,13 @@ export default function ISO22000Page() {
                   </p>
                 </div>
 
+                {/* Closing Paragraph */}
+                <div className="mb-10">
+                  <p className="text-gray-700 leading-relaxed">
+                    Businesses seeking iso 22000 consultancy can receive practical guidance on developing and improving a Food Safety Management System. It is important to note that iso 22000 certification for environmental management system is not technically accurate, as ISO 22000 addresses food safety, while ISO 14001 covers environmental management. WIZMS supports Dubai and UAE organizations with appropriate ISO consultancy and implementation.
+                  </p>
+                </div>
+
                 <div className="mt-12">
                   <h2 className="text-2xl font-bold text-gray-900 mb-6">FAQ ISO 22000 Certification</h2>
                   <div className="space-y-4">

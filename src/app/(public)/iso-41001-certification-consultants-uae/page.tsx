@@ -148,6 +148,16 @@ export default function ISO41001Page() {
                   </div>
                 </div>
 
+                {/* Closing Paragraph */}
+                <div className="mb-10">
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    Organizations considering iso 41001 certification can establish a structured facility management system that supports efficient service delivery, operational control, risk management, and continual improvement. Because ISO 41001 is non-sector specific, its framework can be applied across diverse environments, including the iso 41001 certification for defence industry, iso 41001 certification for food products industry, iso 41001 certification for oil and gas industry, iso 41001 certification for textile industry, and iso 41001 certification for tourism industry.
+                  </p>
+                  <p className="text-gray-700 leading-relaxed">
+                    WIZMS supports iso 41001 facility management certification through consultancy, documentation, implementation guidance, audits, and iso 41001 internal training for organizations in Dubai and across the UAE. Businesses should distinguish iso 41001 certification for quality management system from ISO 9001, as ISO 41001 specifically addresses facility management systems. Organizations can therefore consider relevant iso 41001 certifications alongside other management standards based on their specific requirements.
+                  </p>
+                </div>
+
                 {/* FAQs */}
                 <div className="mt-12">
                   <h2 className="text-2xl font-bold text-gray-900 mb-6">FAQ - ISO 41001 Certification</h2>

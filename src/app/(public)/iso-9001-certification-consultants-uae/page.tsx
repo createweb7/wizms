@@ -153,6 +153,13 @@ export default function ISO9001Page() {
         </div>
       </div>
 
+      {/* Closing Paragraph */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-10">
+        <p className="text-gray-700 leading-relaxed">
+          Businesses seeking iso 9001 certification services in dubai can benefit from expert guidance to establish an effective Quality Management System (QMS). WIZMS supports organizations with gap assessment, documentation, implementation, employee training, internal audits, and certification preparation. Experienced iso 9001 consultants uae can help businesses understand applicable requirements, strengthen processes, improve consistency, and prepare for certification audits. For companies exploring iso 9001 in dubai, WIZMS provides practical consultancy tailored to organizational size, industry, and operational needs. This structured approach can support customer satisfaction, process improvement, risk management, and continual improvement while helping organizations build a reliable foundation for long-term business performance across Dubai and the UAE.
+        </p>
+      </div>
+
       {/* FAQ Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-8">Frequently Asked Questions</h2>

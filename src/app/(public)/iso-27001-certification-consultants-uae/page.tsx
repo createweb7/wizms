@@ -189,6 +189,13 @@ export default function ISO27001Page() {
                   </p>
                 </div>
 
+                {/* Closing Paragraph */}
+                <div className="mb-10">
+                  <p className="text-gray-700 leading-relaxed">
+                    Businesses seeking iso 27001 certification in dubai can establish a structured Information Security Management System (ISMS) to manage information-security risks and protect sensitive business data. WIZMS supports organizations across Dubai and the UAE with ISO 27001 consultancy, gap assessment, risk assessment, documentation, implementation guidance, employee awareness, internal audit support, and certification preparation. This practical approach can help organizations strengthen information security, improve risk management, and build greater confidence among customers and business partners.
+                  </p>
+                </div>
+
                 <div className="mt-12">
                   <h2 className="text-2xl font-bold text-gray-900 mb-6">FAQs - ISO 27001 Certification</h2>
                   <div className="space-y-6">

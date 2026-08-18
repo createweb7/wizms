@@ -76,6 +76,9 @@ export default function ISO14001Page() {
                     </Link>
                     {' '}to assess the negative impact of its operations on the environment and ensure compliance with all applicable regulatory requirements pertaining to environmental protection.
                   </p>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    Businesses seeking iso 14001 certification in uae should choose a consultant with relevant environmental management expertise and practical implementation experience. An experienced iso 14001 consultant can assist with gap assessment, EMS documentation, implementation, employee awareness, internal audits, and certification preparation. WIZMS supports organizations in Dubai and across the UAE with tailored ISO 14001 consultancy aligned with their operational requirements.
+                  </p>
                   <p className="text-gray-700 leading-relaxed">
                     ISO 14001 certification in Dubai, UAE enables companies to establish a structured Environmental Management System (EMS) that enhances environmental performance while complying with legal and regulatory regulations. Businesses can demonstrate their commitment to sustainability by complying with ISO 14001:2015, which can lead to reduced environmental risks and increased resource consumption. With the assistance of WIZMS ISO 14001 consultants in UAE, businesses can expedite the implementation of their EMS system, prepare for certification audits, and achieve ongoing environmental improvement. The ISO 14001 certification enhances a company&apos;s reputation, builds trust with stakeholders and provides an edge in local markets.
                   </p>

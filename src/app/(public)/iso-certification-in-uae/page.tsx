@@ -132,6 +132,13 @@ export default function ISOCertificationUAEPage() {
                   </p>
                 </div>
 
+                {/* Closing Paragraph */}
+                <div className="mb-10">
+                  <p className="text-gray-700 leading-relaxed">
+                    Businesses wondering how to get ISO certification in Dubai can begin by identifying the appropriate standard, conducting a gap assessment, preparing required documentation, implementing the management system, and completing internal and certification audits. WIZMS supports organizations in selecting an appropriate iso certification body in uae, while providing consultancy, training, implementation, documentation, and audit-preparation assistance.
+                  </p>
+                </div>
+
                 {/* FAQ Section */}
                 <div className="mt-12">
                   <style>{faqStyle}</style>
